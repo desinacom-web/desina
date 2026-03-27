@@ -13,30 +13,19 @@
             background-image: linear-gradient(135deg, rgba(0, 0, 0, 0.9) 0%, rgba(30, 30, 30, 0.9) 100%), url('hero-bg.jpg');
             background-size: cover; background-position: center; background-attachment: fixed;
         }
-        
-        /* تصميم اللوجو النصي المطابق للصورة: DeSina ملتصقة */
-        .logo-text { font-family: sans-serif; font-weight: 800; display: inline-flex; align-items: baseline; direction: ltr; gap: 0; }
-        .logo-de { color: #000; } /* الأسود لـ De */
-        .logo-sina { color: #b91c1c; font-weight: 300; font-style: italic; margin-left: -1px; } /* الأحمر المائل الرفيع لـ Sina ملتصق بـ De */
-        .tm-text { font-size: 0.55em; color: #b91c1c; vertical-align: super; position: relative; top: -0.9em; right: -0.1em; font-weight: 400; font-style: normal; }
-        
         .social-card { transition: all 0.3s ease; }
         .social-card:hover { transform: translateY(-10px); }
-        
-        /* forced LTR container for logos */
-        .logo-wrapper { direction: ltr !important; display: inline-flex; align-items: baseline; gap: 0; }
+        .main-logo { height: 60px; width: auto; border-radius: 8px; object-fit: contain; }
+        .hero-logo { height: 120px; width: auto; margin-bottom: 20px; border-radius: 12px; box-shadow: 0 10px 20px rgba(0,0,0,0.5); }
     </style>
 </head>
 <body class="bg-gray-50 text-gray-900">
 
     <nav class="bg-white shadow-lg p-3 sticky top-0 z-50">
         <div class="container mx-auto flex justify-between items-center px-4">
-            <div class="logo-wrapper">
-                <span class="logo-text text-3xl">
-                    <span class="logo-de">D<span class="logo-sina">e</span></span><span class="logo-sina">Sina</span>
-                    <span class="tm-text">TM</span>
-                </span>
-            </div>
+            <a href="#">
+                <img src="logo.jpg" alt="DeSina Logo" class="main-logo">
+            </a>
             
             <div class="flex items-center gap-4">
                 <a href="#services" class="text-gray-700 hover:text-red-700 font-medium">خدماتنا</a>
@@ -50,14 +39,12 @@
 
     <section class="hero-section text-white py-28 px-6 text-center border-t-2 border-red-700">
         <div class="container mx-auto">
-            <h2 class="text-6xl font-extrabold mb-6 leading-tight flex justify-center items-center gap-3">
-                <span>مرحباً بكم في</span>
-                <span class="logo-wrapper inline-flex">
-                    <span class="logo-text text-6xl">
-                        <span class="logo-de text-white">D<span class="logo-sina text-white">e</span></span><span class="logo-sina">Sina</span>
-                        <span class="tm-text">TM</span>
-                    </span>
-                </span>
+            <div class="flex justify-center">
+                <img src="logo.jpg" alt="DeSina Logo" class="hero-logo">
+            </div>
+            
+            <h2 class="text-6xl font-extrabold mb-6 leading-tight">
+                مرحباً بكم في DeSina
             </h2>
             <p class="text-2xl text-gray-300 mb-12 max-w-3xl mx-auto">نحن نصنع التميز، ونبني مستقبلك الرقمي بأحدث التقنيات.</p>
             
@@ -76,15 +63,8 @@
     </section>
 
     <section id="services" class="py-24 container mx-auto px-6">
-        <h3 class="text-4xl font-bold text-center mb-16 text-gray-950 flex justify-center items-center gap-3">
-            <span>ماذا نقدم لبراند</span>
-            <span class="logo-wrapper inline-flex">
-                <span class="logo-text text-4xl">
-                    <span class="logo-de text-gray-950">D<span class="logo-sina">e</span></span><span class="logo-sina">Sina</span>
-                    <span class="tm-text text-red-600">TM</span>
-                </span>
-            </span>
-            <span>؟</span>
+        <h3 class="text-4xl font-bold text-center mb-16 text-gray-950">
+            ماذا نقدم لبراند DeSina؟
         </h3>
         <div class="grid md:grid-cols-3 gap-8">
             <div class="bg-white p-10 rounded-2xl shadow-xl border-b-8 border-red-600 social-card">
@@ -106,16 +86,7 @@
     </section>
 
     <section class="py-20 bg-white text-center px-6 border-t border-gray-200">
-        <h3 class="text-4xl font-bold mb-6 flex justify-center items-center gap-3">
-            <span>جاهز لتبدأ رحلة النجاح مع</span>
-            <span class="logo-wrapper inline-flex">
-                <span class="logo-text text-4xl">
-                    <span class="logo-de text-gray-950">D<span class="logo-sina">e</span></span><span class="logo-sina">Sina</span>
-                    <span class="tm-text text-red-600">TM</span>
-                </span>
-            </span>
-            <span>؟</span>
-        </h3>
+        <h3 class="text-4xl font-bold mb-6">جاهز لتبدأ رحلة النجاح مع DeSina؟</h3>
         <p class="text-xl text-gray-600 mb-10 max-w-2xl mx-auto">تواصل معنا الآن عبر الواتساب لمناقشة مشروعك والحصول على استشارة مجانية.</p>
         <a href="https://wa.me/201001283311" target="_blank" class="social-card bg-green-500 hover:bg-green-600 text-white px-12 py-4 rounded-full text-xl font-bold flex items-center gap-3 inline-flex">
             <i class="fab fa-whatsapp text-2xl"></i>
@@ -124,16 +95,7 @@
     </section>
 
     <footer class="bg-gray-950 text-white py-12 text-center border-t-2 border-red-700">
-        <p class="flex justify-center items-center gap-2 text-xl mb-4">
-            <span>جميع الحقوق محفوظة لبراند</span>
-            <span class="logo-wrapper inline-flex">
-                <span class="logo-text text-xl">
-                    <span class="logo-de text-white">D<span class="logo-sina text-white">e</span></span><span class="logo-sina">Sina</span>
-                    <span class="tm-text text-red-600">TM</span>
-                </span>
-            </span>
-            <span>© 2026</span>
-        </p>
+        <p class="text-xl mb-4">جميع الحقوق محفوظة لبراند DeSina © 2026</p>
         <div class="text-gray-500 text-sm">تصميم ذكي بواسطة AI جيمي</div>
     </footer>
 
