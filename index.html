@@ -5,11 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ديسينا | DeSina - التميز الرقمي</title>
     <link rel="icon" type="image/jpeg" href="logo.jpg">
-    
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    
     <style>
         body { font-family: 'Cairo', sans-serif; scroll-behavior: smooth; overflow-x: hidden; }
         .hero-section {
@@ -18,9 +16,15 @@
         }
         .social-card { transition: all 0.3s ease; }
         .social-card:hover { transform: translateY(-8px); box-shadow: 0 10px 20px rgba(0,0,0,0.2); }
-        .main-logo { height: 40px; md:height: 50px; width: auto; border-radius: 8px; }
-        .hero-logo { height: 100px; md:height: 130px; width: auto; margin-bottom: 25px; border-radius: 15px; box-shadow: 0 12px 24px rgba(0,0,0,0.6); }
-        .work-img { width: 100%; height: 250px; md:height: 300px; object-fit: cover; border-radius: 15px; }
+        /* مقاس اللوجو في المنيو */
+        .main-logo { height: 40px; }
+        @media (min-width: 768px) { .main-logo { height: 50px; } }
+        /* مقاس اللوجو الكبير في الهيرو */
+        .hero-logo { height: 100px; margin-bottom: 25px; border-radius: 15px; box-shadow: 0 12px 24px rgba(0,0,0,0.6); }
+        @media (min-width: 768px) { .hero-logo { height: 130px; } }
+        /* مقاس صور الأعمال */
+        .work-img { width: 100%; height: 250px; object-fit: cover; border-radius: 15px; }
+        @media (min-width: 768px) { .work-img { height: 300px; } }
     </style>
 </head>
 <body class="bg-gray-50 text-gray-900">
@@ -44,30 +48,39 @@
     <section class="hero-section text-white py-16 md:py-32 px-4 text-center border-t-2 border-red-700 bg-gray-950">
         <div class="container mx-auto">
             <div class="flex justify-center"><img src="logo.jpg" alt="DeSina Logo" class="hero-logo"></div>
-            <h1 class="text-3xl md:text-6xl font-extrabold mb-5 leading-tight">مرحباً بكم في <span class="text-red-600">ديسينا</span></h1>
-            <p class="text-lg md:text-2xl text-gray-300 mb-10 max-w-3xl mx-auto px-2">نصنع التميز الرقمي لبراند ديسينا بأحدث التقنيات.</p>
+            
+            <h1 class="text-3xl md:text-6xl font-extrabold mb-5 leading-tight">مرحباً بكم في <span class="text-red-600">DeSina</span></h1>
+            
+            <p class="text-lg md:text-2xl text-gray-300 mb-10 max-w-3xl mx-auto px-2">نصنع التميز الرقمي لبراند <span class="text-white">DeSina</span> بأحدث التقنيات.</p>
+            
             <div class="flex flex-col md:flex-row justify-center gap-4 px-10 md:px-0">
-                <a href="https://www.facebook.com/egy.desina" target="_blank" class="social-card bg-blue-600 text-white py-3 rounded-full font-bold flex items-center justify-center gap-2 text-md"><i class="fab fa-facebook text-lg"></i> فيسبوك</a>
-                <a href="https://www.instagram.com/de__sina" target="_blank" class="social-card bg-gradient-to-r from-purple-500 via-pink-500 to-yellow-500 text-white py-3 rounded-full font-bold flex items-center justify-center gap-2 text-md"><i class="fab fa-instagram text-lg"></i> انستجرام</a>
-                <a href="https://youtube.com/@de_sina" target="_blank" class="social-card bg-red-600 text-white py-3 rounded-full font-bold flex items-center justify-center gap-2 text-md"><i class="fab fa-youtube text-lg"></i> يوتيوب</a>
+                <a href="https://www.facebook.com/egy.desina" target="_blank" class="social-card bg-blue-600 text-white py-3 md:py-4 rounded-full font-bold flex items-center justify-center gap-2 text-md md:text-lg">
+                    <i class="fab fa-facebook text-lg md:text-xl"></i> فيسبوك
+                </a>
+                <a href="https://www.instagram.com/de__sina" target="_blank" class="social-card bg-gradient-to-r from-purple-500 via-pink-500 to-yellow-500 text-white py-3 md:py-4 rounded-full font-bold flex items-center justify-center gap-2 text-md md:text-lg">
+                    <i class="fab fa-instagram text-lg md:text-xl"></i> انستجرام
+                </a>
+                <a href="https://youtube.com/@de_sina" target="_blank" class="social-card bg-red-600 text-white py-3 md:py-4 rounded-full font-bold flex items-center justify-center gap-2 text-md md:text-lg">
+                    <i class="fab fa-youtube text-lg md:text-xl"></i> يوتيوب
+                </a>
             </div>
         </div>
     </section>
 
     <section id="services" class="py-16 md:py-28 container mx-auto px-6">
-        <h3 class="text-3xl md:text-5xl font-bold text-center mb-12 md:mb-20">ماذا نقدم لبراند ديسينا؟</h3>
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <div class="bg-white p-8 md:p-12 rounded-3xl shadow-xl border-b-8 border-red-600 text-center social-card">
+        <h3 class="text-3xl md:text-5xl font-bold text-center mb-12 md:mb-20">ماذا نقدم لبراند <span class="text-gray-950">DeSina</span>؟</h3>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
+            <div class="bg-white p-8 md:p-12 rounded-3xl shadow-xl border-b-8 border-red-600 social-card">
                 <i class="fas fa-bullhorn text-4xl md:text-6xl text-red-600 mb-5"></i>
                 <h4 class="text-xl md:text-3xl font-bold mb-3">صناعة المحتوى</h4>
                 <p class="text-gray-600 text-sm md:text-lg">تصميم فوتوشوب وفيديوهات ريلز احترافية.</p>
             </div>
-            <div class="bg-white p-8 md:p-12 rounded-3xl shadow-xl border-b-8 border-blue-600 text-center social-card">
+            <div class="bg-white p-8 md:p-12 rounded-3xl shadow-xl border-b-8 border-blue-600 social-card">
                 <i class="fas fa-tasks text-4xl md:text-6xl text-blue-600 mb-5"></i>
                 <h4 class="text-xl md:text-3xl font-bold mb-3">إدارة الحسابات</h4>
                 <p class="text-gray-600 text-sm md:text-lg">خطط تسويقية وجدولة منشورات دقيقة.</p>
             </div>
-            <div class="bg-white p-8 md:p-12 rounded-3xl shadow-xl border-b-8 border-purple-600 text-center social-card">
+            <div class="bg-white p-8 md:p-12 rounded-3xl shadow-xl border-b-8 border-purple-600 social-card">
                 <i class="fas fa-video text-4xl md:text-6xl text-purple-600 mb-5"></i>
                 <h4 class="text-xl md:text-3xl font-bold mb-3">مونتاج الفيديو</h4>
                 <p class="text-gray-600 text-sm md:text-lg">تعديل فيديوهات اليوتيوب والريلز بأعلى جودة.</p>
@@ -76,8 +89,8 @@
     </section>
 
     <section id="portfolio" class="py-16 bg-gray-100">
-        <div class="container mx-auto px-6">
-            <h3 class="text-3xl md:text-5xl font-bold text-center mb-10">معرض أعمالنا</h3>
+        <div class="container mx-auto px-6 text-center">
+            <h3 class="text-3xl md:text-5xl font-bold mb-10">معرض أعمالنا</h3>
             <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
                 <img src="IMG-20231215-WA0004.jpg" class="work-img shadow-lg" alt="Work 1">
                 <img src="IMG-20231215-WA0005.jpg" class="work-img shadow-lg" alt="Work 2">
@@ -87,7 +100,7 @@
     </section>
 
     <footer class="bg-gray-950 text-white py-10 text-center border-t-2 border-red-700">
-        <p class="text-lg md:text-2xl mb-2">جميع الحقوق محفوظة لبراند ديسينا © 2026</p>
+        <p class="text-lg md:text-2xl mb-2">جميع الحقوق محفوظة لبراند <span class="text-white">DeSina</span> © 2026</p>
         <div class="text-gray-500 text-xs">تصميم ذكي بواسطة جيمى</div>
     </footer>
 
