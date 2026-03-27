@@ -16,15 +16,11 @@
         }
         .social-card { transition: all 0.3s ease; }
         .social-card:hover { transform: translateY(-8px); box-shadow: 0 10px 20px rgba(0,0,0,0.2); }
-        
-        /* تعديل اللوجو في المنيو ليكون شفاف وبدون حواف */
-        .main-logo { height: 40px; width: auto; object-fit: contain; background: transparent; }
+        /* اللوجو الشفاف بدون حواف */
+        .main-logo { height: 40px; width: auto; object-fit: contain; background: transparent !important; border: none !important; box-shadow: none !important; }
         @media (min-width: 768px) { .main-logo { height: 50px; } }
-        
-        /* اللوجو الكبير في الهيرو (يظل كما هو بحواف مدورة وظل) */
         .hero-logo { height: 100px; margin-bottom: 25px; border-radius: 15px; box-shadow: 0 12px 24px rgba(0,0,0,0.6); }
         @media (min-width: 768px) { .hero-logo { height: 130px; } }
-        
         .work-img { width: 100%; height: 250px; object-fit: cover; border-radius: 15px; }
         @media (min-width: 768px) { .work-img { height: 300px; } }
     </style>
@@ -52,23 +48,16 @@
             <div class="flex justify-center"><img src="logo.jpg" alt="DeSina Logo" class="hero-logo"></div>
             <h1 class="text-3xl md:text-6xl font-extrabold mb-5 leading-tight">Welcome to <span class="text-red-600">DeSina</span></h1>
             <p class="text-lg md:text-2xl text-gray-300 mb-10 max-w-3xl mx-auto px-2">Building your digital future with professional artistic touches.</p>
-            
             <div class="flex flex-col md:flex-row justify-center gap-4 md:gap-8 px-10 md:px-0 mt-8">
-                <a href="https://www.facebook.com/egy.desina" target="_blank" class="social-card bg-blue-600 text-white py-3 md:py-5 md:px-12 rounded-full font-bold flex items-center justify-center gap-3 text-md md:text-xl shadow-2xl">
-                    <i class="fab fa-facebook text-xl md:text-3xl"></i> Facebook
-                </a>
-                <a href="https://www.instagram.com/de__sina" target="_blank" class="social-card bg-gradient-to-r from-purple-500 via-pink-500 to-yellow-500 text-white py-3 md:py-5 md:px-12 rounded-full font-bold flex items-center justify-center gap-3 text-md md:text-xl shadow-2xl">
-                    <i class="fab fa-instagram text-xl md:text-3xl"></i> Instagram
-                </a>
-                <a href="https://youtube.com/@de_sina" target="_blank" class="social-card bg-red-600 text-white py-3 md:py-5 md:px-12 rounded-full font-bold flex items-center justify-center gap-3 text-md md:text-xl shadow-2xl">
-                    <i class="fab fa-youtube text-xl md:text-3xl"></i> Youtube
-                </a>
+                <a href="https://www.facebook.com/egy.desina" target="_blank" class="social-card bg-blue-600 text-white py-3 md:py-5 md:px-12 rounded-full font-bold flex items-center justify-center gap-3 text-md md:text-xl shadow-2xl"><i class="fab fa-facebook text-xl md:text-3xl"></i> Facebook</a>
+                <a href="https://www.instagram.com/de__sina" target="_blank" class="social-card bg-gradient-to-r from-purple-500 via-pink-500 to-yellow-500 text-white py-3 md:py-5 md:px-12 rounded-full font-bold flex items-center justify-center gap-3 text-md md:text-xl shadow-2xl"><i class="fab fa-instagram text-xl md:text-3xl"></i> Instagram</a>
+                <a href="https://youtube.com/@de_sina" target="_blank" class="social-card bg-red-600 text-white py-3 md:py-5 md:px-12 rounded-full font-bold flex items-center justify-center gap-3 text-md md:text-xl shadow-2xl"><i class="fab fa-youtube text-xl md:text-3xl"></i> Youtube</a>
             </div>
         </div>
     </section>
 
     <section id="services" class="py-16 container mx-auto px-6 text-center">
-        <h3 class="text-3xl md:text-5xl font-bold mb-12 text-gray-950">What we offer for <span class="text-red-600">DeSina</span> Brand?</h3>
+        <h3 class="text-3xl md:text-5xl font-bold mb-12 text-gray-950">What we offer for <span class="text-red-600">DeSina</span>?</h3>
         <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
             <div class="bg-white p-8 rounded-3xl shadow-xl border-b-8 border-red-600 social-card">
                 <i class="fas fa-bullhorn text-4xl text-red-600 mb-5"></i>
@@ -77,13 +66,13 @@
             </div>
             <div class="bg-white p-8 rounded-3xl shadow-xl border-b-8 border-blue-600 social-card">
                 <i class="fas fa-tasks text-4xl text-blue-600 mb-5"></i>
-                <h4 class="text-xl font-bold mb-3">Account Management</h4>
-                <p class="text-gray-600">Full marketing plans and accurate post scheduling.</p>
+                <h4 class="text-xl font-bold mb-3">Management</h4>
+                <p class="text-gray-600">Full marketing plans and accurate scheduling.</p>
             </div>
             <div class="bg-white p-8 rounded-3xl shadow-xl border-b-8 border-purple-600 social-card">
                 <i class="fas fa-video text-4xl text-purple-600 mb-5"></i>
                 <h4 class="text-xl font-bold mb-3">Video Editing</h4>
-                <p class="text-gray-600">YouTube and Reels editing with high-quality effects.</p>
+                <p class="text-gray-600">High-quality YouTube and Reels editing.</p>
             </div>
         </div>
     </section>
@@ -92,16 +81,16 @@
         <div class="container mx-auto px-6 text-center">
             <h3 class="text-3xl md:text-5xl font-bold mb-10 text-gray-950">Our Portfolio</h3>
             <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-                <img src="IMG-20231215-WA0004.jpg" class="work-img shadow-lg" alt="Portfolio 1">
-                <img src="IMG-20231215-WA0005.jpg" class="work-img shadow-lg" alt="Portfolio 2">
-                <img src="IMG-20231215-WA0006.jpg" class="work-img shadow-lg" alt="Portfolio 3">
+                <img src="IMG-20231215-WA0004.jpg" class="work-img shadow-lg" alt="1">
+                <img src="IMG-20231215-WA0005.jpg" class="work-img shadow-lg" alt="2">
+                <img src="IMG-20231215-WA0006.jpg" class="work-img shadow-lg" alt="3">
             </div>
         </div>
     </section>
 
     <footer class="bg-gray-950 text-white py-14 text-center border-t-2 border-red-700">
-        <p class="text-xl md:text-2xl mb-4">All Rights Reserved to <span class="text-red-600">DeSina</span> & Jimmy © 2026</p>
-        <div class="text-gray-500 text-sm">Smart Design by Jimmy</div>
+        <p class="text-xl md:text-2xl mb-4 font-bold italic">All Rights Reserved to <span class="text-red-600">DeSina</span> & Jimmy © 2026</p>
+        <div class="text-gray-500 text-sm">Developed by AI Jimmy & DeSina</div>
     </footer>
 
 </body>
