@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>DeSina | Digital Excellence</title>
+    <title>DeSina | Fashion & Digital Excellence</title>
     <link rel="icon" type="image/jpeg" href="logo.jpg">
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&display=swap" rel="stylesheet">
@@ -14,94 +14,81 @@
             background-image: linear-gradient(135deg, rgba(0, 0, 0, 0.95) 0%, rgba(20, 20, 20, 0.98) 100%);
             background-size: cover; background-position: center; background-attachment: fixed;
         }
-        .social-card { transition: all 0.3s ease; }
-        .social-card:hover { transform: translateY(-8px); box-shadow: 0 10px 20px rgba(0,0,0,0.2); }
-        
-        /* التعديل السحري: اللوجو اللي فوق بقى توأم اللي في النص بالضبط */
-        .main-logo { height: 40px; width: auto; object-fit: contain; border-radius: 8px; box-shadow: 0 4px 8px rgba(0,0,0,0.2); }
+        .main-logo { height: 45px; width: auto; border-radius: 8px; box-shadow: 0 4px 8px rgba(0,0,0,0.2); }
         @media (min-width: 768px) { .main-logo { height: 55px; border-radius: 10px; } }
-        
-        /* اللوجو الكبير في الهيرو (يظل كما هو شيك وبحواف مدورة وظل) */
-        .hero-logo { height: 100px; margin-bottom: 25px; border-radius: 15px; box-shadow: 0 12px 24px rgba(0,0,0,0.6); }
-        @media (min-width: 768px) { .hero-logo { height: 130px; } }
-        
-        .work-img { width: 100%; height: 250px; object-fit: cover; border-radius: 15px; }
-        @media (min-width: 768px) { .work-img { height: 300px; } }
+        .hero-logo { height: 110px; margin-bottom: 25px; border-radius: 15px; box-shadow: 0 12px 24px rgba(0,0,0,0.6); }
+        .product-img { width: 100%; height: 320px; object-fit: cover; border-radius: 20px; transition: 0.5s; }
     </style>
 </head>
 <body class="bg-gray-50 text-gray-900">
 
     <nav class="bg-white shadow-lg p-3 sticky top-0 z-50">
-        <div class="container mx-auto flex flex-wrap justify-between items-center px-4 gap-2">
+        <div class="container mx-auto flex justify-between items-center px-4">
             <div class="flex items-center gap-3 md:gap-10">
-                <a href="en.html"><img src="logo.jpg" alt="DeSina Logo" class="main-logo"></a>
-                <div class="flex items-center gap-3 md:gap-8 border-l-2 pl-3 md:pl-8 border-gray-200">
-                    <a href="#services" class="text-gray-700 hover:text-red-700 font-bold text-xs md:text-xl">Services</a>
-                    <a href="#portfolio" class="text-gray-700 hover:text-red-700 font-bold text-xs md:text-sm">Portfolio</a>
-                    <a href="index.html" class="text-red-600 hover:text-red-800 font-bold text-xs md:text-xl">عربي</a>
+                <a href="#"><img src="logo.jpg" alt="DeSina Logo" class="main-logo"></a>
+                <div class="hidden md:flex items-center gap-8 border-l-2 pl-8 border-gray-200 font-bold">
+                    <a href="#about" class="hover:text-red-700">About</a>
+                    <a href="#products" class="hover:text-red-700">Products</a>
+                    <a href="#contact" class="hover:text-red-700">Contact</a>
+                    <a href="index.html" class="text-red-600">عربي</a>
                 </div>
             </div>
-            <a href="https://wa.me/201001283311" target="_blank" class="bg-green-500 hover:bg-green-600 text-white px-3 py-1.5 md:px-6 md:py-2.5 rounded-full text-[10px] md:text-lg font-bold flex items-center gap-2 social-card">
-                <i class="fab fa-whatsapp text-sm md:text-2xl"></i> Contact
+            <a href="https://wa.me/201001283311" class="bg-green-500 text-white px-5 py-2 rounded-full font-bold flex items-center gap-2">
+                <i class="fab fa-whatsapp"></i> WhatsApp
             </a>
         </div>
     </nav>
 
-    <section class="hero-section text-white py-16 md:py-32 px-4 text-center border-t-2 border-red-700 bg-gray-950">
+    <section class="hero-section text-white py-20 md:py-32 px-4 text-center">
         <div class="container mx-auto">
-            <div class="flex justify-center"><img src="logo.jpg" alt="DeSina Logo" class="hero-logo"></div>
-            <h1 class="text-3xl md:text-6xl font-extrabold mb-5 leading-tight">Welcome to <span class="text-red-600">DeSina</span></h1>
-            <p class="text-lg md:text-2xl text-gray-300 mb-10 max-w-3xl mx-auto px-2">Building your digital future with professional artistic touches.</p>
-            
-            <div class="flex flex-col md:flex-row justify-center gap-4 md:gap-8 px-10 md:px-0 mt-8">
-                <a href="https://www.facebook.com/egy.desina" target="_blank" class="social-card bg-blue-600 text-white py-3 md:py-5 md:px-12 rounded-full font-bold flex items-center justify-center gap-3 text-md md:text-xl shadow-2xl">
-                    <i class="fab fa-facebook text-xl md:text-3xl"></i> Facebook
-                </a>
-                <a href="https://www.instagram.com/de__sina" target="_blank" class="social-card bg-gradient-to-r from-purple-500 via-pink-500 to-yellow-500 text-white py-3 md:py-5 md:px-12 rounded-full font-bold flex items-center justify-center gap-3 text-md md:text-xl shadow-2xl">
-                    <i class="fab fa-instagram text-xl md:text-3xl"></i> Instagram
-                </a>
-                <a href="https://youtube.com/@de_sina" target="_blank" class="social-card bg-red-600 text-white py-3 md:py-5 md:px-12 rounded-full font-bold flex items-center justify-center gap-3 text-md md:text-xl shadow-2xl">
-                    <i class="fab fa-youtube text-xl md:text-3xl"></i> Youtube
-                </a>
+            <div class="flex justify-center"><img src="logo.jpg" class="hero-logo"></div>
+            <h1 class="text-4xl md:text-7xl font-extrabold mb-6">Welcome to <span class="text-red-600">DeSina</span></h1>
+            <p class="text-xl md:text-2xl text-gray-300">Leading the way in fashion and digital services since 2017.</p>
+        </div>
+    </section>
+
+    <section id="about" class="py-20 bg-white">
+        <div class="container mx-auto px-6 grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+            <div>
+                <h2 class="text-3xl md:text-5xl font-bold mb-8 text-red-600">About DeSina</h2>
+                <p class="text-lg text-gray-700 leading-relaxed mb-6">
+                    DeSina is an Egyptian limited liability company based in Egypt, established in <strong>October 2017</strong>. We specialize in garment manufacturing, distribution, and managing digital platforms.
+                </p>
+                <div class="space-y-4">
+                    <p><strong>Vision:</strong> To become a leading brand locally and globally in fashion and digital development.</p>
+                    <p><strong>Mission:</strong> Providing true value through elegant products and smart services that build trust.</p>
+                </div>
+            </div>
+            <div class="rounded-3xl overflow-hidden shadow-2xl rotate-2">
+                <img src="IMG-20231215-WA0004.jpg" class="w-full h-full object-cover">
             </div>
         </div>
     </section>
 
-    <section id="services" class="py-16 container mx-auto px-6 text-center">
-        <h3 class="text-3xl md:text-5xl font-bold mb-12 text-gray-950">What we offer for <span class="text-red-600">DeSina</span> Brand?</h3>
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <div class="bg-white p-8 rounded-3xl shadow-xl border-b-8 border-red-600 social-card">
-                <i class="fas fa-bullhorn text-4xl text-red-600 mb-5"></i>
-                <h4 class="text-xl font-bold mb-3">Content Creation</h4>
-                <p class="text-gray-600">Social media posts, Photoshop, and professional Reels.</p>
+    <footer id="contact" class="bg-gray-950 text-white py-16 px-6 border-t-4 border-red-700">
+        <div class="container mx-auto grid grid-cols-1 md:grid-cols-3 gap-12">
+            <div>
+                <img src="logo.jpg" class="main-logo mb-6 border-2 border-white">
+                <h4 class="text-2xl font-bold text-red-600 mb-4">DeSina Brand</h4>
+                <p class="text-gray-400">Blending elegance with innovation for a modern lifestyle.</p>
             </div>
-            <div class="bg-white p-8 rounded-3xl shadow-xl border-b-8 border-blue-600 social-card">
-                <i class="fas fa-tasks text-4xl text-blue-600 mb-5"></i>
-                <h4 class="text-xl font-bold mb-3">Account Management</h4>
-                <p class="text-gray-600">Full marketing plans and accurate post scheduling.</p>
+            <div>
+                <h4 class="text-xl font-bold mb-6 text-red-600">Contact Info</h4>
+                <ul class="space-y-4 text-lg">
+                    <li><i class="fas fa-map-marker-alt mr-2 text-red-600"></i> Suliman Abaza, Dokki, Giza, Egypt</li>
+                    <li><i class="fas fa-phone mr-2 text-red-600"></i> 01001283311 - 01115680003</li>
+                    <li><i class="fas fa-envelope mr-2 text-red-600"></i> desina.com@gmail.com</li>
+                </ul>
             </div>
-            <div class="bg-white p-8 rounded-3xl shadow-xl border-b-8 border-purple-600 social-card">
-                <i class="fas fa-video text-4xl text-purple-600 mb-5"></i>
-                <h4 class="text-xl font-bold mb-3">Video Editing</h4>
-                <p class="text-gray-600">YouTube and Reels editing with high-quality effects.</p>
-            </div>
-        </div>
-    </section>
-
-    <section id="portfolio" class="py-16 bg-gray-100">
-        <div class="container mx-auto px-6 text-center">
-            <h3 class="text-3xl md:text-5xl font-bold mb-10 text-gray-950">Our Portfolio</h3>
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-                <img src="IMG-20231215-WA0004.jpg" class="work-img shadow-lg" alt="Portfolio 1">
-                <img src="IMG-20231215-WA0005.jpg" class="work-img shadow-lg" alt="Portfolio 2">
-                <img src="IMG-20231215-WA0006.jpg" class="work-img shadow-lg" alt="Portfolio 3">
+            <div>
+                <h4 class="text-xl font-bold mb-6 text-red-600">Quick Links</h4>
+                <a href="https://maps.app.goo.gl/X3wsUHiziKinYrHA9" target="_blank" class="block bg-white text-gray-900 py-3 rounded-full font-bold mb-4 hover:bg-red-600 hover:text-white transition text-center">View on Map</a>
+                <a href="privacy.html" class="text-gray-400 hover:text-white underline">Privacy Policy</a>
             </div>
         </div>
-    </section>
-
-    <footer class="bg-gray-950 text-white py-14 text-center border-t-2 border-red-700">
-        <p class="text-xl md:text-2xl mb-4">All Rights Reserved to <span class="text-red-600">DeSina</span> & Jimmy © 2026</p>
-        <div class="text-gray-500 text-sm">Smart Design by Jimmy</div>
+        <div class="text-center mt-12 pt-8 border-t border-gray-800 text-gray-500">
+            All Rights Reserved to <span class="text-red-600 font-bold italic">DeSina</span> & Jimmy © 2026
+        </div>
     </footer>
 
 </body>
