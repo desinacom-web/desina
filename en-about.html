@@ -1,1 +1,58 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us | DeSina</title>
+    <link rel="icon" type="image/jpeg" href="logo.jpg">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        body { font-family: 'Cairo', sans-serif; background-color: #f9fafb; scroll-behavior: smooth; }
+        .nav-link { color: #374151; font-weight: bold; transition: 0.3s; }
+        .nav-link:hover { color: #ef4444; }
+    </style>
+</head>
+<body>
+    <nav class="bg-white shadow-md p-3 sticky top-0 z-50">
+        <div class="container mx-auto flex justify-between items-center px-4">
+            <div class="flex items-center gap-6">
+                <img src="logo.jpg" class="h-10 rounded-lg">
+                <div class="hidden md:flex items-center gap-8 border-l-2 pl-6 border-gray-200">
+                    <a href="en.html" class="nav-link">Home</a>
+                    <a href="en-catalog.html" class="nav-link">Catalog</a>
+                </div>
+            </div>
+            <a href="en.html" class="bg-gray-900 text-white px-6 py-2 rounded-full font-bold hover:bg-red-600 transition text-sm">Back to Home</a>
+        </div>
+    </nav>
 
+    <header class="bg-gray-900 py-16 text-center text-white px-4 border-b-4 border-red-600">
+        <h1 class="text-4xl md:text-6xl font-extrabold mb-4">About <span class="text-red-600">DeSina</span></h1>
+        <p class="text-gray-300 text-lg md:text-xl max-w-2xl mx-auto">We blend fashion elegance with digital innovation to create a unique identity for your brand.</p>
+    </header>
+
+    <section class="container mx-auto px-6 py-16">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+            <div>
+                <h2 class="text-3xl font-bold mb-6 border-l-4 border-red-600 pl-4">Our Vision</h2>
+                <p class="text-gray-600 text-lg leading-relaxed mb-6">At DeSina, we strive to be the leading partner for brands seeking excellence in both the industrial fashion world and the digital marketing sphere.</p>
+                <h2 class="text-3xl font-bold mb-6 border-l-4 border-red-600 pl-4">What We Do</h2>
+                <ul class="space-y-4 text-gray-700">
+                    <li><i class="fas fa-check text-red-600 mr-2"></i> High-end Fashion Design & Production.</li>
+                    <li><i class="fas fa-check text-red-600 mr-2"></i> Professional Social Media Management.</li>
+                    <li><i class="fas fa-check text-red-600 mr-2"></i> Cinematic Video Editing & Content Creation.</li>
+                </ul>
+            </div>
+            <div class="rounded-3xl overflow-hidden shadow-2xl">
+                <img src="logo.jpg" class="w-full h-full object-cover">
+            </div>
+        </div>
+    </section>
+
+    <footer class="bg-gray-950 text-white py-12 text-center">
+        <p class="text-gray-500">DeSina Company © 2026 | All Rights Reserved</p>
+    </footer>
+</body>
+</html>
