@@ -9,92 +9,133 @@
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
-        body { font-family: 'Cairo', sans-serif; background-color: #f9fafb; }
+        body { font-family: 'Cairo', sans-serif; background-color: #f9fafb; scroll-behavior: smooth; }
         .nav-link { color: #374151; font-weight: bold; transition: 0.3s; }
         .nav-link:hover { color: #ef4444; }
-        .product-link { color: #ef4444 !important; font-weight: 800; }
+        .category-btn { transition: 0.3s; border: 2px solid #ef4444; color: #ef4444; }
         .category-btn.active { background-color: #ef4444; color: white; }
-        .product-card { transition: 0.3s; }
-        .product-card:hover { transform: translateY(-5px); box-shadow: 0 10px 20px rgba(0,0,0,0.1); }
+        .product-card { transition: 0.3s; border-radius: 20px; overflow: hidden; background: white; }
+        .product-card:hover { transform: translateY(-10px); box-shadow: 0 20px 30px rgba(0,0,0,0.1); }
+        h1, h2, h3, p, a, span { font-style: normal !important; }
+        
+        /* تظبيط المنيو للموبايل */
+        #mobile-menu { display: none; }
+        #mobile-menu.active { display: flex !important; animation: slideIn 0.3s ease-out; }
+        @keyframes slideIn { from { opacity: 0; transform: translateY(-10px); } to { opacity: 1; transform: translateY(0); } }
+        @media (max-width: 768px) {
+            #mobile-menu { flex-direction: column; width: 100%; position: absolute; top: 100%; right: 0; background: white; padding: 15px; box-shadow: 0 10px 15px rgba(0,0,0,0.1); z-index: 1000; border-top: 2px solid #ef4444; }
+        }
     </style>
 </head>
 <body>
 
     <nav class="bg-white shadow-md p-3 sticky top-0 z-50">
-        <div class="container mx-auto flex justify-between items-center px-4">
+        <div class="container mx-auto flex justify-between items-center px-4 relative">
             <div class="flex items-center gap-6">
-                <img src="logo.jpg" class="h-10 rounded-lg">
-                <div class="hidden md:flex items-center gap-8 border-r-2 pr-6 border-gray-200">
-                    <a href="index.html" class="nav-link">الرئيسية</a>
-                    <a href="about.html" class="nav-link">حول الشركة</a>
+                <img src="logo.jpg" class="h-10 rounded-lg shadow-sm">
+                <div id="mobile-menu" class="hidden md:flex items-center gap-8 border-r-2 pr-6 border-gray-200">
+                    <a href="index.html" class="nav-link menu-item">الرئيسية</a>
+                    <a href="about.html" class="nav-link menu-item">حول الشركة</a>
+                    <a href="#contact" class="nav-link menu-item">اتصل بنا</a>
                 </div>
             </div>
-            <a href="index.html" class="bg-gray-900 text-white px-6 py-2 rounded-full font-bold text-sm">العودة للرئيسية</a>
+            <div class="burger-icon md:hidden" id="burger-btn">
+                <i class="fas fa-bars text-2xl text-gray-700 cursor-pointer"></i>
+            </div>
+            <div class="hidden md:block">
+                <a href="index.html" class="bg-gray-900 text-white px-8 py-2 rounded-full font-bold hover:bg-red-600 transition">العودة للرئيسية</a>
+            </div>
         </div>
     </nav>
 
-    <section class="py-12 bg-gray-900 text-white text-center">
-        <h1 class="text-4xl font-bold mb-4">كتالوج <span class="text-red-600">DeSina</span></h1>
-        <p class="text-gray-400 px-4">استكشف مجموعتنا الحصرية من الأزياء والخدمات الرقمية</p>
+    <header class="bg-gray-900 py-16 text-center text-white px-4">
+        <h1 class="text-4xl md:text-6xl font-extrabold mb-4">كتالوج <span class="text-red-600">DeSina</span></h1>
+        <p class="text-gray-400 text-lg max-w-2xl mx-auto">نستعرض لكم أحدث مجموعات الأزياء لعام 2023 وأقوى الخدمات الرقمية الاحترافية.</p>
+    </header>
+
+    <section class="container mx-auto px-6 py-12">
+        <div class="flex flex-wrap justify-center gap-4 mb-16">
+            <button class="category-btn active px-10 py-3 rounded-full font-bold" onclick="filterItems('all', this)">الكل</button>
+            <button class="category-btn px-10 py-3 rounded-full font-bold" onclick="filterItems('fashion', this)">أزياء مايو 2023</button>
+            <button class="category-btn px-10 py-3 rounded-full font-bold" onclick="filterItems('digital', this)">الخدمات الرقمية</button>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-10" id="catalog-grid">
+            
+            <div class="product-card shadow-md fashion">
+                <img src="logo.jpg" class="w-full h-72 object-cover" alt="Fashion">
+                <div class="p-6">
+                    <span class="text-red-600 font-bold text-sm block mb-2 uppercase">May 2023 Collection</span>
+                    <h3 class="text-2xl font-bold mb-3 text-gray-800">تصميم كاجوال عصري</h3>
+                    <p class="text-gray-600 mb-6">قطعة فريدة مصممة بأجود الخامات المصرية لتناسب إطلالتك اليومية.</p>
+                    <a href="https://wa.me/201001283311?text=استفسار عن تصميم كاجوال" target="_blank" class="block text-center bg-green-500 text-white py-3 rounded-xl font-bold hover:bg-green-600 transition">اطلب عبر واتساب</a>
+                </div>
+            </div>
+
+            <div class="product-card shadow-md digital">
+                <img src="logo.jpg" class="w-full h-72 object-cover" alt="Digital">
+                <div class="p-6">
+                    <span class="text-blue-600 font-bold text-sm block mb-2 uppercase">Digital Package</span>
+                    <h3 class="text-2xl font-bold mb-3 text-gray-800">باقة إدارة السوشيال ميديا</h3>
+                    <p class="text-gray-600 mb-6">باقة متكاملة تشمل إدارة الحسابات، الرد على العملاء، وزيادة التفاعل.</p>
+                    <a href="https://wa.me/201001283311?text=استفسار عن باقة إدارة الصفحات" target="_blank" class="block text-center bg-green-500 text-white py-3 rounded-xl font-bold hover:bg-green-600 transition">استفسر عن الباقة</a>
+                </div>
+            </div>
+
+            <div class="product-card shadow-md fashion">
+                <img src="logo.jpg" class="w-full h-72 object-cover" alt="Fashion">
+                <div class="p-6">
+                    <span class="text-red-600 font-bold text-sm block mb-2 uppercase">Fashion Design</span>
+                    <h3 class="text-2xl font-bold mb-3 text-gray-800">خدمة تصميم باترون خاص</h3>
+                    <p class="text-gray-600 mb-6">نحول فكرتك إلى واقع بباترونات دقيقة جاهزة للتصنيع الفوري.</p>
+                    <a href="https://wa.me/201001283311?text=استفسار عن خدمة الباترون" target="_blank" class="block text-center bg-green-500 text-white py-3 rounded-xl font-bold hover:bg-green-600 transition">اطلب خدمتك</a>
+                </div>
+            </div>
+
+        </div>
     </section>
 
-    <div class="container mx-auto px-4 py-8">
-        <div class="flex flex-wrap justify-center gap-4 mb-12">
-            <button class="category-btn active px-8 py-2 rounded-full font-bold shadow-md transition" onclick="filterCatalog('all')">الكل</button>
-            <button class="category-btn bg-white px-8 py-2 rounded-full font-bold shadow-md transition" onclick="filterCatalog('fashion')">أزياء مايو 2023</button>
-            <button class="category-btn bg-white px-8 py-2 rounded-full font-bold shadow-md transition" onclick="filterCatalog('digital')">خدمات رقمية</button>
+    <footer id="contact" class="bg-gray-950 text-white py-12 px-6 text-center">
+        <div class="container mx-auto border-b border-gray-800 pb-8 mb-8">
+            <h4 class="text-2xl font-bold text-red-600 mb-4">DeSina</h4>
+            <p class="text-gray-400">تواصل معنا للاستفسار عن أي منتج أو خدمة</p>
+            <p class="text-lg mt-4" style="direction: ltr;">+20 100 128 3311</p>
         </div>
-
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-8" id="catalog-grid">
-            
-            <div class="bg-white rounded-2xl overflow-hidden product-card shadow-sm fashion-item">
-                <img src="logo.jpg" class="w-full h-64 object-cover" alt="Fashion">
-                <div class="p-6">
-                    <span class="text-red-600 text-sm font-bold">أزياء</span>
-                    <h3 class="text-xl font-bold mb-2">تصميم عصري - DeSina</h3>
-                    <p class="text-gray-600 text-sm mb-4">وصف مختصر للموديل أو الخامة المستخدمة هنا.</p>
-                    <a href="https://wa.me/201001283311?text=أريد الاستفسار عن منتج الأزياء" class="block text-center bg-green-500 text-white py-2 rounded-lg font-bold hover:bg-green-600 transition">اطلب الآن</a>
-                </div>
-            </div>
-
-            <div class="bg-white rounded-2xl overflow-hidden product-card shadow-sm digital-item">
-                <img src="logo.jpg" class="w-full h-64 object-cover" alt="Digital">
-                <div class="p-6">
-                    <span class="text-blue-600 text-sm font-bold">خدمات رقمية</span>
-                    <h3 class="text-xl font-bold mb-2">إدارة صفحات السوشيال ميديا</h3>
-                    <p class="text-gray-600 text-sm mb-4">باقة احترافية لإدارة حسابات براندك وزيادة التفاعل.</p>
-                    <a href="https://wa.me/201001283311?text=أريد الاستفسار عن باقة إدارة الصفحات" class="block text-center bg-green-500 text-white py-2 rounded-lg font-bold hover:bg-green-600 transition">استفسر الآن</a>
-                </div>
-            </div>
-
-        </div>
-    </div>
-
-    <footer class="bg-gray-950 text-white py-12 text-center mt-20">
-        <p class="text-gray-500 text-sm">جميع حقوق الملكية محفوظة لشركة DeSina © 2026</p>
+        <p class="text-gray-600 text-sm">جميع حقوق الملكية محفوظة لشركة DeSina © 2026</p>
     </footer>
 
     <script>
-        function filterCatalog(category) {
-            const fashionItems = document.querySelectorAll('.fashion-item');
-            const digitalItems = document.querySelectorAll('.digital-item');
-            const buttons = document.querySelectorAll('.category-btn');
+        // كود الفلترة
+        function filterItems(category, btn) {
+            const cards = document.querySelectorAll('.product-card');
+            const btns = document.querySelectorAll('.category-btn');
+            
+            btns.forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
 
-            // تفعيل الزر المختار
-            buttons.forEach(btn => btn.classList.remove('active', 'bg-white'));
-            event.target.classList.add('active');
-
-            if (category === 'all') {
-                fashionItems.forEach(el => el.style.display = 'block');
-                digitalItems.forEach(el => el.style.display = 'block');
-            } else if (category === 'fashion') {
-                fashionItems.forEach(el => el.style.display = 'block');
-                digitalItems.forEach(el => el.style.display = 'none');
-            } else if (category === 'digital') {
-                fashionItems.forEach(el => el.style.display = 'none');
-                digitalItems.forEach(el => el.style.display = 'block');
-            }
+            cards.forEach(card => {
+                if (category === 'all') {
+                    card.style.display = 'block';
+                } else {
+                    card.classList.contains(category) ? card.style.display = 'block' : card.style.display = 'none';
+                }
+            });
         }
+
+        // كود المنيو للأندرويد
+        const burgerBtn = document.getElementById('burger-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const menuItems = document.querySelectorAll('.menu-item');
+
+        burgerBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('active');
+        });
+
+        menuItems.forEach(item => {
+            item.addEventListener('click', () => {
+                if(window.innerWidth <= 768) mobileMenu.classList.remove('active');
+            });
+        });
     </script>
 </body>
 </html>
