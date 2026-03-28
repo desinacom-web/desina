@@ -23,23 +23,22 @@
         .service-card:hover { transform: translateY(-10px); box-shadow: 0 15px 30px rgba(0,0,0,0.1); }
         h1, h2, h3, h4, p, a, span { font-style: normal !important; }
 
-        /* تنسيق المنيو المطور للأندرويد */
-        #menu-toggle:checked ~ #mobile-menu { display: flex; animation: slideIn 0.3s ease-out; }
+        /* تنسيق المنيو للأندرويد */
+        #mobile-menu { display: none; }
+        #mobile-menu.active { display: flex; animation: slideIn 0.3s ease-out; }
         @keyframes slideIn { from { opacity: 0; transform: translateY(-10px); } to { opacity: 1; transform: translateY(0); } }
         
         @media (max-width: 768px) {
-            #mobile-menu { display: none; flex-direction: column; width: 100%; position: absolute; top: 100%; right: 0; background: white; padding: 15px; box-shadow: 0 10px 15px rgba(0,0,0,0.1); z-index: 1000; border-top: 2px solid #ef4444; }
+            #mobile-menu { flex-direction: column; width: 100%; position: absolute; top: 100%; right: 0; background: white; padding: 15px; box-shadow: 0 10px 15px rgba(0,0,0,0.1); z-index: 1000; border-top: 2px solid #ef4444; }
             .nav-link, .product-link { padding: 15px 0; border-bottom: 1px solid #f3f4f6; width: 100%; text-align: center; font-size: 16px; }
             .burger-icon { display: block !important; cursor: pointer; font-size: 26px; color: #374151; }
         }
 
-        /* زر الواتساب العائم الجديد */
         .whatsapp-float {
             position: fixed; width: 60px; height: 60px; bottom: 20px; left: 20px; background-color: #25d366; color: #FFF;
             border-radius: 50px; text-align: center; font-size: 30px; box-shadow: 2px 2px 3px #999; z-index: 1000;
             display: flex; align-items: center; justify-content: center; transition: 0.3s;
         }
-        .whatsapp-float:hover { background-color: #128c7e; transform: scale(1.1); }
     </style>
 </head>
 <body class="bg-gray-50 text-gray-900">
@@ -52,21 +51,18 @@
         <div class="container mx-auto flex justify-between items-center px-4 relative">
             <img src="logo.jpg" class="main-logo">
             
-            <label for="menu-toggle" class="burger-icon hidden md:hidden">
+            <div class="burger-icon md:hidden" id="burger-btn">
                 <i class="fas fa-bars"></i>
-            </label>
-            <input type="checkbox" id="menu-toggle" class="hidden">
+            </div>
 
             <div id="mobile-menu" class="hidden md:flex items-center gap-8 border-r-0 md:border-r-2 md:pr-6 border-gray-200">
-                <a href="catalog.html" class="product-link">الكتالوج</a>
-                <a href="#digital-services" class="nav-link">الرقمية</a>
-                <a href="#industrial-services" class="nav-link">الصناعية</a>
-                <a href="#contact" class="nav-link">اتصل</a>
+                <a href="catalog.html" class="product-link menu-item">الكتالوج</a>
+                <a href="#digital-services" class="nav-link menu-item">الرقمية</a>
+                <a href="#industrial-services" class="nav-link menu-item">الصناعية</a>
+                <a href="#contact" class="nav-link menu-item">اتصل</a>
             </div>
 
-            <div class="hidden md:block">
-                <span class="text-gray-600 font-bold ml-4">تواصل معنا الآن</span>
-            </div>
+            <div class="hidden md:block text-gray-600 font-bold">DeSina Brand</div>
         </div>
     </nav>
 
@@ -76,9 +72,8 @@
             <h1 class="text-4xl md:text-7xl font-extrabold mb-6">مرحبا بكم في <span class="text-red-600">DeSina</span></h1>
             <p class="text-xl md:text-2xl text-gray-300 mb-12">نمزج بين الأناقة والابتكار في عالم الأزياء والخدمات الرقمية.</p>
             <div class="flex flex-wrap justify-center gap-4">
-                <a href="https://www.facebook.com/egy.desina" target="_blank" class="bg-blue-600 px-8 py-3 rounded-full font-bold flex items-center gap-3 shadow-lg hover:bg-blue-700 transition"><i class="fab fa-facebook"></i> فيسبوك</a>
-                <a href="https://www.instagram.com/de__sina" target="_blank" class="bg-gradient-to-r from-purple-500 to-yellow-500 px-8 py-3 rounded-full font-bold flex items-center gap-3 shadow-lg hover:opacity-90 transition"><i class="fab fa-instagram"></i> انستجرام</a>
-                <a href="https://youtube.com/@de_sina" target="_blank" class="bg-red-600 px-8 py-3 rounded-full font-bold flex items-center gap-3 shadow-lg hover:bg-red-700 transition"><i class="fab fa-youtube"></i> يوتيوب</a>
+                <a href="https://www.facebook.com/egy.desina" target="_blank" class="bg-blue-600 px-8 py-3 rounded-full font-bold shadow-lg"><i class="fab fa-facebook"></i> فيسبوك</a>
+                <a href="https://www.instagram.com/de__sina" target="_blank" class="bg-gradient-to-r from-purple-500 to-yellow-500 px-8 py-3 rounded-full font-bold shadow-lg"><i class="fab fa-instagram"></i> انستجرام</a>
             </div>
         </div>
     </section>
@@ -86,40 +81,57 @@
     <section id="digital-services" class="py-20 bg-gray-100 px-6 text-center">
         <h2 class="text-3xl md:text-5xl font-bold mb-16 border-b-4 border-red-600 inline-block pb-2">خدماتنا الرقمية</h2>
         <div class="grid grid-cols-1 md:grid-cols-3 gap-10">
-            <div class="bg-white p-8 rounded-2xl shadow-lg service-card"><i class="fas fa-bullhorn text-5xl text-red-600 mb-6"></i><h3 class="text-2xl font-bold mb-4">إدارة الحسابات</h3><p class="text-gray-600">ندير منصاتكم باحترافية لزيادة التفاعل.</p></div>
-            <div class="bg-white p-8 rounded-2xl shadow-lg service-card"><i class="fas fa-pen-nib text-5xl text-red-600 mb-6"></i><h3 class="text-2xl font-bold mb-4">صناعة المحتوى</h3><p class="text-gray-600">نبتكر محتوى يجذب الأنظار ويعبر عن هويتكم.</p></div>
-            <div class="bg-white p-8 rounded-2xl shadow-lg service-card"><i class="fas fa-video text-5xl text-red-600 mb-6"></i><h3 class="text-2xl font-bold mb-4">مونتاج الفيديو</h3><p class="text-gray-600">تحويل لقطاتكم إلى فيديوهات سينمائية جذابة.</p></div>
+            <div class="bg-white p-8 rounded-2xl shadow-lg service-card"><i class="fas fa-bullhorn text-5xl text-red-600 mb-6"></i><h3 class="text-2xl font-bold mb-4">إدارة الحسابات</h3><p class="text-gray-600">ندير منصاتكم باحترافية.</p></div>
+            <div class="bg-white p-8 rounded-2xl shadow-lg service-card"><i class="fas fa-pen-nib text-5xl text-red-600 mb-6"></i><h3 class="text-2xl font-bold mb-4">صناعة المحتوى</h3><p class="text-gray-600">نبتكر محتوى يجذب الأنظار.</p></div>
+            <div class="bg-white p-8 rounded-2xl shadow-lg service-card"><i class="fas fa-video text-5xl text-red-600 mb-6"></i><h3 class="text-2xl font-bold mb-4">مونتاج الفيديو</h3><p class="text-gray-600">فيديوهات سينمائية جذابة.</p></div>
         </div>
     </section>
 
     <section id="industrial-services" class="py-20 bg-white px-6 text-center">
         <h2 class="text-3xl md:text-5xl font-bold mb-16 border-b-4 border-red-600 inline-block pb-2">خدماتنا الصناعية</h2>
         <div class="grid grid-cols-1 md:grid-cols-3 gap-10">
-            <div class="bg-white p-8 rounded-2xl shadow-lg service-card"><i class="fas fa-palette text-5xl text-red-600 mb-6"></i><h3 class="text-2xl font-bold mb-4">تصميم الأزياء</h3><p class="text-gray-600">نبتكر تصاميم عصرية تبرز هويتكم الفريدة.</p></div>
-            <div class="bg-white p-8 rounded-2xl shadow-lg service-card"><i class="fas fa-industry text-5xl text-red-600 mb-6"></i><h3 class="text-2xl font-bold mb-4">إنتاج الملابس</h3><p class="text-gray-600">حلول إنتاج شاملة من القص حتى التجميع.</p></div>
-            <div class="bg-white p-8 rounded-2xl shadow-lg service-card"><i class="fas fa-check-circle text-5xl text-red-600 mb-6"></i><h3 class="text-2xl font-bold mb-4">ضبط الجودة</h3><p class="text-gray-600">نضمن الجودة من خلال تفتيش صارم ومعايير دقيقة.</p></div>
+            <div class="bg-white p-8 rounded-2xl shadow-lg service-card"><i class="fas fa-palette text-5xl text-red-600 mb-6"></i><h3 class="text-2xl font-bold mb-4">تصميم الأزياء</h3><p class="text-gray-600">تصاميم عصرية تبرز هويتكم.</p></div>
+            <div class="bg-white p-8 rounded-2xl shadow-lg service-card"><i class="fas fa-industry text-5xl text-red-600 mb-6"></i><h3 class="text-2xl font-bold mb-4">إنتاج الملابس</h3><p class="text-gray-600">حلول إنتاج شاملة.</p></div>
+            <div class="bg-white p-8 rounded-2xl shadow-lg service-card"><i class="fas fa-check-circle text-5xl text-red-600 mb-6"></i><h3 class="text-2xl font-bold mb-4">ضبط الجودة</h3><p class="text-gray-600">تفتيش صارم ومعايير دقيقة.</p></div>
         </div>
     </section>
 
     <footer id="contact" class="bg-gray-950 text-white py-16 px-6 text-center">
         <div class="container mx-auto grid grid-cols-1 md:grid-cols-3 gap-10 border-b border-gray-800 pb-10">
-            <div><h4 class="text-2xl font-bold text-red-600 mb-4">DeSina Brand</h4><p class="text-gray-400">سليمان أباظة، الدقي، الجيزة، مصر</p></div>
+            <div><h4 class="text-2xl font-bold text-red-600 mb-4">DeSina Brand</h4><p class="text-gray-400">سليمان أباظة، الدقي، مصر</p></div>
             <div dir="rtl">
                 <h4 class="text-xl font-bold mb-4">تواصل معنا</h4>
                 <p class="text-lg mb-1" style="direction: ltr;">+20 100 128 3311</p>
                 <p class="text-lg mb-1" style="direction: ltr;">+20 111 568 0003</p>
                 <p class="text-gray-400 text-sm">info@desina.net</p>
-                <p class="text-gray-400 text-sm mb-4">desina.com@gmail.com</p>
-                <a href="https://maps.app.goo.gl/X3wsUHiziKinYrHA9" target="_blank" class="text-red-500 underline font-bold">موقعنا على الخريطة</a>
+                <a href="https://maps.app.goo.gl/X3wsUHiziKinYrHA9" target="_blank" class="text-red-500 underline font-bold">الخريطة</a>
             </div>
             <div>
-                <h4 class="text-xl font-bold mb-4 text-white">روابط هامة</h4>
-                <a href="privacy.html" class="block text-gray-400 hover:text-white mb-2 underline">سياسة الخصوصية</a>
-                <a href="about.html" class="block text-gray-400 hover:text-white underline">حول الشركة</a>
+                <h4 class="text-xl font-bold mb-4">روابط هامة</h4>
+                <a href="privacy.html" class="block text-gray-400 underline mb-2">سياسة الخصوصية</a>
+                <a href="about.html" class="block text-gray-400 underline">حول الشركة</a>
             </div>
         </div>
-        <p class="mt-10 text-gray-600 text-sm italic">جميع حقوق الملكية محفوظة لبراند DeSina © 2026</p>
+        <p class="mt-10 text-gray-600 text-sm">جميع حقوق الملكية محفوظة لبراند DeSina © 2026</p>
     </footer>
+
+    <script>
+        const burgerBtn = document.getElementById('burger-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const menuItems = document.querySelectorAll('.menu-item');
+
+        // فتح وقفل المنيو عند الضغط على التلات شرطات
+        burgerBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('active');
+        });
+
+        // إغلاق المنيو فوراً عند اختيار أي قسم
+        menuItems.forEach(item => {
+            item.addEventListener('click', () => {
+                mobileMenu.classList.remove('active');
+            });
+        });
+    </script>
 
 </body>
 </html>
