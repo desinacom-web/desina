@@ -3,11 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>DeSina | Fashion & Digital Excellence</title>
+    <title>DeSina | Digital Excellence</title>
     <link rel="icon" type="image/jpeg" href="logo.jpg">
+    
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    
     <style>
         body { font-family: 'Cairo', sans-serif; scroll-behavior: smooth; overflow-x: hidden; }
         .hero-section {
@@ -15,86 +17,92 @@
             background-size: cover; background-position: center; background-attachment: fixed;
         }
         .social-card { transition: all 0.3s ease; }
-        .social-card:hover { transform: translateY(-5px); box-shadow: 0 10px 20px rgba(0,0,0,0.2); }
-        .main-logo { height: 40px; width: auto; border-radius: 8px; box-shadow: 0 4px 8px rgba(0,0,0,0.2); }
-        @media (min-width: 768px) { .main-logo { height: 55px; border-radius: 10px; } }
-        .hero-logo { height: 100px; margin-bottom: 20px; border-radius: 15px; box-shadow: 0 12px 24px rgba(0,0,0,0.6); }
+        .social-card:hover { transform: translateY(-8px); box-shadow: 0 10px 20px rgba(0,0,0,0.2); }
+        
+        /* المقاسات القديمة المظبوطة */
+        .main-logo { height: 40px; }
+        @media (min-width: 768px) { .main-logo { height: 50px; } }
+        
+        .hero-logo { height: 100px; margin-bottom: 25px; border-radius: 15px; box-shadow: 0 12px 24px rgba(0,0,0,0.6); }
+        @media (min-width: 768px) { .hero-logo { height: 130px; } }
+        
+        .work-img { width: 100%; height: 250px; object-fit: cover; border-radius: 15px; }
+        @media (min-width: 768px) { .work-img { height: 300px; } }
     </style>
 </head>
 <body class="bg-gray-50 text-gray-900">
 
     <nav class="bg-white shadow-lg p-3 sticky top-0 z-50">
-        <div class="container mx-auto flex flex-col md:flex-row justify-between items-center px-4 gap-2">
-            <div class="flex items-center gap-3 md:gap-10">
-                <a href="#"><img src="logo.jpg" alt="DeSina Logo" class="main-logo"></a>
-                <div class="flex items-center gap-4 md:gap-8 border-l-2 pl-4 md:pl-8 border-gray-200 font-bold text-[12px] md:text-xl">
-                    <a href="#about" class="hover:text-red-700">About</a>
-                    <a href="catalog.html" class="text-red-600 hover:text-red-800 underline italic">Products</a>
-                    <a href="#contact" class="hover:text-red-700">Contact</a>
-                    <a href="index.html" class="text-blue-600">AR</a>
+        <div class="container mx-auto flex flex-wrap justify-between items-center px-4 gap-2">
+            <div class="flex items-center gap-3 md:gap-6">
+                <a href="en.html"><img src="logo.jpg" alt="DeSina Logo" class="main-logo"></a>
+                <div class="flex items-center gap-3 md:gap-5 border-l-2 pl-3 md:pl-5 border-gray-200">
+                    <a href="#services" class="text-gray-700 hover:text-red-700 font-bold text-xs md:text-sm">Services</a>
+                    <a href="#portfolio" class="text-gray-700 hover:text-red-700 font-bold text-xs md:text-sm">Portfolio</a>
+                    <a href="index.html" class="text-red-600 hover:text-red-800 font-bold text-xs md:text-sm">عربي</a>
                 </div>
             </div>
-            <a href="https://wa.me/201001283311" class="bg-green-500 text-white px-5 py-2 rounded-full font-bold flex items-center gap-2 social-card text-[12px] md:text-lg">
-                <i class="fab fa-whatsapp"></i> Contact
+            <a href="https://wa.me/201001283311" target="_blank" class="bg-green-500 hover:bg-green-600 text-white px-3 py-1.5 md:px-6 md:py-2.5 rounded-full text-[10px] md:text-sm font-bold flex items-center gap-1 social-card">
+                <i class="fab fa-whatsapp text-sm md:text-xl"></i> Contact
             </a>
         </div>
     </nav>
 
-    <section class="hero-section text-white py-16 md:py-32 px-4 text-center">
+    <section class="hero-section text-white py-16 md:py-32 px-4 text-center border-t-2 border-red-700 bg-gray-950">
         <div class="container mx-auto">
-            <div class="flex justify-center"><img src="logo.jpg" class="hero-logo"></div>
-            <h1 class="text-3xl md:text-7xl font-extrabold mb-4 italic"><span class="text-red-600 font-bold">DeSina</span> Brand</h1>
-            <p class="text-lg md:text-2xl text-gray-300 mb-10 italic">Blending elegance with innovation, providing high-quality modern products.</p>
+            <div class="flex justify-center"><img src="logo.jpg" alt="DeSina Logo" class="hero-logo"></div>
+            <h1 class="text-3xl md:text-6xl font-extrabold mb-5 leading-tight">Welcome to <span class="text-red-600">DeSina</span></h1>
+            <p class="text-lg md:text-2xl text-gray-300 mb-10 max-w-3xl mx-auto px-2">Building your digital future with professional artistic touches.</p>
             
-            <div class="flex flex-col md:flex-row justify-center gap-4 md:gap-8 mt-8 px-6 md:px-0">
-                <a href="https://www.facebook.com/egy.desina" target="_blank" class="social-card bg-blue-600 text-white py-4 px-10 rounded-full font-bold flex items-center justify-center gap-3 text-lg md:text-2xl">
-                    <i class="fab fa-facebook text-2xl md:text-3xl"></i> Facebook
+            <div class="flex flex-col md:flex-row justify-center gap-4 md:gap-8 px-10 md:px-0 mt-8">
+                <a href="https://www.facebook.com/egy.desina" target="_blank" class="social-card bg-blue-600 text-white py-3 md:py-5 md:px-12 rounded-full font-bold flex items-center justify-center gap-3 text-md md:text-xl shadow-2xl">
+                    <i class="fab fa-facebook text-xl md:text-3xl"></i> Facebook
                 </a>
-                <a href="https://www.instagram.com/de__sina" target="_blank" class="social-card bg-gradient-to-r from-purple-500 via-pink-500 to-yellow-500 text-white py-4 px-10 rounded-full font-bold flex items-center justify-center gap-3 text-lg md:text-2xl">
-                    <i class="fab fa-instagram text-2xl md:text-3xl"></i> Instagram
+                <a href="https://www.instagram.com/de__sina" target="_blank" class="social-card bg-gradient-to-r from-purple-500 via-pink-500 to-yellow-500 text-white py-3 md:py-5 md:px-12 rounded-full font-bold flex items-center justify-center gap-3 text-md md:text-xl shadow-2xl">
+                    <i class="fab fa-instagram text-xl md:text-3xl"></i> Instagram
+                </a>
+                <a href="https://youtube.com/@de_sina" target="_blank" class="social-card bg-red-600 text-white py-3 md:py-5 md:px-12 rounded-full font-bold flex items-center justify-center gap-3 text-md md:text-xl shadow-2xl">
+                    <i class="fab fa-youtube text-xl md:text-3xl"></i> Youtube
                 </a>
             </div>
         </div>
     </section>
 
-    <section id="about" class="py-20 bg-white">
-        <div class="container mx-auto px-6">
-            <h2 class="text-2xl md:text-5xl font-bold mb-8 text-red-600 border-l-8 border-red-600 pl-4 italic">About DeSina</h2>
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-10 text-lg leading-relaxed text-gray-700">
-                <div>
-                    <p class="mb-4 font-bold text-xl italic text-gray-900">Established in October 2017, DeSina is an Egyptian company leading in fashion and digital services.</p>
-                    <p class="mb-6">We focus on the quality of every garment we manufacture, brand management, and E-commerce development.</p>
-                    <a href="catalog.html" class="inline-block bg-red-600 text-white px-8 py-3 rounded-2xl font-bold shadow-lg hover:bg-gray-900 transition italic">Browse New Catalog 2026</a>
-                </div>
-                <div class="bg-gray-50 p-6 rounded-3xl border-r-8 border-red-600">
-                    <p class="mb-3"><strong>Vision:</strong> To be a leading local and global brand in fashion and digital services.</p>
-                    <p><strong>Mission:</strong> Delivering real value through elegant products and smart services that build trust.</p>
-                </div>
+    <section id="services" class="py-16 container mx-auto px-6 text-center">
+        <h3 class="text-3xl md:text-5xl font-bold mb-12 text-gray-950">What we offer for <span class="text-red-600">DeSina</span> Brand?</h3>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div class="bg-white p-8 rounded-3xl shadow-xl border-b-8 border-red-600 social-card">
+                <i class="fas fa-bullhorn text-4xl text-red-600 mb-5"></i>
+                <h4 class="text-xl font-bold mb-3">Content Creation</h4>
+                <p class="text-gray-600">Social media posts, Photoshop, and professional Reels.</p>
+            </div>
+            <div class="bg-white p-8 rounded-3xl shadow-xl border-b-8 border-blue-600 social-card">
+                <i class="fas fa-tasks text-4xl text-blue-600 mb-5"></i>
+                <h4 class="text-xl font-bold mb-3">Account Management</h4>
+                <p class="text-gray-600">Full marketing plans and accurate post scheduling.</p>
+            </div>
+            <div class="bg-white p-8 rounded-3xl shadow-xl border-b-8 border-purple-600 social-card">
+                <i class="fas fa-video text-4xl text-purple-600 mb-5"></i>
+                <h4 class="text-xl font-bold mb-3">Video Editing</h4>
+                <p class="text-gray-600">YouTube and Reels editing with high-quality effects.</p>
             </div>
         </div>
     </section>
 
-    <footer id="contact" class="bg-gray-950 text-white py-16 px-6 border-t-4 border-red-700">
-        <div class="container mx-auto grid grid-cols-1 md:grid-cols-3 gap-12 text-center md:text-left">
-            <div>
-                <img src="logo.jpg" class="main-logo mb-6 mx-auto md:mx-0 border-2 border-white">
-                <h4 class="text-2xl font-bold text-red-600 mb-2 italic">DeSina Brand</h4>
-                <p class="text-gray-400">Suliman Abaza, Dokki, Giza, Egypt</p>
-            </div>
-            <div>
-                <h4 class="text-xl font-bold mb-6 text-red-600 italic">Contact Us</h4>
-                <p class="text-lg">01001283311 - 01115680003</p>
-                <p class="text-lg">desina.com@gmail.com</p>
-            </div>
-            <div class="flex flex-col items-center md:items-start gap-3">
-                <h4 class="text-xl font-bold mb-3 text-red-600 italic">Quick Links</h4>
-                <a href="https://maps.app.goo.gl/X3wsUHiziKinYrHA9" target="_blank" class="bg-white text-gray-900 px-6 py-2 rounded-full font-bold text-sm">View Map</a>
-                <a href="privacy.html" class="text-gray-400 underline text-sm">Privacy Policy</a>
+    <section id="portfolio" class="py-16 bg-gray-100">
+        <div class="container mx-auto px-6 text-center">
+            <h3 class="text-3xl md:text-5xl font-bold mb-10 text-gray-950">Our Portfolio</h3>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <img src="IMG-20231215-WA0004.jpg" class="work-img shadow-lg" alt="Portfolio 1">
+                <img src="IMG-20231215-WA0005.jpg" class="work-img shadow-lg" alt="Portfolio 2">
+                <img src="IMG-20231215-WA0006.jpg" class="work-img shadow-lg" alt="Portfolio 3">
             </div>
         </div>
-        <div class="text-center mt-12 pt-8 border-t border-gray-800 text-gray-500 text-sm">
-            All Rights Reserved to <span class="text-red-600 font-bold italic">DeSina</span> & Jimmy © 2026
-        </div>
+    </section>
+
+    <footer class="bg-gray-950 text-white py-14 text-center border-t-2 border-red-700">
+        <p class="text-xl md:text-2xl mb-4">All Rights Reserved to <span class="text-red-600">DeSina</span> Brand © 2026</p>
+        <div class="text-gray-500 text-sm">Smart Design by Jimmy</div>
     </footer>
 
 </body>
