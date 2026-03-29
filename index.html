@@ -22,7 +22,7 @@
         .service-card { transition: 0.3s; border-top: 4px solid #ef4444; }
         .service-card:hover { transform: translateY(-10px); }
 
-        /* --- تطبيق تعديلات جيمي (المنيو الملمومة والمضغوطة) --- */
+        /* --- تعديلات جيمي المعتمدة (المنيو الملمومة) --- */
         @media (min-width: 769px) {
             #mobile-menu { display: flex !important; position: static; background: none; box-shadow: none; width: auto; padding: 0; flex-direction: row; }
             .burger-icon { display: none !important; }
@@ -32,11 +32,11 @@
             #mobile-menu { 
                 display: none; 
                 flex-direction: column; 
-                width: 32%; /* لمينا العرض زي المعاينة */
+                width: 32%; 
                 position: fixed; 
                 top: 64px; 
                 left: 0; 
-                height: 65vh; /* طول متناسق وملموم */
+                height: 65vh; 
                 background: rgba(45, 45, 48, 0.97); 
                 backdrop-filter: blur(12px);
                 padding: 10px 5px; 
@@ -48,13 +48,13 @@
             }
             #mobile-menu.active { display: flex !important; animation: slideInLeft 0.4s ease-out; }
             .nav-link, .product-link { 
-                padding: 6px 8px; /* ضغطنا المسافات الرأسية */
+                padding: 6px 8px; 
                 border-bottom: 1px solid rgba(255,255,255,0.05); 
                 width: 100%; 
                 text-align: right; 
                 color: white !important;
                 font-size: 14px;
-                white-space: nowrap; /* عشان سياسة الخصوصية متتقسمش سطرين */
+                white-space: nowrap; 
             }
         }
         @keyframes slideInLeft { from { transform: translateX(-100%); opacity: 0; } to { transform: translateX(0); opacity: 1; } }
@@ -82,11 +82,11 @@
                     <a href="#industrial-services" class="nav-link menu-item">الصناعية</a>
                     <a href="about.html" class="nav-link menu-item">فريق العمل</a>
                     <a href="privacy.html" class="nav-link menu-item" style="font-size: 12px;">سياسة الخصوصية</a>
-                    <a href="about.html" class="nav-link menu-item">حول</a> <a href="#contact" class="nav-link menu-item">اتصل بنا</a>
+                    <a href="about.html" class="nav-link menu-item">حول</a>
+                    <a href="#contact" class="nav-link menu-item">اتصل بنا</a>
                     <a href="en.html" class="text-blue-400 font-bold md:hidden menu-item">English</a>
                 </div>
             </div>
-            
             <div class="flex items-center gap-4">
                 <a href="en.html" class="hidden md:block text-blue-600 font-bold border-l-2 pl-4 border-gray-200 hover:underline">English</a>
                 <div class="burger-icon md:hidden cursor-pointer" id="burger-btn">
@@ -115,11 +115,24 @@
     </section>
 
     <section id="digital-services" class="py-20 bg-gray-100 px-6 text-center">
-        <h2 class="text-3xl md:text-5xl font-bold mb-16 border-b-4 border-red-600 inline-block pb-2">خدماتنا الرقمية</h2>
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-10">
-            <div class="bg-white p-8 rounded-2xl shadow-lg service-card"><i class="fas fa-bullhorn text-5xl text-red-600 mb-6"></i><h3 class="text-2xl font-bold mb-4 text-gray-800">إدارة الحسابات</h3><p class="text-gray-600">ندير منصاتكم باحترافية لزيادة التفاعل وبناء قاعدة جماهيرية.</p></div>
-            <div class="bg-white p-8 rounded-2xl shadow-lg service-card"><i class="fas fa-pen-nib text-5xl text-red-600 mb-6"></i><h3 class="text-2xl font-bold mb-4 text-gray-800">صناعة المحتوى</h3><p class="text-gray-600">نبتكر محتوى مرئي ومكتوب يجذب الأنظار ويعبر عن هويتكم.</p></div>
-            <div class="bg-white p-8 rounded-2xl shadow-lg service-card"><i class="fas fa-video text-5xl text-red-600 mb-6"></i><h3 class="text-2xl font-bold mb-4 text-gray-800">مونتاج الفيديو</h3><p class="text-gray-600">تحويل لقطاتكم إلى فيديوهات سينمائية جذابة لجميع المنصات.</p></div>
+        <div class="container mx-auto">
+            <h2 class="text-3xl md:text-5xl font-bold mb-16 border-b-4 border-red-600 inline-block pb-2">خدماتنا الرقمية</h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-10">
+                <div class="bg-white p-8 rounded-2xl shadow-lg service-card"><i class="fas fa-bullhorn text-5xl text-red-600 mb-6"></i><h3 class="text-2xl font-bold mb-4 text-gray-800">إدارة الحسابات</h3><p class="text-gray-600">ندير منصاتكم باحترافية لزيادة التفاعل وبناء قاعدة جماهيرية.</p></div>
+                <div class="bg-white p-8 rounded-2xl shadow-lg service-card"><i class="fas fa-pen-nib text-5xl text-red-600 mb-6"></i><h3 class="text-2xl font-bold mb-4 text-gray-800">صناعة المحتوى</h3><p class="text-gray-600">نبتكر محتوى مرئي ومكتوب يجذب الأنظار ويعبر عن هويتكم.</p></div>
+                <div class="bg-white p-8 rounded-2xl shadow-lg service-card"><i class="fas fa-video text-5xl text-red-600 mb-6"></i><h3 class="text-2xl font-bold mb-4 text-gray-800">مونتاج الفيديو</h3><p class="text-gray-600">تحويل لقطاتكم إلى فيديوهات سينمائية جذابة لجميع المنصات.</p></div>
+            </div>
+        </div>
+    </section>
+
+    <section id="industrial-services" class="py-20 bg-white px-6 text-center">
+        <div class="container mx-auto">
+            <h2 class="text-3xl md:text-5xl font-bold mb-16 border-b-4 border-red-600 inline-block pb-2">خدماتنا الصناعية</h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-10">
+                <div class="bg-white p-8 rounded-2xl shadow-lg service-card"><i class="fas fa-palette text-5xl text-red-600 mb-6"></i><h3 class="text-2xl font-bold mb-4 text-gray-800">تصميم الأزياء</h3><p class="text-gray-600">نبتكر تصاميم أزياء عصرية تلبي تطلعات عملائنا وتبرز هويتهم.</p></div>
+                <div class="bg-white p-8 rounded-2xl shadow-lg service-card"><i class="fas fa-industry text-5xl text-red-600 mb-6"></i><h3 class="text-2xl font-bold mb-4 text-gray-800">إنتاج الملابس</h3><p class="text-gray-600">نقدم حلول إنتاج شاملة بدءاً من القص وحتى التجميع النهائي.</p></div>
+                <div class="bg-white p-8 rounded-2xl shadow-lg service-card"><i class="fas fa-check-circle text-5xl text-red-600 mb-6"></i><h3 class="text-2xl font-bold mb-4 text-gray-800">ضبط الجودة</h3><p class="text-gray-600">نضمن جودة القطع النهائية من خلال تفتيش صارم ومعايير دقيقة.</p></div>
+            </div>
         </div>
     </section>
 
