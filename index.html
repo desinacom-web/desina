@@ -22,6 +22,7 @@
         .service-card { transition: 0.3s; border-top: 4px solid #ef4444; }
         .service-card:hover { transform: translateY(-10px); }
 
+        /* --- تطبيق تعديلات جيمي (المنيو الملمومة والمضغوطة) --- */
         @media (min-width: 769px) {
             #mobile-menu { display: flex !important; position: static; background: none; box-shadow: none; width: auto; padding: 0; flex-direction: row; }
             .burger-icon { display: none !important; }
@@ -31,14 +32,14 @@
             #mobile-menu { 
                 display: none; 
                 flex-direction: column; 
-                width: 40%; 
+                width: 32%; /* لمينا العرض زي المعاينة */
                 position: fixed; 
                 top: 64px; 
                 left: 0; 
-                height: 70vh; /* الطول الجديد اللي طلبته */
-                background: rgba(45, 45, 48, 0.96); 
+                height: 65vh; /* طول متناسق وملموم */
+                background: rgba(45, 45, 48, 0.97); 
                 backdrop-filter: blur(12px);
-                padding: 15px 10px; 
+                padding: 10px 5px; 
                 box-shadow: 5px 5px 15px rgba(0,0,0,0.3); 
                 z-index: 9999; 
                 border-right: 2px solid #ef4444;
@@ -47,12 +48,13 @@
             }
             #mobile-menu.active { display: flex !important; animation: slideInLeft 0.4s ease-out; }
             .nav-link, .product-link { 
-                padding: 12px 5px; 
+                padding: 6px 8px; /* ضغطنا المسافات الرأسية */
                 border-bottom: 1px solid rgba(255,255,255,0.05); 
                 width: 100%; 
                 text-align: right; 
                 color: white !important;
-                font-size: 15px;
+                font-size: 14px;
+                white-space: nowrap; /* عشان سياسة الخصوصية متتقسمش سطرين */
             }
         }
         @keyframes slideInLeft { from { transform: translateX(-100%); opacity: 0; } to { transform: translateX(0); opacity: 1; } }
@@ -79,8 +81,8 @@
                     <a href="#digital-services" class="nav-link menu-item">الرقمية</a>
                     <a href="#industrial-services" class="nav-link menu-item">الصناعية</a>
                     <a href="about.html" class="nav-link menu-item">فريق العمل</a>
-                    <a href="privacy.html" class="nav-link menu-item" style="font-size: 13px; opacity: 0.9;">سياسة الخصوصية</a>
-                    <a href="#contact" class="nav-link menu-item">اتصل بنا</a>
+                    <a href="privacy.html" class="nav-link menu-item" style="font-size: 12px;">سياسة الخصوصية</a>
+                    <a href="about.html" class="nav-link menu-item">حول</a> <a href="#contact" class="nav-link menu-item">اتصل بنا</a>
                     <a href="en.html" class="text-blue-400 font-bold md:hidden menu-item">English</a>
                 </div>
             </div>
@@ -121,15 +123,6 @@
         </div>
     </section>
 
-    <section id="industrial-services" class="py-20 bg-white px-6 text-center">
-        <h2 class="text-3xl md:text-5xl font-bold mb-16 border-b-4 border-red-600 inline-block pb-2">خدماتنا الصناعية</h2>
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-10">
-            <div class="bg-white p-8 rounded-2xl shadow-lg service-card"><i class="fas fa-palette text-5xl text-red-600 mb-6"></i><h3 class="text-2xl font-bold mb-4 text-gray-800">تصميم الأزياء</h3><p class="text-gray-600">نبتكر تصاميم أزياء عصرية تلبي تطلعات عملائنا وتبرز هويتهم.</p></div>
-            <div class="bg-white p-8 rounded-2xl shadow-lg service-card"><i class="fas fa-industry text-5xl text-red-600 mb-6"></i><h3 class="text-2xl font-bold mb-4 text-gray-800">إنتاج الملابس</h3><p class="text-gray-600">نقدم حلول إنتاج شاملة بدءاً من القص وحتى التجميع النهائي.</p></div>
-            <div class="bg-white p-8 rounded-2xl shadow-lg service-card"><i class="fas fa-check-circle text-5xl text-red-600 mb-6"></i><h3 class="text-2xl font-bold mb-4 text-gray-800">ضبط الجودة</h3><p class="text-gray-600">نضمن جودة القطع النهائية من خلال تفتيش صارم ومعايير دقيقة.</p></div>
-        </div>
-    </section>
-
     <footer id="contact" class="bg-gray-950 text-white py-16 px-6 text-center">
         <div class="container mx-auto grid grid-cols-1 md:grid-cols-3 gap-10 border-b border-gray-800 pb-10 text-right" dir="rtl">
             <div><h4 class="text-2xl font-bold text-red-600 mb-4">DeSina</h4><p class="text-gray-400">سليمان أباظة، الدقي، الجيزة، مصر</p></div>
@@ -137,8 +130,6 @@
                 <h4 class="text-xl font-bold mb-4 text-white">تواصل معنا</h4>
                 <p class="text-lg mb-1" style="direction: ltr;">+20 100 128 3311</p>
                 <p class="text-lg mb-1" style="direction: ltr;">+20 111 568 0003</p>
-                <p class="text-gray-400 text-sm">info@desina.net</p>
-                <p class="text-gray-400 text-sm mb-4">desina.com@gmail.com</p>
             </div>
             <div>
                 <h4 class="text-xl font-bold mb-4 text-white">روابط هامة</h4>
