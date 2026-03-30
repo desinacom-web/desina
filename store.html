@@ -11,31 +11,20 @@
     <style>
         body { font-family: 'Cairo', sans-serif; background-color: #f8f9fa; -webkit-user-select: none; user-select: none; scroll-behavior: smooth; }
         img { pointer-events: none; -webkit-user-drag: none; }
-        
         .store-card { background: white; border-radius: 20px; overflow: hidden; transition: 0.4s; border: 1px solid #eee; cursor: pointer; }
         .store-card:hover { transform: translateY(-5px); box-shadow: 0 10px 20px rgba(0,0,0,0.05); }
-        
-        .product-img-container { width: 100%; height: 180px; background: #fff; display: flex; align-items: center; justify-content: center; overflow: hidden; position: relative; }
-        .product-img { width: 90%; height: 90%; object-fit: contain; transition: 0.5s; }
-        
-        /* زرار الإضافة للسلة */
+        .product-img-container { width: 100%; height: 200px; background: #fff; display: flex; align-items: center; justify-content: center; overflow: hidden; position: relative; }
+        .product-img { width: 100%; height: 100%; object-fit: cover; transition: 0.5s; }
         .buy-btn { background: #25d366; color: white; padding: 12px; border-radius: 14px; font-weight: bold; display: flex; align-items: center; justify-content: center; gap: 10px; transition: 0.3s; width: 100%; position: relative; z-index: 10; font-size: 15px; border: none; }
         .buy-btn:hover { background: #128c7e; }
-        
-        /* السلة اللي فوق - بقت زرار إنهاء الطلب */
         .cart-trigger { cursor: pointer; transition: 0.3s; }
-        .cart-trigger:hover { transform: scale(1.1); }
         .badge { background: black; color: white; border-radius: 50%; padding: 2px 7px; font-size: 10px; display: none; }
-
-        /* --- Lightbox --- */
         #lightbox { display: none; position: fixed; z-index: 10000; top: 0; left: 0; width: 100%; height: 100%; background-color: rgba(0, 0, 0, 0.95); justify-content: center; align-items: center; }
         #lightbox.active { display: flex; }
-        #lightbox-img { max-width: 90%; max-height: 70%; border-radius: 15px; object-fit: contain; }
-        .lightbox-close { position: absolute; top: 30px; right: 30px; color: white; font-size: 35px; cursor: pointer; z-index: 10001; }
-        .lightbox-nav { position: absolute; top: 50%; color: white; font-size: 30px; background: rgba(255,255,255,0.1); width: 50px; height: 50px; display: flex; align-items: center; justify-content: center; border-radius: 50%; cursor: pointer; transform: translateY(-50%); z-index: 10001; }
+        #lightbox-img { max-width: 90%; max-height: 75%; border-radius: 15px; object-fit: contain; }
+        .lightbox-close { position: absolute; top: 30px; right: 30px; color: white; font-size: 35px; cursor: pointer; }
+        .lightbox-nav { position: absolute; top: 50%; color: white; font-size: 30px; background: rgba(255,255,255,0.1); width: 50px; height: 50px; display: flex; align-items: center; justify-content: center; border-radius: 50%; cursor: pointer; transform: translateY(-50%); }
         .prev { left: 15px; } .next { right: 15px; }
-
-        /* Toast */
         #toast { display: none; position: fixed; top: 20px; left: 50%; transform: translateX(-50%); background-color: #10b981; color: white; padding: 10px 25px; border-radius: 50px; font-weight: bold; z-index: 9999; box-shadow: 0 4px 15px rgba(0,0,0,0.2); font-size: 14px; }
         #toast.active { display: block; animation: slideDown 0.4s ease; }
         @keyframes slideDown { from { top: -60px; } to { top: 20px; } }
@@ -43,7 +32,7 @@
 </head>
 <body oncontextmenu="return false;">
 
-    <div id="toast"><i class="fas fa-check-circle mr-1"></i> تم إضافة المنتج للسلة! اضغط على السلة لإنهاء الطلب</div>
+    <div id="toast"><i class="fas fa-check-circle mr-1"></i> أضفت موديل رائع للسلة!</div>
 
     <nav class="bg-white shadow-sm p-4 sticky top-0 z-50">
         <div class="container mx-auto flex justify-between items-center px-2">
@@ -60,38 +49,37 @@
 
     <section class="py-12 bg-gray-900 text-center px-4">
         <h1 class="text-white text-3xl md:text-5xl font-extrabold mb-3">متجر <span class="text-red-600">DeSina</span></h1>
-        <p class="text-gray-400 text-sm md:text-base font-bold">تسوق الآن أحدث تشكيلاتنا العصرية وخدماتنا المبتكرة.</p>
+        <p class="text-gray-400 text-sm md:text-base font-bold">تسوق الآن أحدث موديلاتنا العصرية واطلب مجموعتك المفضلة.</p>
     </section>
 
     <div class="container mx-auto py-12 px-4">
         <div class="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-8">
             <script>
-                const productNames = [
-                    "موديل ديسينا COD-01", "موديل ديسينا COD-02", "موديل ديسينا COD-03",
-                    "موديل ديسينا COD-04", "موديل ديسينا COD-05", "موديل ديسينا COD-06",
-                    "موديل ديسينا COD-07", "موديل ديسينا COD-08", "موديل ديسينا COD-09",
-                    "موديل ديسينا COD-10"
-                ];
+                // قائمة الصور والموديلات من ملف الكتالوج
+                const models = [];
+                for(let i=1; i<=11; i++) {
+                    models.push({ name: `موديل شبابي COD-${i < 10 ? '0'+i : i}`, img: `cod${i}.jpeg` });
+                }
 
-                for (let i = 0; i < productNames.length; i++) {
+                models.forEach((product, index) => {
                     document.write(`
-                        <div class="store-card" onclick="openLightbox(${i})">
+                        <div class="store-card" onclick="openLightbox(${index})">
                             <div class="product-img-container">
-                                <img src="logo.jpg" class="product-img" id="img-${i}">
-                                <div class="absolute inset-0 bg-black/5 flex items-center justify-center opacity-0 hover:opacity-100 transition-opacity">
-                                    <i class="fas fa-expand text-white text-xl"></i>
+                                <img src="${product.img}" class="product-img" id="img-${index}">
+                                <div class="absolute inset-0 bg-black/10 flex items-center justify-center opacity-0 hover:opacity-100 transition-opacity">
+                                    <i class="fas fa-search-plus text-white text-2xl"></i>
                                 </div>
                             </div>
-                            <div class="p-5 text-right">
-                                <h3 class="text-xs md:text-sm font-bold text-gray-800 mb-1">${productNames[i]}</h3>
+                            <div class="p-4 text-right">
+                                <h3 class="text-xs md:text-sm font-bold text-gray-800 mb-1">${product.name}</h3>
                                 <p class="text-red-600 font-extrabold text-base md:text-lg mb-4">000 EGP</p>
-                                <button class="buy-btn" onclick="addToCart('${productNames[i]}', event)">
+                                <button class="buy-btn" onclick="addToCart('${product.name}', event)">
                                    <i class="fas fa-shopping-cart"></i> اطلب الآن
                                 </button>
                             </div>
                         </div>
                     `);
-                }
+                });
             </script>
         </div>
     </div>
@@ -104,52 +92,39 @@
     </div>
 
     <script>
-        // --- اللعبة الجديدة: نظام الطلب المجمع عبر الواتساب ---
         let cartItems = [];
         const badge = document.getElementById('cart-badge');
         const toast = document.getElementById('toast');
+        const images = [];
+        for(let i=1; i<=11; i++) images.push(`cod${i}.jpeg`);
 
         function addToCart(productName, e) {
-            e.stopPropagation(); // منع تكبير الصورة
+            e.stopPropagation();
             cartItems.push(productName);
             badge.innerText = cartItems.length;
             badge.style.display = 'block';
-            
             toast.classList.add('active');
             setTimeout(() => toast.classList.remove('active'), 2500);
         }
 
         function sendOrderToWhatsApp() {
             if (cartItems.length === 0) {
-                alert("السلة فاضية! اختار منتجاتك الأول يا بطل.");
+                alert("السلة فارغة! اختر موديلاتك أولاً.");
                 return;
             }
-
             const phoneNumber = "201001283311";
-            let message = "أهلاً ديسينا، حابب أطلب المنتجات دي:\n\n";
+            let message = "أهلاً ديسينا، حابب أطلب الموديلات دي:\n\n";
+            cartItems.forEach((item, index) => { message += `${index + 1}- ${item}\n`; });
+            message += "\nبانتظار ردكم لتأكيد الطلب.";
+            window.open(`https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`, '_blank');
             
-            // تجميع المنتجات في الرسالة
-            cartItems.forEach((item, index) => {
-                message += `${index + 1}- ${item}\n`;
-            });
-
-            message += "\nبرجاء التواصل لتأكيد الطلب.";
-            
-            // تحويل الرسالة لرابط واتساب
-            const encodedMessage = encodeURIComponent(message);
-            const whatsappURL = `https://wa.me/${phoneNumber}?text=${encodedMessage}`;
-            
-            // فتح الواتساب
-            window.open(whatsappURL, '_blank');
-            
-            // اختياري: تصفير السلة بعد الإرسال
-            // cartItems = [];
-            // badge.style.display = 'none';
+            // تفرغ السلة فابريكا
+            cartItems = [];
+            badge.innerText = "0";
+            badge.style.display = 'none';
         }
 
-        // --- نظام الجاليري ---
         let currentIndex = 0;
-        const images = Array(10).fill("logo.jpg");
         const lightbox = document.getElementById('lightbox');
         const lightboxImg = document.getElementById('lightbox-img');
 
