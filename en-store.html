@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>DeSina Store | Premium Collection</title>
+    <title>DeSina Store | Official</title>
     <link rel="icon" type="image/jpeg" href="logo.jpg">
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700;900&display=swap" rel="stylesheet">
@@ -11,67 +11,67 @@
     
     <style>
         body { font-family: 'Cairo', sans-serif; background-color: #fcfcfc; scroll-behavior: smooth; }
-        h1, h2, h3, .buy-btn, .filter-btn { font-weight: 900 !important; text-transform: uppercase; }
+        h1, h2, h3, .buy-btn, .filter-btn { font-weight: 900 !important; }
         
-        /* كارت المنتج */
         .store-card { background: white; border-radius: 20px; overflow: hidden; border: 1px solid #eee; transition: 0.3s; }
-        .store-card:hover { border-color: #ef4444; transform: translateY(-5px); box-shadow: 0 10px 30px rgba(0,0,0,0.05); }
+        .store-card:hover { border-color: #ef4444; transform: translateY(-5px); }
         
-        .product-img-container { width: 100%; height: 280px; overflow: hidden; background: #f3f4f6; cursor: zoom-in; }
-        .product-img { width: 100%; height: 100%; object-fit: cover; transition: 0.4s; }
-        .product-img:hover { transform: scale(1.05); }
+        .product-img-container { width: 100%; height: 320px; overflow: hidden; background: #f3f4f6; cursor: zoom-in; }
+        .product-img { width: 100%; height: 100%; object-fit: cover; transition: 0.5s; }
 
-        /* زر الشراء - أيقونة عربة محايدة */
-        .buy-btn { background: #111827; color: white; padding: 14px; border-radius: 12px; display: flex; align-items: center; justify-content: center; gap: 10px; width: 100%; transition: 0.3s; font-size: 13px; }
+        .buy-btn { background: #111827; color: white; padding: 14px; border-radius: 12px; display: flex; align-items: center; justify-content: center; gap: 10px; width: 100%; transition: 0.3s; }
         .buy-btn:hover { background: #ef4444; }
 
-        .filter-btn { padding: 8px 22px; border-radius: 50px; background: white; border: 2px solid #eee; font-size: 14px; transition: 0.3s; }
+        .filter-btn { padding: 8px 25px; border-radius: 50px; background: white; border: 2px solid #eee; font-weight: 800; transition: 0.3s; }
         .filter-btn.active { background: #ef4444; color: white; border-color: #ef4444; }
 
-        /* ستايل الـ Lightbox (عرض الصورة) */
-        #lightbox { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.95); z-index: 20000; align-items: center; justify-content: center; }
-        #lightbox img { max-width: 90%; max-height: 80vh; border-radius: 10px; box-shadow: 0 0 50px rgba(0,0,0,0.5); }
-        .lb-close { position: absolute; top: 30px; right: 30px; color: white; font-size: 35px; cursor: pointer; }
-        .lb-nav { position: absolute; top: 50%; width: 100%; display: flex; justify-content: space-between; padding: 0 20px; transform: translateY(-50%); }
-        .lb-nav i { color: white; font-size: 40px; cursor: pointer; opacity: 0.6; transition: 0.3s; }
-        .lb-nav i:hover { opacity: 1; }
+        /* Lightbox - نظام عرض الصور الاحترافي */
+        #lightbox { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.98); z-index: 10000; align-items: center; justify-content: center; user-select: none; }
+        #lightbox-img { max-width: 90%; max-height: 85vh; border-radius: 12px; object-fit: contain; }
+        .lb-close { position: absolute; top: 25px; right: 30px; color: white; font-size: 40px; cursor: pointer; transition: 0.3s; }
+        .lb-close:hover { color: #ef4444; }
+        .lb-arrow { position: absolute; top: 50%; transform: translateY(-50%); color: white; font-size: 45px; cursor: pointer; padding: 20px; opacity: 0.5; transition: 0.3s; }
+        .lb-arrow:hover { opacity: 1; color: #ef4444; }
+        .lb-prev { left: 10px; }
+        .lb-next { right: 10px; }
+
+        .star-gold { color: #FFD700; }
     </style>
 </head>
 <body>
 
     <div id="lightbox">
         <span class="lb-close" onclick="closeLightbox()">&times;</span>
-        <div class="lb-nav">
-            <i class="fas fa-chevron-left" onclick="prevImg()"></i>
-            <i class="fas fa-chevron-right" onclick="nextImg()"></i>
-        </div>
+        <i class="fas fa-chevron-left lb-arrow lb-prev" onclick="changeImg(-1)"></i>
+        <i class="fas fa-chevron-right lb-arrow lb-next" onclick="changeImg(1)"></i>
         <img id="lightbox-img" src="">
     </div>
 
     <nav class="bg-white shadow-sm p-4 sticky top-0 z-50">
         <div class="container mx-auto flex justify-between items-center px-2">
             <div class="flex items-center gap-4">
-                <img src="logo.jpg" style="height: 38px; border-radius: 8px;">
+                <img src="logo.jpg" style="height: 40px; border-radius: 10px;">
                 <a href="en.html" class="text-gray-900 font-black flex items-center gap-2 hover:text-red-600 transition text-sm">HOME <i class="fas fa-arrow-right"></i></a>
             </div>
-            <div class="flex items-center gap-4">
-                <a href="store.html" class="text-blue-600 font-bold hover:underline text-xs">عربي</a>
+            <div class="flex items-center gap-5">
+                <a href="store.html" class="text-blue-600 font-black text-xs hover:underline">عربي</a>
                 <div class="text-red-600 text-2xl relative cursor-pointer" onclick="sendOrderToWhatsApp()">
-                    <i class="fas fa-shopping-cart"></i> <span id="cart-badge" class="bg-black text-white rounded-full px-2 py-0.5 text-[10px] absolute -top-2 -right-2 hidden">0</span>
+                    <i class="fas fa-shopping-cart"></i>
+                    <span id="cart-badge" class="bg-black text-white rounded-full px-2 py-0.5 text-[10px] absolute -top-2 -right-2 hidden">0</span>
                 </div>
             </div>
         </div>
     </nav>
 
-    <header class="py-12 text-center">
-        <h1 class="text-4xl md:text-6xl text-gray-900"><span class="text-red-600">DeSina</span> STORE</h1>
-        <p class="text-gray-500 font-bold mt-2 italic">Premium Collection</p>
+    <header class="py-16 text-center">
+        <h1 class="text-5xl md:text-7xl text-gray-900 uppercase italic"><span class="text-red-600">DeSina</span> Store</h1>
+        <p class="text-gray-500 font-bold mt-2 uppercase tracking-widest">Premium Fashion Experience</p>
     </header>
 
-    <div class="flex flex-wrap justify-center gap-3 mb-12 px-4">
-        <button class="filter-btn active" onclick="setCategory('all', this)">All</button>
-        <button class="filter-btn" onclick="setCategory('summer', this)">Summer</button>
-        <button class="filter-btn" onclick="setCategory('winter', this)">Winter</button>
+    <div class="flex flex-wrap justify-center gap-4 mb-12 px-4">
+        <button class="filter-btn active" onclick="setCategory('all', this)">All Collections</button>
+        <button class="filter-btn" onclick="setCategory('summer', this)">Summer ☀️</button>
+        <button class="filter-btn" onclick="setCategory('winter', this)">Winter ❄️</button>
     </div>
 
     <div class="container mx-auto px-4 mb-24">
@@ -80,9 +80,12 @@
 
     <script>
         const totalModels = 11;
+        const phoneNumber = "201001283311";
         const grid = document.getElementById('product-grid');
+        const lb = document.getElementById('lightbox');
+        const lbImg = document.getElementById('lightbox-img');
         let currentFilter = 'all';
-        let currentImgIndex = 1;
+        let activeImgIndex = 1;
 
         function displayProducts() {
             grid.innerHTML = "";
@@ -93,11 +96,11 @@
                     grid.innerHTML += `
                         <div class="store-card">
                             <div class="product-img-container" onclick="openLightbox(${i})">
-                                <img src="cod${i}.jpeg" class="product-img">
+                                <img src="cod${i}.jpeg" class="product-img" loading="lazy">
                             </div>
-                            <div class="p-5">
-                                <h3 class="text-lg text-gray-900 mb-1">${modelName}</h3>
-                                <p class="text-red-600 font-black text-xl mb-4">1000 EGP</p>
+                            <div class="p-6">
+                                <h3 class="text-xl text-gray-900 mb-1">${modelName}</h3>
+                                <p class="text-red-600 font-black text-2xl mb-5">1000 EGP</p>
                                 <button class="buy-btn" onclick="addToCart('${modelName}')">
                                     <i class="fas fa-cart-plus"></i> ADD TO CART
                                 </button>
@@ -115,43 +118,49 @@
             displayProducts();
         }
 
-        // --- وظائف عرض الصور (Lightbox) ---
+        // Lightbox Logic
         function openLightbox(index) {
-            currentImgIndex = index;
-            document.getElementById('lightbox-img').src = `cod${index}.jpeg`;
-            document.getElementById('lightbox').style.display = 'flex';
-            document.body.style.overflow = 'hidden'; // منع السكرول تحت الصورة
+            activeImgIndex = index;
+            lbImg.src = `cod${index}.jpeg`;
+            lb.style.display = 'flex';
+            document.body.style.overflow = 'hidden';
         }
+
         function closeLightbox() {
-            document.getElementById('lightbox').style.display = 'none';
+            lb.style.display = 'none';
             document.body.style.overflow = 'auto';
         }
-        function nextImg() {
-            currentImgIndex = currentImgIndex >= totalModels ? 1 : currentImgIndex + 1;
-            document.getElementById('lightbox-img').src = `cod${currentImgIndex}.jpeg`;
-        }
-        function prevImg() {
-            currentImgIndex = currentImgIndex <= 1 ? totalModels : currentImgIndex - 1;
-            document.getElementById('lightbox-img').src = `cod${currentImgIndex}.jpeg`;
+
+        function changeImg(step) {
+            activeImgIndex += step;
+            if (activeImgIndex > totalModels) activeImgIndex = 1;
+            if (activeImgIndex < 1) activeImgIndex = totalModels;
+            lbImg.src = `cod${activeImgIndex}.jpeg`;
         }
 
-        // إغلاق عند الضغط خارج الصورة
-        document.getElementById('lightbox').onclick = function(e) {
-            if(e.target == this) closeLightbox();
-        };
+        // Keyboard support
+        document.addEventListener('keydown', (e) => {
+            if (lb.style.display === 'flex') {
+                if (e.key === "ArrowRight") changeImg(1);
+                if (e.key === "ArrowLeft") changeImg(-1);
+                if (e.key === "Escape") closeLightbox();
+            }
+        });
 
-        // وظائف السلة المعتادة
+        // Cart Logic
         let cartItems = [];
         function addToCart(name) {
             cartItems.push(name);
-            const b = document.getElementById('cart-badge');
-            b.innerText = cartItems.length; b.style.display = 'block';
-            alert(name + " added to cart!");
+            const badge = document.getElementById('cart-badge');
+            badge.innerText = cartItems.length;
+            badge.style.display = 'block';
+            alert("Added to cart: " + name);
         }
+
         function sendOrderToWhatsApp() {
             if (cartItems.length === 0) return alert("Cart is empty!");
-            let msg = `New Order 🚀\n` + cartItems.join("\n");
-            window.open(`https://wa.me/201001283311?text=${encodeURIComponent(msg)}`, '_blank');
+            let msg = `DeSina Order 🚀\n` + cartItems.join("\n");
+            window.open(`https://wa.me/${phoneNumber}?text=${encodeURIComponent(msg)}`, '_blank');
         }
     </script>
 </body>
