@@ -8,6 +8,8 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+    
     <style>
         body { font-family: 'Cairo', sans-serif; background-color: #f8f9fa; -webkit-user-select: none; user-select: none; scroll-behavior: smooth; }
         img { pointer-events: none; -webkit-user-drag: none; }
@@ -19,11 +21,19 @@
         .buy-btn:hover { background: #128c7e; }
         .badge { background: black; color: white; border-radius: 50%; padding: 2px 7px; font-size: 10px; display: none; }
         
-        /* Search Bar Styling */
-        .search-container { max-width: 600px; margin: 20px auto; position: relative; padding: 0 15px; }
-        .search-input { width: 100%; padding: 12px 45px 12px 20px; border-radius: 50px; border: 2px solid #eee; outline: none; transition: 0.3s; }
+        /* Search & Filter Styling */
+        .search-container { max-width: 600px; margin: 20px auto 10px; position: relative; padding: 0 15px; }
+        .search-input { width: 100%; padding: 12px 45px 12px 20px; border-radius: 50px; border: 2px solid #eee; outline: none; transition: 0.3s; font-size: 14px; }
         .search-input:focus { border-color: #ef4444; box-shadow: 0 0 10px rgba(239, 68, 68, 0.1); }
         .search-icon { position: absolute; right: 30px; top: 50%; transform: translateY(-50%); color: #999; }
+        
+        .filter-btn { padding: 8px 20px; border-radius: 50px; background: white; border: 1px solid #ddd; font-weight: bold; font-size: 13px; transition: 0.3s; cursor: pointer; }
+        .filter-btn.active { background: #ef4444; color: white; border-color: #ef4444; }
+
+        /* Review Slider Styling */
+        .swiper { width: 100%; padding-top: 20px; padding-bottom: 50px; }
+        .swiper-slide { background: #fff; border-radius: 20px; padding: 30px; border: 1px solid #f0f0f0; display: flex; flex-direction: column; align-items: center; text-align: center; height: auto; }
+        .swiper-pagination-bullet-active { background: #ef4444 !important; }
 
         #lightbox { display: none; position: fixed; z-index: 10000; top: 0; left: 0; width: 100%; height: 100%; background-color: rgba(0, 0, 0, 0.95); justify-content: center; align-items: center; }
         #lightbox.active { display: flex; }
@@ -58,30 +68,46 @@
         <input type="text" id="searchInput" class="search-input" placeholder="ابحث عن موديل معين..." onkeyup="filterProducts()">
     </div>
 
-    <div class="container mx-auto py-8 px-4">
-        <div id="product-grid" class="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-8">
+    <div class="flex flex-wrap justify-center gap-3 mb-8">
+        <button class="filter-btn active" onclick="setCategory('all', this)">كل الموديلات</button>
+        <button class="filter-btn" onclick="setCategory('summer', this)">موديلات صيفية</button>
+        <button class="filter-btn" onclick="setCategory('winter', this)">موديلات شتوية</button>
+    </div>
+
+    <div class="container mx-auto py-2 px-4">
+        <div id="product-grid" class="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-8 min-h-[400px]">
             </div>
     </div>
 
-    <section class="bg-white py-16 px-4 border-t border-gray-100">
-        <div class="container mx-auto text-center">
-            <h2 class="text-2xl md:text-3xl font-bold mb-10 text-gray-800 underline decoration-red-600">آراء عملاء ديسينا ⭐</h2>
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-                <div class="p-6 bg-gray-50 rounded-2xl border border-gray-100">
-                    <div class="flex justify-center text-yellow-400 mb-3"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
-                    <p class="text-gray-600 italic">"الخامة ممتازة جداً والتوصيل كان سريع، فعلاً ديسينا براند محترم."</p>
-                    <h4 class="mt-4 font-bold text-gray-800 text-sm">- أحمد محمود (عميل موثق)</h4>
+    <section class="bg-white py-16 px-4 border-t border-gray-100 overflow-hidden">
+        <div class="container mx-auto">
+            <h2 class="text-2xl md:text-4xl font-bold mb-10 text-center text-gray-800">آراء عملاء ديسينا ⭐</h2>
+            
+            <div class="swiper mySwiper">
+                <div class="swiper-wrapper">
+                    <div class="swiper-slide">
+                        <div class="flex text-yellow-400 mb-4 text-lg">
+                            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                        </div>
+                        <p class="text-gray-600 italic">"الخامة ممتازة جداً والتوصيل كان سريع، فعلاً ديسينا براند محترم."</p>
+                        <h4 class="mt-6 font-bold text-gray-900 text-sm">- أحمد محمود</h4>
+                    </div>
+                    <div class="swiper-slide">
+                        <div class="flex text-yellow-400 mb-4 text-lg">
+                            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                        </div>
+                        <p class="text-gray-600 italic">"التصميم شيك جداً وفي الحقيقة أحلى من الصور بكتير، جودة مشرفة."</p>
+                        <h4 class="mt-6 font-bold text-gray-900 text-sm">- سارة علي</h4>
+                    </div>
+                    <div class="swiper-slide">
+                        <div class="flex text-yellow-400 mb-4 text-lg">
+                            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i>
+                        </div>
+                        <p class="text-gray-600 italic">"خدمة العملاء والرد على الواتساب سريعة جداً وساعدوني في اختيار المقاس."</p>
+                        <h4 class="mt-6 font-bold text-gray-900 text-sm">- محمد يوسف</h4>
+                    </div>
                 </div>
-                <div class="p-6 bg-gray-50 rounded-2xl border border-gray-100">
-                    <div class="flex justify-center text-yellow-400 mb-3"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
-                    <p class="text-gray-600 italic">"التصميم شيك جداً وفي الحقيقة أحلى من الصور بكتير."</p>
-                    <h4 class="mt-4 font-bold text-gray-800 text-sm">- سارة علي (عميلة موثقة)</h4>
-                </div>
-                <div class="p-6 bg-gray-50 rounded-2xl border border-gray-100">
-                    <div class="flex justify-center text-yellow-400 mb-3"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i></div>
-                    <p class="text-gray-600 italic">"خدمة العملاء والرد على الواتساب سريعة جداً وساعدوني في اختيار المقاس."</p>
-                    <h4 class="mt-4 font-bold text-gray-800 text-sm">- محمد يوسف (عميل موثق)</h4>
-                </div>
+                <div class="swiper-pagination"></div>
             </div>
         </div>
     </section>
@@ -93,39 +119,69 @@
         <div class="lightbox-nav next" onclick="changeSlide(1, event)"><i class="fas fa-chevron-right"></i></div>
     </div>
 
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+
     <script>
         const totalModels = 11;
         const productPrice = "1000 EGP";
         const phoneNumber = "201001283311";
-
         const grid = document.getElementById('product-grid');
         const images = [];
+        let currentFilter = 'all';
 
-        // إنشاء المنتجات
-        for (let i = 1; i <= totalModels; i++) {
-            const modelName = `موديل COD-${i < 10 ? '0' + i : i}`;
-            const imgSrc = `cod${i}.jpeg`;
-            images.push(imgSrc);
+        // دالة عرض المنتجات بناءً على الفلتر والبحث
+        function displayProducts() {
+            grid.innerHTML = "";
+            const searchTerm = document.getElementById('searchInput').value.toLowerCase();
 
-            grid.innerHTML += `
-                <div class="store-card product-item" onclick="openLightbox(${i-1})">
-                    <div class="product-img-container">
-                        <img src="${imgSrc}" class="product-img">
-                        <div class="absolute inset-0 bg-black/10 flex items-center justify-center opacity-0 hover:opacity-100 transition-opacity">
-                            <i class="fas fa-search-plus text-white text-2xl"></i>
+            for (let i = 1; i <= totalModels; i++) {
+                const modelName = `موديل COD-${i < 10 ? '0' + i : i}`;
+                const imgSrc = `cod${i}.jpeg`;
+                if (!images[i-1]) images.push(imgSrc);
+
+                // تقسيم افتراضي: الصيفي الأرقام الفردية، الشتوي الأرقام الزوجية (تقدر تغير ده)
+                let category = (i % 2 === 0) ? 'winter' : 'summer';
+                
+                const matchesFilter = currentFilter === 'all' || category === currentFilter;
+                const matchesSearch = modelName.toLowerCase().includes(searchTerm);
+
+                if (matchesFilter && matchesSearch) {
+                    grid.innerHTML += `
+                        <div class="store-card product-item" onclick="openLightbox(${i-1})">
+                            <div class="product-img-container">
+                                <img src="${imgSrc}" class="product-img">
+                                <div class="absolute inset-0 bg-black/10 flex items-center justify-center opacity-0 hover:opacity-100 transition-opacity">
+                                    <i class="fas fa-search-plus text-white text-2xl"></i>
+                                </div>
+                            </div>
+                            <div class="p-4 text-right">
+                                <h3 class="text-xs md:text-sm font-bold text-gray-800 mb-1 product-name">${modelName}</h3>
+                                <p class="text-red-600 font-extrabold text-base md:text-lg mb-4">${productPrice}</p>
+                                <button class="buy-btn" onclick="addToCart('${modelName}', event)">
+                                   <i class="fas fa-shopping-cart"></i> اطلب الآن
+                                </button>
+                            </div>
                         </div>
-                    </div>
-                    <div class="p-4 text-right">
-                        <h3 class="text-xs md:text-sm font-bold text-gray-800 mb-1 product-name">${modelName}</h3>
-                        <p class="text-red-600 font-extrabold text-base md:text-lg mb-4">${productPrice}</p>
-                        <button class="buy-btn" onclick="addToCart('${modelName}', event)">
-                           <i class="fas fa-shopping-cart"></i> اطلب الآن
-                        </button>
-                    </div>
-                </div>
-            `;
+                    `;
+                }
+            }
         }
 
+        // تشغيل العرض الأولي
+        displayProducts();
+
+        function setCategory(cat, btn) {
+            currentFilter = cat;
+            document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+            displayProducts();
+        }
+
+        function filterProducts() {
+            displayProducts();
+        }
+
+        // --- نظام السلة ---
         let cartItems = [];
         const badge = document.getElementById('cart-badge');
         const toast = document.getElementById('toast');
@@ -139,44 +195,22 @@
             setTimeout(() => toast.classList.remove('active'), 2000);
         }
 
-        // --- وظيفة توليد رقم أوردر عشوائي وإرسال الواتساب ---
         function sendOrderToWhatsApp() {
             if (cartItems.length === 0) {
                 alert("السلة فاضية يا فنان!");
                 return;
             }
-            
-            // توليد رقم أوردر عشوائي DS-XXXX
-            const randomNum = Math.floor(1000 + Math.random() * 9000);
-            const orderID = "DS-" + randomNum;
-
-            let message = `طلب جديد من ديسينا 🚀\n`;
-            message += `رقم الأوردر: ${orderID}\n`;
-            message += `--------------------------\n`;
+            const orderID = "DS-" + Math.floor(1000 + Math.random() * 9000);
+            let message = `طلب جديد من ديسينا 🚀\nرقم الأوردر: ${orderID}\n--------------------------\n`;
             cartItems.forEach((item, index) => message += `${index + 1}- ${item}\n`);
-            message += `\nجاري متابعة الأوردر..`;
+            message += `\nجاري متابعة الأوردر مع ديسينا..`;
 
             window.open(`https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`, '_blank');
-            
             cartItems = [];
             badge.style.display = 'none';
         }
 
-        // --- وظيفة البحث ---
-        function filterProducts() {
-            const input = document.getElementById('searchInput').value.toLowerCase();
-            const items = document.getElementsByClassName('product-item');
-            
-            for (let i = 0; i < items.length; i++) {
-                const name = items[i].getElementsByClassName('product-name')[0].innerText.toLowerCase();
-                if (name.includes(input)) {
-                    items[i].style.display = "";
-                } else {
-                    items[i].style.display = "none";
-                }
-            }
-        }
-
+        // --- نظام الجاليري ---
         let currentIndex = 0;
         const lightbox = document.getElementById('lightbox');
         const lightboxImg = document.getElementById('lightbox-img');
@@ -201,7 +235,15 @@
             lightboxImg.src = images[currentIndex];
         }
 
-        lightbox.onclick = function(e) { if(e.target == lightbox) closeLightbox(); }
+        // تشغيل السلايدر بتاع التقييمات
+        var swiper = new Swiper(".mySwiper", {
+            slidesPerView: 1,
+            spaceBetween: 20,
+            loop: true,
+            autoplay: { delay: 3000, disableOnInteraction: false },
+            pagination: { el: ".swiper-pagination", clickable: true },
+            breakpoints: { 768: { slidesPerView: 3, spaceBetween: 30 } }
+        });
     </script>
 </body>
 </html>
