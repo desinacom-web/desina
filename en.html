@@ -26,9 +26,21 @@
         .service-card { transition: 0.3s; border-top: 4px solid #ef4444; background-color: white; }
         .service-card:hover { transform: translateY(-10px); }
 
-        /* Cart Icon - Simple without numbers */
-        .cart-icon { color: #ef4444; font-size: 22px; position: relative; transition: 0.3s; display: flex; align-items: center; }
-        .cart-icon:hover { transform: scale(1.1); }
+        /* Cart Icon - Enhanced Style */
+        .cart-icon { 
+            color: #ef4444; 
+            font-size: 22px; 
+            position: relative; 
+            transition: all 0.3s ease; 
+            display: flex; 
+            align-items: center;
+            padding: 8px;
+            border-radius: 50%;
+        }
+        .cart-icon:hover { 
+            background-color: rgba(239, 68, 68, 0.1);
+            transform: scale(1.15); 
+        }
 
         /* Mobile Menu Adjustments */
         @media (min-width: 769px) {
@@ -43,7 +55,7 @@
                 width: 35%; 
                 position: fixed; 
                 top: 64px; 
-                right: 0; /* Adjusted for LTR */
+                right: 0; 
                 height: 65vh; 
                 background: rgba(45, 45, 48, 0.97); 
                 backdrop-filter: blur(12px);
@@ -97,13 +109,13 @@
                 </div>
             </div>
             <div class="flex items-center gap-4">
-                <a href="en-store.html" class="hidden md:block cart-icon ml-2">
+                <a href="en-store.html" class="hidden md:block cart-icon ml-2" title="View Cart">
                     <i class="fas fa-shopping-cart"></i>
                 </a>
 
                 <a href="index.html" class="hidden md:block text-blue-600 font-bold border-r-2 pr-4 border-gray-200 hover:underline">عربي</a>
                 
-                <a href="store.html" class="md:hidden cart-icon">
+                <a href="en-store.html" class="md:hidden cart-icon" title="View Cart">
                     <i class="fas fa-shopping-cart"></i>
                 </a>
 
