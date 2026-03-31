@@ -18,6 +18,13 @@
         .buy-btn { background: #25d366; color: white; padding: 12px; border-radius: 14px; font-weight: bold; display: flex; align-items: center; justify-content: center; gap: 10px; transition: 0.3s; width: 100%; position: relative; z-index: 10; font-size: 15px; border: none; }
         .buy-btn:hover { background: #128c7e; }
         .badge { background: black; color: white; border-radius: 50%; padding: 2px 7px; font-size: 10px; display: none; }
+        
+        /* Search Bar Styling */
+        .search-container { max-width: 600px; margin: 20px auto; position: relative; padding: 0 15px; }
+        .search-input { width: 100%; padding: 12px 45px 12px 20px; border-radius: 50px; border: 2px solid #eee; outline: none; transition: 0.3s; }
+        .search-input:focus { border-color: #ef4444; box-shadow: 0 0 10px rgba(239, 68, 68, 0.1); }
+        .search-icon { position: absolute; right: 30px; top: 50%; transform: translateY(-50%); color: #999; }
+
         #lightbox { display: none; position: fixed; z-index: 10000; top: 0; left: 0; width: 100%; height: 100%; background-color: rgba(0, 0, 0, 0.95); justify-content: center; align-items: center; }
         #lightbox.active { display: flex; }
         #lightbox-img { max-width: 90%; max-height: 75%; border-radius: 15px; object-fit: contain; }
@@ -46,10 +53,38 @@
         </div>
     </nav>
 
-    <div class="container mx-auto py-12 px-4">
+    <div class="search-container">
+        <i class="fas fa-search search-icon"></i>
+        <input type="text" id="searchInput" class="search-input" placeholder="ابحث عن موديل معين..." onkeyup="filterProducts()">
+    </div>
+
+    <div class="container mx-auto py-8 px-4">
         <div id="product-grid" class="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-8">
             </div>
     </div>
+
+    <section class="bg-white py-16 px-4 border-t border-gray-100">
+        <div class="container mx-auto text-center">
+            <h2 class="text-2xl md:text-3xl font-bold mb-10 text-gray-800 underline decoration-red-600">آراء عملاء ديسينا ⭐</h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <div class="p-6 bg-gray-50 rounded-2xl border border-gray-100">
+                    <div class="flex justify-center text-yellow-400 mb-3"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+                    <p class="text-gray-600 italic">"الخامة ممتازة جداً والتوصيل كان سريع، فعلاً ديسينا براند محترم."</p>
+                    <h4 class="mt-4 font-bold text-gray-800 text-sm">- أحمد محمود (عميل موثق)</h4>
+                </div>
+                <div class="p-6 bg-gray-50 rounded-2xl border border-gray-100">
+                    <div class="flex justify-center text-yellow-400 mb-3"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+                    <p class="text-gray-600 italic">"التصميم شيك جداً وفي الحقيقة أحلى من الصور بكتير."</p>
+                    <h4 class="mt-4 font-bold text-gray-800 text-sm">- سارة علي (عميلة موثقة)</h4>
+                </div>
+                <div class="p-6 bg-gray-50 rounded-2xl border border-gray-100">
+                    <div class="flex justify-center text-yellow-400 mb-3"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i></div>
+                    <p class="text-gray-600 italic">"خدمة العملاء والرد على الواتساب سريعة جداً وساعدوني في اختيار المقاس."</p>
+                    <h4 class="mt-4 font-bold text-gray-800 text-sm">- محمد يوسف (عميل موثق)</h4>
+                </div>
+            </div>
+        </div>
+    </section>
 
     <div id="lightbox">
         <span class="lightbox-close" onclick="closeLightbox()">&times;</span>
@@ -59,22 +94,21 @@
     </div>
 
     <script>
-        // --- 1. إعدادات المتجر (المفتاح السحري) ---
-        const totalModels = 11; // بكرة لما تزود صور، غير الرقم ده بس!
-        const productPrice = "1000 EGP"; // السعر الموحد لو حابب
+        const totalModels = 11;
+        const productPrice = "1000 EGP";
         const phoneNumber = "201001283311";
 
         const grid = document.getElementById('product-grid');
         const images = [];
 
-        // --- 2. توليد المنتجات أوتوماتيكياً ---
+        // إنشاء المنتجات
         for (let i = 1; i <= totalModels; i++) {
             const modelName = `موديل COD-${i < 10 ? '0' + i : i}`;
             const imgSrc = `cod${i}.jpeg`;
             images.push(imgSrc);
 
             grid.innerHTML += `
-                <div class="store-card" onclick="openLightbox(${i-1})">
+                <div class="store-card product-item" onclick="openLightbox(${i-1})">
                     <div class="product-img-container">
                         <img src="${imgSrc}" class="product-img">
                         <div class="absolute inset-0 bg-black/10 flex items-center justify-center opacity-0 hover:opacity-100 transition-opacity">
@@ -82,7 +116,7 @@
                         </div>
                     </div>
                     <div class="p-4 text-right">
-                        <h3 class="text-xs md:text-sm font-bold text-gray-800 mb-1">${modelName}</h3>
+                        <h3 class="text-xs md:text-sm font-bold text-gray-800 mb-1 product-name">${modelName}</h3>
                         <p class="text-red-600 font-extrabold text-base md:text-lg mb-4">${productPrice}</p>
                         <button class="buy-btn" onclick="addToCart('${modelName}', event)">
                            <i class="fas fa-shopping-cart"></i> اطلب الآن
@@ -92,7 +126,6 @@
             `;
         }
 
-        // --- 3. نظام السلة والواتساب ---
         let cartItems = [];
         const badge = document.getElementById('cart-badge');
         const toast = document.getElementById('toast');
@@ -106,21 +139,44 @@
             setTimeout(() => toast.classList.remove('active'), 2000);
         }
 
+        // --- وظيفة توليد رقم أوردر عشوائي وإرسال الواتساب ---
         function sendOrderToWhatsApp() {
             if (cartItems.length === 0) {
                 alert("السلة فاضية يا فنان!");
                 return;
             }
-            let message = "أهلاً ديسينا، محتاج أطلب:\n\n";
+            
+            // توليد رقم أوردر عشوائي DS-XXXX
+            const randomNum = Math.floor(1000 + Math.random() * 9000);
+            const orderID = "DS-" + randomNum;
+
+            let message = `طلب جديد من ديسينا 🚀\n`;
+            message += `رقم الأوردر: ${orderID}\n`;
+            message += `--------------------------\n`;
             cartItems.forEach((item, index) => message += `${index + 1}- ${item}\n`);
+            message += `\nجاري متابعة الأوردر..`;
+
             window.open(`https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`, '_blank');
             
-            // تصفير السلة
             cartItems = [];
             badge.style.display = 'none';
         }
 
-        // --- 4. نظام الجاليري ---
+        // --- وظيفة البحث ---
+        function filterProducts() {
+            const input = document.getElementById('searchInput').value.toLowerCase();
+            const items = document.getElementsByClassName('product-item');
+            
+            for (let i = 0; i < items.length; i++) {
+                const name = items[i].getElementsByClassName('product-name')[0].innerText.toLowerCase();
+                if (name.includes(input)) {
+                    items[i].style.display = "";
+                } else {
+                    items[i].style.display = "none";
+                }
+            }
+        }
+
         let currentIndex = 0;
         const lightbox = document.getElementById('lightbox');
         const lightboxImg = document.getElementById('lightbox-img');
