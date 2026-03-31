@@ -12,6 +12,9 @@
     
     <style>
         body { font-family: 'Cairo', sans-serif; background-color: #f8f9fa; -webkit-user-select: none; user-select: none; scroll-behavior: smooth; }
+        img { pointer-events: none; -webkit-user-drag: none; }
+        
+        /* Card Design */
         .store-card { background: white; border-radius: 20px; overflow: hidden; transition: 0.4s; border: 1px solid #eee; cursor: pointer; }
         .store-card:hover { transform: translateY(-5px); box-shadow: 0 10px 20px rgba(0,0,0,0.05); }
         .product-img-container { width: 100%; height: 200px; background: #fff; display: flex; align-items: center; justify-content: center; overflow: hidden; position: relative; }
@@ -22,31 +25,33 @@
         /* Search & Filter */
         .search-container { max-width: 600px; margin: 20px auto 10px; position: relative; padding: 0 15px; }
         .search-input { width: 100%; padding: 12px 45px 12px 20px; border-radius: 50px; border: 2px solid #eee; outline: none; transition: 0.3s; }
+        .search-input:focus { border-color: #ef4444; }
         .filter-btn { padding: 8px 20px; border-radius: 50px; background: white; border: 1px solid #ddd; font-weight: bold; font-size: 13px; transition: 0.3s; }
         .filter-btn.active { background: #ef4444; color: white; border-color: #ef4444; }
 
-        /* Review Section Styling */
-        .review-card { background: #ffffff; border-radius: 25px; padding: 30px; border: 1px solid #f0f0f0; box-shadow: 0 10px 30px rgba(0,0,0,0.03); transition: 0.3s; }
-        .review-card:hover { transform: scale(1.02); }
-        .add-review-btn { background: #ef4444; color: white; padding: 10px 25px; border-radius: 50px; font-weight: bold; transition: 0.3s; box-shadow: 0 5px 15px rgba(239, 68, 68, 0.3); }
-        .add-review-btn:hover { transform: scale(1.05); background: #dc2626; }
+        /* Luxury Review Style */
+        .star-gold { color: #FFD700 !important; text-shadow: 0 0 8px rgba(255, 215, 0, 0.4); }
+        .review-card { background: #ffffff; border-radius: 25px; padding: 30px; border: none; box-shadow: 0 10px 30px rgba(0,0,0,0.03); transition: 0.4s; }
+        .review-card:hover { transform: translateY(-5px); box-shadow: 0 15px 35px rgba(0,0,0,0.06); }
+        .add-review-btn { background: linear-gradient(45deg, #ef4444, #b91c1c); color: white; padding: 12px 30px; border-radius: 50px; font-weight: bold; transition: 0.3s; box-shadow: 0 5px 15px rgba(239, 68, 68, 0.3); }
 
         /* Modal Popup */
-        #review-modal { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.7); z-index: 10001; align-items: center; justify-content: center; padding: 20px; }
-        .modal-content { background: white; width: 100%; max-width: 450px; padding: 30px; border-radius: 30px; position: relative; }
-        .star-rating i { cursor: pointer; font-size: 24px; color: #ddd; transition: 0.2s; }
-        .star-rating i.active { color: #facc15; }
+        #review-modal { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.8); z-index: 10001; align-items: center; justify-content: center; padding: 20px; backdrop-filter: blur(5px); }
+        .modal-content { background: white; width: 100%; max-width: 450px; padding: 35px; border-radius: 30px; position: relative; animation: popIn 0.3s ease; }
+        @keyframes popIn { from { transform: scale(0.9); opacity: 0; } to { transform: scale(1); opacity: 1; } }
+        .star-rating i { cursor: pointer; font-size: 26px; color: #ddd; transition: 0.2s; }
 
-        #lightbox { display: none; position: fixed; z-index: 10000; top: 0; left: 0; width: 100%; height: 100%; background-color: rgba(0, 0, 0, 0.95); justify-content: center; align-items: center; }
+        /* Misc */
+        #lightbox { display: none; position: fixed; z-index: 10000; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.95); justify-content: center; align-items: center; }
         #lightbox.active { display: flex; }
-        #lightbox-img { max-width: 90%; max-height: 75%; border-radius: 15px; object-fit: contain; }
-        #toast { display: none; position: fixed; top: 20px; left: 50%; transform: translateX(-50%); background-color: #10b981; color: white; padding: 10px 25px; border-radius: 50px; z-index: 9999; }
-        #toast.active { display: block; }
+        #toast { display: none; position: fixed; top: 20px; left: 50%; transform: translateX(-50%); background: #10b981; color: white; padding: 12px 30px; border-radius: 50px; z-index: 9999; font-weight: bold; box-shadow: 0 5px 15px rgba(0,0,0,0.1); }
+        #toast.active { display: block; animation: slideDown 0.4s ease; }
+        @keyframes slideDown { from { top: -60px; } to { top: 20px; } }
     </style>
 </head>
 <body>
 
-    <div id="toast">تم إضافة المنتج للسلة!</div>
+    <div id="toast">تم إضافة الموديل للسلة! ✅</div>
 
     <nav class="bg-white shadow-sm p-4 sticky top-0 z-50">
         <div class="container mx-auto flex justify-between items-center px-2">
@@ -66,34 +71,43 @@
         <i class="fas fa-search absolute right-8 top-1/2 -translate-y-1/2 text-gray-400"></i>
     </div>
 
-    <div class="flex flex-wrap justify-center gap-3 mb-8 px-4">
+    <div class="flex flex-wrap justify-center gap-3 mb-10 px-4">
         <button class="filter-btn active" onclick="setCategory('all', this)">كل الموديلات</button>
         <button class="filter-btn" onclick="setCategory('summer', this)">موديلات صيفية</button>
         <button class="filter-btn" onclick="setCategory('winter', this)">موديلات شتوية</button>
     </div>
 
-    <div class="container mx-auto py-2 px-4">
+    <div class="container mx-auto py-2 px-4 mb-20">
         <div id="product-grid" class="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-8 min-h-[300px]"></div>
     </div>
 
-    <section class="bg-gray-50 py-20 px-4 border-t">
+    <section class="bg-gray-50 py-24 px-4 border-t border-gray-100 overflow-hidden">
         <div class="container mx-auto">
-            <div class="text-center mb-12">
-                <h2 class="text-3xl md:text-4xl font-bold mb-4 text-gray-800">ماذا قالوا عن ديسينا؟ ⭐</h2>
-                <button class="add-review-btn mt-4" onclick="toggleReviewModal(true)">أضف تقييمك الآن</button>
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-5xl font-extrabold mb-4 text-gray-900">
+                    <span class="text-red-600">DeSina</span> في عيون عملائنا ⭐
+                </h2>
+                <p class="text-gray-500 font-medium">نعتز بثقتكم ونسعى دائماً لتقديم الأفضل</p>
+                <button class="add-review-btn mt-8" onclick="toggleReviewModal(true)">أضف تجربتك معنا</button>
             </div>
             
             <div class="swiper mySwiper px-4">
                 <div class="swiper-wrapper">
                     <div class="swiper-slide review-card text-center">
-                        <div class="text-yellow-400 mb-4 text-lg"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
-                        <p class="text-gray-600 italic">"الخامة ممتازة جداً والتوصيل كان سريع، فعلاً ديسينا براند محترم."</p>
-                        <h4 class="mt-6 font-bold text-gray-900">- أحمد محمود</h4>
+                        <div class="flex justify-center mb-5 star-gold text-xl">
+                            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                        </div>
+                        <p class="text-gray-700 italic leading-relaxed text-lg">"الخامة ممتازة جداً والتوصيل كان سريع، فعلاً ديسينا براند محترم ويستحق الثقة."</p>
+                        <h4 class="mt-8 font-bold text-gray-900">أحمد محمود</h4>
+                        <span class="text-[10px] text-gray-400 font-bold uppercase tracking-widest">Verified Purchase</span>
                     </div>
                     <div class="swiper-slide review-card text-center">
-                        <div class="text-yellow-400 mb-4 text-lg"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
-                        <p class="text-gray-600 italic">"التصميم شيك جداً وفي الحقيقة أحلى من الصور بكتير، جودة مشرفة."</p>
-                        <h4 class="mt-6 font-bold text-gray-900">- سارة علي</h4>
+                        <div class="flex justify-center mb-5 star-gold text-xl">
+                            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                        </div>
+                        <p class="text-gray-700 italic leading-relaxed text-lg">"التصميم شيك جداً وفي الحقيقة أحلى من الصور بكتير، جودة مشرفة فعلاً."</p>
+                        <h4 class="mt-8 font-bold text-gray-900">سارة علي</h4>
+                        <span class="text-[10px] text-gray-400 font-bold uppercase tracking-widest">Verified Purchase</span>
                     </div>
                 </div>
                 <div class="swiper-pagination"></div>
@@ -103,21 +117,21 @@
 
     <div id="review-modal">
         <div class="modal-content">
-            <i class="fas fa-times absolute left-6 top-6 text-gray-400 cursor-pointer" onclick="toggleReviewModal(false)"></i>
+            <i class="fas fa-times absolute left-6 top-6 text-gray-400 cursor-pointer text-xl" onclick="toggleReviewModal(false)"></i>
             <h3 class="text-2xl font-bold mb-6 text-center">تقييمك يهمنا ✍️</h3>
-            <div class="space-y-4">
-                <input type="text" id="revName" placeholder="اسمك الكريم" class="w-full border-2 p-3 rounded-2xl outline-none focus:border-red-500">
+            <div class="space-y-5">
+                <input type="text" id="revName" placeholder="اسمك الكريم" class="w-full border-2 p-3 rounded-2xl outline-none focus:border-red-500 transition-all">
                 <div class="star-rating flex justify-center gap-2 py-2" id="starContainer">
                     <i class="fas fa-star" data-val="1"></i><i class="fas fa-star" data-val="2"></i><i class="fas fa-star" data-val="3"></i><i class="fas fa-star" data-val="4"></i><i class="fas fa-star" data-val="5"></i>
                 </div>
-                <textarea id="revMsg" placeholder="ما هو رأيك في منتجاتنا؟" class="w-full border-2 p-3 rounded-2xl outline-none focus:border-red-500 h-24"></textarea>
-                <button onclick="submitReview()" class="w-full bg-green-500 text-white py-4 rounded-2xl font-bold">إرسال التقييم عبر واتساب</button>
+                <textarea id="revMsg" placeholder="ما هو رأيك في منتجاتنا؟" class="w-full border-2 p-3 rounded-2xl outline-none focus:border-red-500 h-28 transition-all"></textarea>
+                <button onclick="submitReview()" class="w-full bg-green-500 text-white py-4 rounded-2xl font-bold shadow-lg hover:bg-green-600 transition-all">إرسال التقييم عبر واتساب</button>
             </div>
         </div>
     </div>
 
     <div id="lightbox" onclick="closeLightbox()">
-        <img id="lightbox-img" src="">
+        <img id="lightbox-img" src="" class="max-w-[90%] max-h-[80%] rounded-xl shadow-2xl">
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
@@ -128,6 +142,7 @@
         const grid = document.getElementById('product-grid');
         let currentFilter = 'all';
 
+        // 1. عرض المنتجات
         function displayProducts() {
             grid.innerHTML = "";
             const search = document.getElementById('searchInput').value.toLowerCase();
@@ -136,7 +151,7 @@
                 const category = (i % 2 === 0) ? 'winter' : 'summer';
                 if ((currentFilter === 'all' || category === currentFilter) && modelName.toLowerCase().includes(search)) {
                     grid.innerHTML += `
-                        <div class="store-card product-item" onclick="openLightbox('cod${i}.jpeg')">
+                        <div class="store-card" onclick="openLightbox('cod${i}.jpeg')">
                             <div class="product-img-container"><img src="cod${i}.jpeg" class="product-img"></div>
                             <div class="p-4 text-right">
                                 <h3 class="text-xs md:text-sm font-bold text-gray-800 mb-1">${modelName}</h3>
@@ -156,26 +171,28 @@
             displayProducts();
         }
 
+        // 2. نظام السلة ورقم الأوردر
         let cartItems = [];
         function addToCart(name, e) {
             e.stopPropagation();
             cartItems.push(name);
-            document.getElementById('cart-badge').innerText = cartItems.length;
-            document.getElementById('cart-badge').style.display = 'block';
+            const b = document.getElementById('cart-badge');
+            b.innerText = cartItems.length;
+            b.style.display = 'block';
             const t = document.getElementById('toast');
             t.classList.add('active');
-            setTimeout(() => t.classList.remove('active'), 2000);
+            setTimeout(() => t.classList.remove('active'), 2500);
         }
 
         function sendOrderToWhatsApp() {
-            if (cartItems.length === 0) return alert("السلة فاضية!");
+            if (cartItems.length === 0) return alert("السلة فارغة!");
             const id = "DS-" + Math.floor(1000 + Math.random() * 9000);
-            let msg = `طلب جديد: ${id}\n----------\n` + cartItems.join("\n");
+            let msg = `طلب جديد من ديسينا 🚀\nرقم الأوردر: ${id}\n----------\n` + cartItems.map((v,i) => `${i+1}- ${v}`).join("\n");
             window.open(`https://wa.me/${phoneNumber}?text=${encodeURIComponent(msg)}`, '_blank');
             cartItems = []; document.getElementById('cart-badge').style.display = 'none';
         }
 
-        // Review System
+        // 3. نظام التقييمات
         let selectedStars = 5;
         function toggleReviewModal(show) { document.getElementById('review-modal').style.display = show ? 'flex' : 'none'; }
         
@@ -183,7 +200,13 @@
             star.onclick = function() {
                 selectedStars = this.getAttribute('data-val');
                 document.querySelectorAll('#starContainer i').forEach((s, idx) => {
-                    s.classList.toggle('active', idx < selectedStars);
+                    if(idx < selectedStars) {
+                        s.classList.add('star-gold');
+                        s.style.color = '#FFD700';
+                    } else {
+                        s.classList.remove('star-gold');
+                        s.style.color = '#ddd';
+                    }
                 });
             }
         });
@@ -191,16 +214,24 @@
         function submitReview() {
             const name = document.getElementById('revName').value;
             const msg = document.getElementById('revMsg').value;
-            if (!name || !msg) return alert("من فضلك اكمل البيانات");
-            let finalMsg = `تقييم جديد من عميل ⭐\nالاسم: ${name}\nالتقييم: ${selectedStars} نجوم\nالرأي: ${msg}`;
+            if (!name || !msg) return alert("يرجى ملء جميع الخانات");
+            let finalMsg = `مراجعة جديدة لـ DeSina ⭐\nالاسم: ${name}\nالتقييم: ${selectedStars} نجوم\nالرأي: ${msg}`;
             window.open(`https://wa.me/${phoneNumber}?text=${encodeURIComponent(finalMsg)}`, '_blank');
             toggleReviewModal(false);
         }
 
-        function openLightbox(src) { document.getElementById('lightbox-img').src = src; document.getElementById('lightbox').classList.add('active'); }
-        function closeLightbox() { document.getElementById('lightbox').classList.remove('active'); }
+        // 4. Lightbox & Swiper
+        function openLightbox(src) { document.getElementById('lightbox-img').src = src; document.getElementById('lightbox').classList.add('active'); document.body.style.overflow='hidden'; }
+        function closeLightbox() { document.getElementById('lightbox').classList.remove('active'); document.body.style.overflow='auto'; }
 
-        new Swiper(".mySwiper", { slidesPerView: 1, spaceBetween: 20, loop: true, autoplay: { delay: 3000 }, pagination: { el: ".swiper-pagination", clickable: true }, breakpoints: { 768: { slidesPerView: 3 } } });
+        new Swiper(".mySwiper", { 
+            slidesPerView: 1, 
+            spaceBetween: 30, 
+            loop: true, 
+            autoplay: { delay: 3500 }, 
+            pagination: { el: ".swiper-pagination", clickable: true }, 
+            breakpoints: { 768: { slidesPerView: 2 }, 1024: { slidesPerView: 3 } } 
+        });
     </script>
 </body>
 </html>
