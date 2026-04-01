@@ -178,9 +178,26 @@
 
         let cart = [];
         function addToCart(n) { cart.push(n); const b = document.getElementById('cart-badge'); b.innerText = cart.length; b.style.display = 'block'; }
+        
+        // الدالة المعدلة برقم الأوردر العشوائي
         function sendOrderToWhatsApp() {
             if (cart.length === 0) return alert("Cart empty");
-            window.open(`https://wa.me/201001283311?text=${encodeURIComponent("Order:\n"+cart.join("\n"))}`, '_blank');
+
+            // توليد رقم أوردر عشوائي يبدأ بـ DS
+            const orderNumber = "DS-" + Math.floor(1000 + Math.random() * 9000);
+            
+            let orderDetails = "🚀 New Order from DeSina\n";
+            orderDetails += "Order ID: " + orderNumber + "\n";
+            orderDetails += "--------------------------\n";
+            
+            cart.forEach((item, index) => {
+                orderDetails += `${index + 1}- ${item}\n`;
+            });
+            
+            orderDetails += "--------------------------\n";
+            orderDetails += "Processing your order..";
+
+            window.open(`https://wa.me/201001283311?text=${encodeURIComponent(orderDetails)}`, '_blank');
         }
 
         new Swiper(".mySwiper", {
