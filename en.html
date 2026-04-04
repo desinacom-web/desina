@@ -278,19 +278,6 @@
         
         bgAudio.volume = 0.3;
 
-        // Pro Unlock for iOS: Unlock audio path on first interaction
-        function unlockAudio() {
-            bgAudio.play().then(() => {
-                bgAudio.pause();
-                bgAudio.currentTime = 0;
-            }).catch(e => console.log("Waiting for user touch..."));
-            
-            document.removeEventListener('touchstart', unlockAudio);
-            document.removeEventListener('click', unlockAudio);
-        }
-        document.addEventListener('touchstart', unlockAudio);
-        document.addEventListener('click', unlockAudio);
-
         // Smart Loop logic to remove MP3 gap
         bgAudio.addEventListener('timeupdate', function() {
             var buffer = 0.44; 
@@ -300,13 +287,13 @@
             }
         });
 
+        // Unified Music Controller for EN (iPhone Optimized)
         musicToggle.addEventListener('click', function() {
             if (bgAudio.paused) {
-                // Direct play for Safari/iOS compatibility
                 bgAudio.play().then(() => {
                     musicIcon.classList.remove('fa-music');
                     musicIcon.classList.add('fa-pause');
-                    musicToggle.style.background = '#22c55e'; 
+                    musicToggle.style.backgroundColor = '#22c55e'; // Green when playing
                 }).catch(error => {
                     console.log("Playback prevented:", error);
                 });
@@ -314,7 +301,7 @@
                 bgAudio.pause();
                 musicIcon.classList.remove('fa-pause');
                 musicIcon.classList.add('fa-music');
-                musicToggle.style.background = '#111'; 
+                musicToggle.style.backgroundColor = '#111'; // Black when paused
             }
         });
     </script>
