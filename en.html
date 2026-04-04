@@ -251,6 +251,7 @@
     </footer>
 
     <script>
+        // Mobile Menu Logic
         const burgerBtn = document.getElementById('burger-btn');
         const mobileMenu = document.getElementById('mobile-menu');
         const menuItems = document.querySelectorAll('.menu-item');
@@ -272,31 +273,30 @@
             }
         });
 
-        const musicToggle = document.getElementById('music-toggle');
-        const musicIcon = document.getElementById('music-icon');
-        const bgAudio = document.getElementById('bg-audio');
-        bgAudio.volume = 0.3;
-
-        // Unified control function called from HTML
+        // --- DeSina Advanced Audio Controller ---
         function handleMusicToggle() {
-            if (bgAudio.paused) {
-                bgAudio.play().then(() => {
-                    musicIcon.classList.remove('fa-music');
-                    musicIcon.classList.add('fa-pause');
-                    musicToggle.style.backgroundColor = '#22c55e'; // Green
+            const audio = document.getElementById('bg-audio');
+            const btn = document.getElementById('music-toggle');
+            const icon = document.getElementById('music-icon');
+            
+            if (audio.paused) {
+                audio.play().then(() => {
+                    icon.className = 'fas fa-pause';
+                    btn.style.backgroundColor = '#22c55e'; // Immediate visual feedback
+                    audio.volume = 0.3;
                 }).catch(error => {
                     console.log("Playback prevented:", error);
                 });
             } else {
-                bgAudio.pause();
-                musicIcon.classList.remove('fa-pause');
-                musicIcon.classList.add('fa-music');
-                musicToggle.style.backgroundColor = '#111'; // Black
+                audio.pause();
+                icon.className = 'fas fa-music';
+                btn.style.backgroundColor = '#111'; // Switch back to black
             }
         }
 
-        // Smooth loop for MP3
-        bgAudio.addEventListener('timeupdate', function() {
+        // Seamless Audio Loop
+        const audioEl = document.getElementById('bg-audio');
+        audioEl.addEventListener('timeupdate', function() {
             var buffer = 0.44; 
             if(this.currentTime > this.duration - buffer){
                 this.currentTime = 0;
