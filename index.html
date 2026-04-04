@@ -263,20 +263,7 @@
         
         bgAudio.volume = 0.3;
 
-        // الحل القاتل للأيفون: فك الحظر بمجرد أول لمسة للشاشة
-        function unlockAudio() {
-            bgAudio.play().then(() => {
-                bgAudio.pause();
-                bgAudio.currentTime = 0;
-            }).catch(e => console.log("Audio waiting for user interaction"));
-            
-            document.removeEventListener('touchstart', unlockAudio);
-            document.removeEventListener('click', unlockAudio);
-        }
-        document.addEventListener('touchstart', unlockAudio);
-        document.addEventListener('click', unlockAudio);
-
-        // حل ذكي لمشكلة التكة في ملفات الـ MP3
+        // حل ذكي لمنع التكة في الـ MP3
         bgAudio.addEventListener('timeupdate', function() {
             var buffer = 0.44; 
             if(this.currentTime > this.duration - buffer){
@@ -285,20 +272,22 @@
             }
         });
 
+        // الوظيفة الموحدة للأيفون: الزرار هو اللي بيفك القفل ويشغل فوراً
         musicToggle.addEventListener('click', function() {
             if (bgAudio.paused) {
+                // محاولة التشغيل المباشرة (ده بيفك قفل Safari في الأيفون)
                 bgAudio.play().then(() => {
                     musicIcon.classList.remove('fa-music');
                     musicIcon.classList.add('fa-pause');
-                    musicToggle.style.background = '#22c55e'; 
+                    musicToggle.style.backgroundColor = '#22c55e'; // قلب أخضر عند العمل
                 }).catch(error => {
-                    console.log("Playback prevented:", error);
+                    console.log("Playback blocked:", error);
                 });
             } else {
                 bgAudio.pause();
                 musicIcon.classList.remove('fa-pause');
                 musicIcon.classList.add('fa-music');
-                musicToggle.style.background = '#111'; 
+                musicToggle.style.backgroundColor = '#111'; // رجع أسود عند التوقف
             }
         });
     </script>
