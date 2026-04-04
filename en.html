@@ -277,34 +277,14 @@
         
         bgAudio.volume = 0.3;
 
-        // "The Magic Unlocker" for iOS - Unlocks audio on first user interaction
-        function unlockAudio() {
-            bgAudio.play().then(() => {
-                bgAudio.pause();
-                bgAudio.currentTime = 0;
-            }).catch(e => console.log("Audio ready for interaction"));
-            document.removeEventListener('touchstart', unlockAudio);
-            document.removeEventListener('click', unlockAudio);
-        }
-        document.addEventListener('touchstart', unlockAudio);
-        document.addEventListener('click', unlockAudio);
-
-        // Smart Loop logic to remove MP3 gap
-        bgAudio.addEventListener('timeupdate', function() {
-            var buffer = 0.44; 
-            if(this.currentTime > this.duration - buffer){
-                this.currentTime = 0;
-                this.play();
-            }
-        });
-
-        // Main Controller
+        // Unified Controller: One click to rule them all (Works for Windows & iOS)
         musicToggle.addEventListener('click', function() {
             if (bgAudio.paused) {
+                // This direct call is the "User Interaction" required by modern browsers
                 bgAudio.play().then(() => {
                     musicIcon.classList.remove('fa-music');
                     musicIcon.classList.add('fa-pause');
-                    musicToggle.style.backgroundColor = '#22c55e'; // Green when playing
+                    musicToggle.style.backgroundColor = '#22c55e'; // Green
                 }).catch(error => {
                     console.log("Playback prevented:", error);
                 });
@@ -312,7 +292,16 @@
                 bgAudio.pause();
                 musicIcon.classList.remove('fa-pause');
                 musicIcon.classList.add('fa-music');
-                musicToggle.style.backgroundColor = '#111'; // Black when paused
+                musicToggle.style.backgroundColor = '#111'; // Black
+            }
+        });
+
+        // Smart Loop logic to remove MP3 gap
+        bgAudio.addEventListener('timeupdate', function() {
+            var buffer = 0.44; 
+            if(this.currentTime > this.duration - buffer){
+                this.currentTime = 0;
+                this.play();
             }
         });
     </script>
