@@ -18,7 +18,7 @@
     /></noscript>
     <meta charset="UTF-8">
     <meta name="google" content="notranslate">
-<meta http-equiv="Content-Language" content="en">
+    <meta http-equiv="Content-Language" content="en">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>About Us | DeSina</title>
     <link rel="icon" type="image/jpeg" href="logo.jpg">
@@ -26,17 +26,33 @@
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
-        body { font-family: 'Cairo', sans-serif; background-color: #f9fafb; scroll-behavior: smooth; }
-        .nav-link { color: #374151; font-weight: bold; transition: 0.3s; }
+        :root { --bg-body: #f9fafb; --bg-nav: #ffffff; --text-main: #1f2937; --text-muted: #4b5563; --border-color: #e5e7eb; }
+        
+        @media (prefers-color-scheme: dark) {
+            :root { --bg-body: #0a0c10; --bg-nav: #111111; --text-main: #f3f4f6; --text-muted: #9ca3af; --border-color: #30363d; }
+        }
+
+        body { font-family: 'Cairo', sans-serif; background-color: var(--bg-body); color: var(--text-main); scroll-behavior: smooth; transition: background-color 0.4s, color 0.4s; }
+        
+        nav { background-color: var(--bg-nav) !important; transition: background-color 0.4s; }
+        .nav-link { color: var(--text-main); font-weight: bold; transition: 0.3s; }
         .nav-link:hover { color: #ef4444; }
+        
+        .border-sep { border-color: var(--border-color) !important; }
+        .text-gray-600, .text-gray-700 { color: var(--text-muted) !important; }
+
+        @media (prefers-color-scheme: dark) {
+            header.bg-gray-900 { background-color: #000000 !important; }
+            .bg-white { background-color: var(--bg-nav) !important; }
+        }
     </style>
 </head>
 <body>
-    <nav class="bg-white shadow-md p-3 sticky top-0 z-50">
+    <nav class="shadow-md p-3 sticky top-0 z-50">
         <div class="container mx-auto flex justify-between items-center px-4">
             <div class="flex items-center gap-6">
                 <img src="logo.jpg" class="h-10 rounded-lg">
-                <div class="hidden md:flex items-center gap-8 border-l-2 pl-6 border-gray-200">
+                <div class="hidden md:flex items-center gap-8 border-l-2 pl-6 border-sep">
                     <a href="en.html" class="nav-link">Home</a>
                     <a href="en-catalog.html" class="nav-link">Catalog</a>
                 </div>
@@ -45,7 +61,7 @@
         </div>
     </nav>
 
-    <header class="bg-gray-900 py-16 text-center text-white px-4 border-b-4 border-red-600">
+    <header class="bg-gray-900 py-16 text-center text-white px-4 border-b-4 border-red-600 transition-colors">
         <h1 class="text-4xl md:text-6xl font-extrabold mb-4">About <span class="text-red-600">DeSina</span></h1>
         <p class="text-gray-300 text-lg md:text-xl max-w-2xl mx-auto">We blend fashion elegance with digital innovation to create a unique identity for your brand.</p>
     </header>
@@ -54,22 +70,22 @@
         <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
             <div>
                 <h2 class="text-3xl font-bold mb-6 border-l-4 border-red-600 pl-4">Our Vision</h2>
-                <p class="text-gray-600 text-lg leading-relaxed mb-6">At DeSina, we strive to be the leading partner for brands seeking excellence in both the industrial fashion world and the digital marketing sphere.</p>
+                <p class="text-lg leading-relaxed mb-6">At DeSina, we strive to be the leading partner for brands seeking excellence in both the industrial fashion world and the digital marketing sphere.</p>
                 <h2 class="text-3xl font-bold mb-6 border-l-4 border-red-600 pl-4">What We Do</h2>
-                <ul class="space-y-4 text-gray-700">
+                <ul class="space-y-4">
                     <li><i class="fas fa-check text-red-600 mr-2"></i> High-end Fashion Design & Production.</li>
                     <li><i class="fas fa-check text-red-600 mr-2"></i> Professional Social Media Management.</li>
                     <li><i class="fas fa-check text-red-600 mr-2"></i> Cinematic Video Editing & Content Creation.</li>
                 </ul>
             </div>
-            <div class="rounded-3xl overflow-hidden shadow-2xl">
+            <div class="rounded-3xl overflow-hidden shadow-2xl border-2 border-sep transition-colors">
                 <img src="logo.jpg" class="w-full h-full object-cover">
             </div>
         </div>
     </section>
 
-    <footer class="bg-gray-950 text-white py-12 text-center">
-        <p class="text-gray-500">DeSina Company © 2026 | All Rights Reserved</p>
+    <footer class="bg-gray-950 text-white py-12 text-center border-t border-gray-800">
+        <p class="text-gray-500 font-bold">DeSina Company © 2026 | All Rights Reserved</p>
     </footer>
 </body>
 </html>
