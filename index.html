@@ -263,6 +263,19 @@
         
         bgAudio.volume = 0.3;
 
+        // الحل القاتل للأيفون: فك الحظر بمجرد أول لمسة للشاشة
+        function unlockAudio() {
+            bgAudio.play().then(() => {
+                bgAudio.pause();
+                bgAudio.currentTime = 0;
+            }).catch(e => console.log("Audio waiting for user interaction"));
+            
+            document.removeEventListener('touchstart', unlockAudio);
+            document.removeEventListener('click', unlockAudio);
+        }
+        document.addEventListener('touchstart', unlockAudio);
+        document.addEventListener('click', unlockAudio);
+
         // حل ذكي لمشكلة التكة في ملفات الـ MP3
         bgAudio.addEventListener('timeupdate', function() {
             var buffer = 0.44; 
@@ -274,7 +287,6 @@
 
         musicToggle.addEventListener('click', function() {
             if (bgAudio.paused) {
-                // أمر تشغيل مباشر متوافق مع متصفحات الأيفون (Safari)
                 bgAudio.play().then(() => {
                     musicIcon.classList.remove('fa-music');
                     musicIcon.classList.add('fa-pause');
