@@ -170,6 +170,11 @@
             <img src="logo.jpg" class="hero-logo">
             <h1 class="text-4xl md:text-7xl font-extrabold mb-6">Welcome to <span class="text-red-600">DeSina</span></h1>
             <p class="text-xl md:text-2xl text-gray-300 mb-12 font-bold">Blending elegance and innovation in fashion and digital services.</p>
+            <div class="flex flex-wrap justify-center gap-4">
+                <a href="https://www.facebook.com/egy.desina" target="_blank" class="bg-blue-600 px-8 py-3 rounded-full font-bold flex items-center gap-3 shadow-lg hover:bg-blue-700 transition"><i class="fab fa-facebook"></i> Facebook</a>
+                <a href="https://www.instagram.com/de__sina" target="_blank" class="bg-gradient-to-r from-purple-500 to-yellow-500 px-8 py-3 rounded-full font-bold flex items-center gap-3 shadow-lg hover:opacity-90 transition"><i class="fab fa-instagram"></i> Instagram</a>
+                <a href="https://youtube.com/@de_sina" target="_blank" class="bg-red-600 px-8 py-3 rounded-full font-bold flex items-center gap-3 shadow-lg hover:bg-red-700 transition"><i class="fab fa-youtube"></i> YouTube</a>
+            </div>
         </div>
     </section>
 
@@ -180,6 +185,17 @@
                 <div class="p-8 rounded-2xl shadow-lg service-card"><i class="fas fa-bullhorn text-5xl text-red-600 mb-6"></i><h3 class="text-2xl font-bold mb-4 text-gray-800">Account Management</h3><p class="text-gray-600">Managing your platforms professionally to boost engagement.</p></div>
                 <div class="p-8 rounded-2xl shadow-lg service-card"><i class="fas fa-pen-nib text-5xl text-red-600 mb-6"></i><h3 class="text-2xl font-bold mb-4 text-gray-800">Content Creation</h3><p class="text-gray-600">Creating visual and written content that captures your brand identity.</p></div>
                 <div class="p-8 rounded-2xl shadow-lg service-card"><i class="fas fa-video text-5xl text-red-600 mb-6"></i><h3 class="text-2xl font-bold mb-4 text-gray-800">Video Editing</h3><p class="text-gray-600">Transforming your footage into cinematic videos for all platforms.</p></div>
+            </div>
+        </div>
+    </section>
+
+    <section id="industrial-services" class="py-20 bg-white px-6 text-center">
+        <div class="container mx-auto">
+            <h2 class="text-3xl md:text-5xl font-bold mb-16 border-b-4 border-red-600 inline-block pb-2">Industrial Services</h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-10">
+                <div class="p-8 rounded-2xl shadow-lg service-card"><i class="fas fa-palette text-5xl text-red-600 mb-6"></i><h3 class="text-2xl font-bold mb-4 text-gray-800">Fashion Design</h3><p class="text-gray-600">Innovative fashion designs that meet our clients' aspirations.</p></div>
+                <div class="p-8 rounded-2xl shadow-lg service-card"><i class="fas fa-industry text-5xl text-red-600 mb-6"></i><h3 class="text-2xl font-bold mb-4 text-gray-800">Clothing Production</h3><p class="text-gray-600">Comprehensive production solutions from cutting to final assembly.</p></div>
+                <div class="p-8 rounded-2xl shadow-lg service-card"><i class="fas fa-check-circle text-5xl text-red-600 mb-6"></i><h3 class="text-2xl font-bold mb-4 text-gray-800">Quality Control</h3><p class="text-gray-600">Ensuring high quality through rigorous inspection standards.</p></div>
             </div>
         </div>
     </section>
@@ -200,7 +216,34 @@
                         <i class="fas fa-phone-alt text-red-600 text-sm"></i>
                         <span class="text-lg">+20 100 128 3311</span>
                     </div>
+                    <div class="flex items-center gap-2">
+                        <i class="fas fa-phone-alt text-red-600 text-sm"></i>
+                        <span class="text-lg">+20 111 568 0003</span>
+                    </div>
                 </div>
+                <div class="flex flex-col items-center md:items-start gap-1 mt-2">
+                    <div class="flex items-center gap-2">
+                        <i class="fas fa-envelope text-red-600"></i>
+                        <span class="text-gray-300 text-sm">info@desina.net</span>
+                    </div>
+                    <div class="flex items-center gap-2">
+                        <i class="fas fa-envelope text-red-600"></i>
+                        <span class="text-gray-300 text-sm">desina.com@gmail.com</span>
+                    </div>
+                </div>
+                <a href="https://maps.app.goo.gl/WBfgP3kfhdrsG4Jv6" target="_blank" class="mt-4 flex items-center gap-2 text-red-500 font-bold hover:text-white transition-all group">
+                    <i class="fas fa-location-arrow animate-bounce"></i>
+                    <span class="border-b border-red-500 group-hover:border-white">Find us on map</span>
+                </a>
+            </div>
+            <div class="flex flex-col items-center md:items-start">
+                <h4 class="text-xl font-bold mb-4 text-white">Quick Links</h4>
+                <a href="en-privacy.html" class="text-gray-400 hover:text-red-500 mb-2 transition-colors flex items-center gap-2">
+                    <i class="fas fa-shield-alt text-xs"></i> Privacy Policy
+                </a>
+                <a href="en-about.html" class="text-gray-400 hover:text-red-500 transition-colors flex items-center gap-2">
+                    <i class="fas fa-info-circle text-xs"></i> About Us
+                </a>
             </div>
         </div>
         <p class="mt-10 text-center text-gray-600 text-sm font-bold">All rights reserved to DeSina © 2026</p>
@@ -231,21 +274,22 @@
         const musicToggle = document.getElementById('music-toggle');
         const musicIcon = document.getElementById('music-icon');
         const bgAudio = document.getElementById('bg-audio');
+        
         bgAudio.volume = 0.3;
 
-        // "The Magic Unlocker" for iOS
+        // "The Magic Unlocker" for iOS - Unlocks audio on first user interaction
         function unlockAudio() {
             bgAudio.play().then(() => {
                 bgAudio.pause();
                 bgAudio.currentTime = 0;
-            }).catch(e => console.log("Audio waiting..."));
+            }).catch(e => console.log("Audio ready for interaction"));
             document.removeEventListener('touchstart', unlockAudio);
             document.removeEventListener('click', unlockAudio);
         }
         document.addEventListener('touchstart', unlockAudio);
         document.addEventListener('click', unlockAudio);
 
-        // Smart Loop to prevent gap
+        // Smart Loop logic to remove MP3 gap
         bgAudio.addEventListener('timeupdate', function() {
             var buffer = 0.44; 
             if(this.currentTime > this.duration - buffer){
@@ -254,20 +298,21 @@
             }
         });
 
+        // Main Controller
         musicToggle.addEventListener('click', function() {
             if (bgAudio.paused) {
                 bgAudio.play().then(() => {
                     musicIcon.classList.remove('fa-music');
                     musicIcon.classList.add('fa-pause');
-                    musicToggle.style.backgroundColor = '#22c55e'; // Green
+                    musicToggle.style.backgroundColor = '#22c55e'; // Green when playing
                 }).catch(error => {
-                    console.log("Error:", error);
+                    console.log("Playback prevented:", error);
                 });
             } else {
                 bgAudio.pause();
                 musicIcon.classList.remove('fa-pause');
                 musicIcon.classList.add('fa-music');
-                musicToggle.style.backgroundColor = '#111'; // Black
+                musicToggle.style.backgroundColor = '#111'; // Black when paused
             }
         });
     </script>
