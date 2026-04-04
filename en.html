@@ -118,7 +118,7 @@
         <i class="fab fa-whatsapp"></i>
     </a>
 
-    <div id="music-toggle" onclick="handleMusicToggle()" ontouchstart="handleMusicToggle()">
+    <div id="music-toggle" onclick="handleMusicToggle(event)" ontouchstart="handleMusicToggle(event)">
         <i id="music-icon" class="fas fa-music"></i>
     </div>
     
@@ -273,26 +273,31 @@
             }
         });
 
-        // --- DeSina Advanced Audio Controller: iOS Fix ---
-        function handleMusicToggle() {
+        // --- Final Audio Logic: Resolving iOS Conflict & Color Reset ---
+        function handleMusicToggle(e) {
+            // Prevent double-triggering on iOS (touch + click)
+            if (e && e.type === 'touchstart') {
+                e.preventDefault();
+            }
+
             const audio = document.getElementById('bg-audio');
             const btn = document.getElementById('music-toggle');
             const icon = document.getElementById('music-icon');
             
             if (audio.paused) {
-                // 1. Immediate visual feedback (Crucial for iOS trust)
+                // Immediate green feedback
                 icon.className = 'fas fa-pause';
                 btn.style.backgroundColor = '#22c55e';
                 
-                // 2. Play command
                 audio.play().then(() => {
                     audio.volume = 0.3;
-                    console.log("Music Playing Success");
+                    console.log("DeSina Music Playing");
                 }).catch(error => {
-                    console.log("Playback blocked details:", error);
+                    console.log("Playback blocked:", error);
                 });
             } else {
                 audio.pause();
+                // Return to original black
                 icon.className = 'fas fa-music';
                 btn.style.backgroundColor = '#111';
             }
