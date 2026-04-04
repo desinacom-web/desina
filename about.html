@@ -24,64 +24,73 @@
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
-        body { font-family: 'Cairo', sans-serif; background-color: #f3f4f6; color: #1f2937; }
-        .about-card { background: white; border-radius: 24px; overflow: hidden; box-shadow: 0 20px 40px rgba(0,0,0,0.05); }
+        :root { --bg-body: #f3f4f6; --bg-card: #ffffff; --text-main: #1f2937; --text-muted: #4b5563; --bg-inner: #f9fafb; }
+        
+        @media (prefers-color-scheme: dark) {
+            :root { --bg-body: #0a0c10; --bg-card: #111827; --text-main: #f3f4f6; --text-muted: #9ca3af; --bg-inner: #1f2937; }
+        }
+
+        body { font-family: 'Cairo', sans-serif; background-color: var(--bg-body); color: var(--text-main); transition: 0.4s; }
+        .about-card { background: var(--bg-card); border-radius: 24px; overflow: hidden; box-shadow: 0 20px 40px rgba(0,0,0,0.1); }
         .red-line { height: 6px; background: linear-gradient(to left, #ef4444, #b91c1c); }
         h1, h2, h3, p { font-style: normal !important; }
+        
+        .inner-box { background-color: var(--bg-inner); }
+        .border-sep { border-color: rgba(156, 163, 175, 0.1); }
     </style>
 </head>
 <body class="py-16 px-6">
     <div class="container mx-auto max-w-5xl">
         <div class="text-center mb-12">
-            <img src="logo.jpg" class="h-20 mx-auto mb-6 rounded-2xl shadow-md border-2 border-white">
-            <h1 class="text-4xl font-extrabold text-gray-900 mb-2">حول <span class="text-red-600">DeSina</span></h1>
+            <img src="logo.jpg" class="h-20 mx-auto mb-6 rounded-2xl shadow-md border-2 border-white dark:border-gray-800 transition-colors">
+            <h1 class="text-4xl font-extrabold mb-2">حول <span class="text-red-600">DeSina</span></h1>
             <div class="w-24 h-1 bg-red-600 mx-auto rounded-full"></div>
         </div>
 
-        <div class="about-card">
+        <div class="about-card transition-colors">
             <div class="red-line"></div>
             <div class="p-8 md:p-16">
-                <div class="mb-12 border-b border-gray-100 pb-12">
+                <div class="mb-12 border-b border-sep pb-12">
                     <h2 class="text-2xl font-bold mb-6 flex items-center gap-3">
                         <i class="fas fa-history text-red-600"></i> قصتنا
                     </h2>
-                    <p class="text-gray-600 leading-relaxed text-lg">
+                    <p class="text-muted leading-relaxed text-lg">
                         بدأت رحلة **DeSina** في **مايو 2023** كعلامة تجارية مصرية طموحة تسعى لتقديم مفهوم جديد للأناقة والابتكار. لم تكن مجرد بداية في عالم الأزياء، بل كانت رؤية واضحة لدمج الجودة الصناعية بالحلول الرقمية المتطورة لمواكبة العصر.
                     </p>
                 </div>
 
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-12 mb-12 border-b border-gray-100 pb-12">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-12 mb-12 border-b border-sep pb-12">
                     <div>
-                        <h3 class="text-xl font-bold mb-4 text-gray-800 flex items-center gap-2">
+                        <h3 class="text-xl font-bold mb-4 flex items-center gap-2">
                             <i class="fas fa-eye text-red-600"></i> رؤيتنا
                         </h3>
-                        <p class="text-gray-600">نطمح لأن نكون الشريك الأول لعملائنا في رحلتهم نحو التميز، سواء من خلال التصاميم الفريدة التي نقدمها أو الحلول الرقمية التي نبتكرها لتعزيز هويتهم.</p>
+                        <p class="text-muted leading-relaxed">نطمح لأن نكون الشريك الأول لعملائنا في رحلتهم نحو التميز، سواء من خلال التصاميم الفريدة التي نقدمها أو الحلول الرقمية التي نبتكرها لتعزيز هويتهم.</p>
                     </div>
                     <div>
-                        <h3 class="text-xl font-bold mb-4 text-gray-800 flex items-center gap-2">
+                        <h3 class="text-xl font-bold mb-4 flex items-center gap-2">
                             <i class="fas fa-bullseye text-red-600"></i> مهمتنا
                         </h3>
-                        <p class="text-gray-600">توفير خدمات متكاملة تشمل إنتاج الملابس بجودة عالمية وإدارة المحتوى الرقمي باحترافية، مما يساعد شركاءنا على النمو المستدام والانتشار الواسع.</p>
+                        <p class="text-muted leading-relaxed">توفير خدمات متكاملة تشمل إنتاج الملابس بجودة عالمية وإدارة المحتوى الرقمي باحترافية، مما يساعد شركاءنا على النمو المستدام والانتشار الواسع.</p>
                     </div>
                 </div>
 
-                <div class="bg-gray-50 p-8 rounded-2xl">
+                <div class="inner-box p-8 rounded-2xl transition-colors">
                     <h2 class="text-2xl font-bold mb-8 text-center">قيمنا الأساسية</h2>
                     <div class="grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
                         <div class="p-4">
                             <i class="fas fa-award text-4xl text-red-600 mb-4"></i>
                             <h4 class="font-bold text-lg mb-2">الجودة</h4>
-                            <p class="text-sm text-gray-500">نلتزم بأعلى معايير الدقة في كل تفصيلة صناعية أو رقمية.</p>
+                            <p class="text-sm text-muted">نلتزم بأعلى معايير الدقة في كل تفصيلة صناعية أو رقمية.</p>
                         </div>
                         <div class="p-4">
                             <i class="fas fa-lightbulb text-4xl text-red-600 mb-4"></i>
                             <h4 class="font-bold text-lg mb-2">الابتكار</h4>
-                            <p class="text-sm text-gray-500">نسعى دائماً لتقديم أفكار وحلول سابقة لعصرها.</p>
+                            <p class="text-sm text-muted">نسعى دائماً لتقديم أفكار وحلول سابقة لعصرها.</p>
                         </div>
                         <div class="p-4">
                             <i class="fas fa-handshake text-4xl text-red-600 mb-4"></i>
                             <h4 class="font-bold text-lg mb-2">الشراكة</h4>
-                            <p class="text-sm text-gray-500">نؤمن أن نجاحنا الحقيقي يكمن في تحقيق أهداف عملائنا.</p>
+                            <p class="text-sm text-muted">نؤمن أن نجاحنا الحقيقي يكمن في تحقيق أهداف عملائنا.</p>
                         </div>
                     </div>
                 </div>
@@ -89,15 +98,15 @@
         </div>
 
         <div class="text-center mt-12 flex flex-col md:flex-row justify-center gap-4">
-            <a href="index.html" class="bg-gray-900 text-white px-10 py-4 rounded-full font-bold shadow-xl hover:bg-red-600 transition duration-300 transform hover:scale-105">
-                <i class="fas fa-home ml-2"></i> العودة للرئيسية
+            <a href="index.html" class="bg-gray-900 text-white px-10 py-4 rounded-full font-bold shadow-xl hover:bg-red-600 transition duration-300 transform hover:scale-105 flex items-center justify-center gap-2">
+                <i class="fas fa-home"></i> العودة للرئيسية
             </a>
-            <a href="https://wa.me/201001283311" target="_blank" class="bg-green-500 text-white px-10 py-4 rounded-full font-bold shadow-xl hover:bg-green-600 transition duration-300 transform hover:scale-105">
-                <i class="fab fa-whatsapp ml-2"></i> تواصل معنا
+            <a href="https://wa.me/201001283311" target="_blank" class="bg-green-500 text-white px-10 py-4 rounded-full font-bold shadow-xl hover:bg-green-600 transition duration-300 transform hover:scale-105 flex items-center justify-center gap-2">
+                <i class="fab fa-whatsapp"></i> تواصل معنا
             </a>
         </div>
         
-        <p class="text-center mt-12 text-gray-400 text-sm font-bold">جميع حقوق الملكية محفوظة لشركة DeSina © 2026</p>
+        <p class="text-center mt-12 text-gray-500 text-sm font-bold opacity-70 transition-opacity">جميع حقوق الملكية محفوظة لشركة DeSina © 2026</p>
     </div>
 </body>
 </html>
