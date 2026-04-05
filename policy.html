@@ -2,29 +2,47 @@
 <html lang="ar" dir="rtl" id="mainHtml">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Return & Refund Policy | DeSina</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Return & Exchange Policy | DeSina</title>
     <link rel="icon" type="image/jpeg" href="logo.jpg">
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
-        :root { --bg-body: #f9fafb; --bg-card: #ffffff; --text-main: #1f2937; --nav-bg: #ffffff; }
+        :root { --bg-body: #f9fafb; --bg-card: #ffffff; --text-main: #111827; --nav-bg: #ffffff; }
         @media (prefers-color-scheme: dark) {
             :root { --bg-body: #0a0c10; --bg-card: #111827; --text-main: #f3f4f6; --nav-bg: #111111; }
         }
-        body { font-family: 'Cairo', sans-serif; background-color: var(--bg-body); color: var(--text-main); transition: 0.4s; margin: 0; }
-        nav { background-color: var(--nav-bg) !important; position: sticky; top: 0; z-index: 50; box-shadow: 0 2px 10px rgba(0,0,0,0.1); }
-        .nav-container { display: flex; justify-content: space-between; align-items: center; padding: 10px 15px; gap: 10px; }
-        .nav-link { color: var(--text-main); font-weight: bold; cursor: pointer; font-size: 13px; white-space: nowrap; }
-        .active-lang { color: #ef4444; text-decoration: underline; }
-        .back-btn { background: #000; color: #fff; padding: 6px 15px; border-radius: 50px; font-weight: bold; font-size: 12px; white-space: nowrap; }
-        .privacy-card { background: var(--bg-card); border-radius: 20px; border-inline-start: 6px solid #ef4444; transition: 0.4s; }
-        .hidden-lang { display: none; }
+        /* تثبيت الخط ومنع أي ميل تلقائي */
+        body { font-family: 'Cairo', sans-serif; background-color: var(--bg-body); color: var(--text-main); font-weight: 600; transition: 0.4s; margin: 0; overflow-x: hidden; }
         
-        /* الفوتر "المسطرة" - سمك متوسط واحترافي */
-        footer { background-color: #000; color: #888; padding: 20px 0; border-top: 2px solid #ef4444; }
-        .footer-line { display: flex; justify-content: center; align-items: center; gap: 15px; font-size: 11px; font-weight: bold; letter-spacing: 1px; flex-wrap: wrap; }
+        nav { background-color: var(--nav-bg) !important; position: sticky; top: 0; z-index: 50; box-shadow: 0 2px 10px rgba(0,0,0,0.1); }
+        .nav-container { display: flex; justify-content: space-between; align-items: center; padding: 12px 20px; gap: 15px; }
+        
+        .brand-logo { height: 60px; width: auto; border-radius: 10px; object-fit: contain; }
+        
+        .nav-link { font-weight: 800; cursor: pointer; font-size: 16px; white-space: nowrap; }
+        .active-lang { color: #ef4444; text-decoration: underline; }
+        .back-btn { background: #000; color: #fff; padding: 10px 22px; border-radius: 50px; font-weight: 900; font-size: 14px; white-space: nowrap; }
+
+        /* الهيدر الملموم وبدون ميل */
+        header { padding: 35px 20px !important; }
+        .main-title { font-weight: 900 !important; }
+        .sub-title { font-style: normal !important; font-weight: 700 !important; } /* هنا لغينا الميل يا حسين */
+
+        .policy-card { background: var(--bg-card); border-radius: 20px; border-inline-start: 8px solid #ef4444; box-shadow: 0 10px 30px rgba(0,0,0,0.1); }
+        h2 { font-weight: 800 !important; }
+        p { font-weight: 600 !important; line-height: 1.8; }
+
+        @media (max-width: 640px) {
+            .nav-container { padding: 10px 12px; gap: 8px; }
+            .brand-logo { height: 45px; }
+            .nav-link { font-size: 14px; }
+            .back-btn { padding: 8px 16px; font-size: 12px; }
+            header { padding: 25px 15px !important; }
+            .main-title { font-size: 1.85rem !important; }
+            .sub-title { font-size: 13px !important; }
+        }
     </style>
 </head>
 <body>
@@ -35,79 +53,60 @@
                 <span onclick="setLang('ar')" id="nav-ar" class="nav-link active-lang">العربية</span>
                 <span onclick="setLang('en')" id="nav-en" class="nav-link">English</span>
             </div>
-            <img src="logo.jpg" class="h-9 rounded-lg">
+            <img src="logo.jpg" class="brand-logo">
             <a href="index.html" id="homeLink" class="back-btn">الرئيسية</a>
         </div>
     </nav>
 
-    <header class="bg-gray-900 py-14 text-center text-white px-4 border-b-4 border-red-600">
+    <header class="bg-gray-900 text-center text-white border-b-4 border-red-600">
         <div id="header-ar">
-            <h1 class="text-3xl md:text-5xl font-extrabold mb-3">سياسة <span class="text-red-600">الاستبدال والاسترجاع</span></h1>
-            <p class="text-gray-400 text-sm max-w-2xl mx-auto font-bold italic">دليل حقوق العميل والمعايير الدولية لضمان الجودة لدى شركة DeSina</p>
+            <h1 class="main-title text-3xl md:text-6xl mb-2">سياسة <span class="text-red-600">الاستبدال والاسترجاع</span></h1>
+            <p class="sub-title text-gray-400 text-sm md:text-xl">دليل حقوق العميل والمعايير الدولية لضمان الجودة لدى شركة DeSina</p>
         </div>
         <div id="header-en" class="hidden-lang">
-            <h1 class="text-3xl md:text-5xl font-extrabold mb-3">Return & <span class="text-red-600">Refund Policy</span></h1>
-            <p class="text-gray-400 text-sm max-w-2xl mx-auto">Global Consumer Rights & Quality Assurance Standards at DeSina Company</p>
+            <h1 class="main-title text-3xl md:text-6xl mb-2">Return & <span class="text-red-600">Exchange Policy</span></h1>
+            <p class="sub-title text-gray-400 text-sm md:text-xl">International Quality & Consumer Rights Standards at DeSina</p>
         </div>
     </header>
 
-    <section class="container mx-auto px-5 py-12 max-w-4xl">
+    <section class="container mx-auto px-5 py-10 max-w-5xl">
         <div id="content-ar" class="space-y-8 text-right">
-            <div class="privacy-card p-8 shadow-md">
-                <h2 class="text-xl font-bold mb-4 border-b pb-2"><i class="fas fa-gavel text-red-600 ml-2"></i> 1. الأطر القانونية والفترات الزمنية</h2>
-                <p class="text-gray-600 text-sm leading-relaxed mb-3">وفقاً لمعايير التجارة الدولية وحماية المستهلك، تضمن DeSina لعملائها حق الاسترجاع خلال **14 يوماً**، وحق الاستبدال لعيب الصناعة خلال **30 يوماً** من تاريخ الاستلام المثبت بوليسة الشحن.</p>
-                <p class="text-gray-600 text-sm italic">**ملاحظة:** يجب أن يكون المنتج بعبوته الأصلية (Original Packaging) وبكامل ملصقات التغليف والتاغات.</p>
+            <div class="policy-card p-8 md:p-10 shadow-lg">
+                <h2 class="text-2xl md:text-3xl mb-4"><i class="fas fa-file-contract text-red-600 ml-3"></i> 1. الضوابط الزمنية</h2>
+                <p class="text-lg md:text-xl text-gray-600">يسمح بالاسترجاع خلال **14 يوماً**، والاستبدال لعيوب التصنيع خلال **30 يوماً** من تاريخ استلام الطلب.</p>
             </div>
-
-            <div class="privacy-card p-8 shadow-md">
-                <h2 class="text-xl font-bold mb-4 border-b pb-2"><i class="fas fa-shield-virus text-red-600 ml-2"></i> 2. بروتوكول سوء الاستخدام والرفض</h2>
-                <p class="text-gray-600 text-sm leading-relaxed">تخلي الشركة مسؤوليتها القانونية عن أي منتج تضرر نتيجة **سوء الاستخدام العمدي أو الإهمال**. ويشمل ذلك:</p>
-                <ul class="list-disc list-inside text-gray-500 text-[13px] mt-3 space-y-2">
-                    <li>التلف الناتج عن مخالفة تعليمات الغسيل المرفقة بالمنتج.</li>
-                    <li>التمزق أو الثقوب الناتجة عن قوة خارجية أو آلات حادة.</li>
-                    <li>إجراء أي تعديلات خياطة أو قص على المنتج من قبل العميل.</li>
+            
+            <div class="policy-card p-8 md:p-10 shadow-lg">
+                <h2 class="text-2xl md:text-3xl mb-4"><i class="fas fa-exclamation-triangle text-red-600 ml-3"></i> 2. بروتوكول الرفض</h2>
+                <p class="text-lg md:text-xl text-gray-600 mb-4">بناءً على معايير الجودة الدولية، يُرفض الاستبدال في حالات سوء الاستخدام والتي تشمل:</p>
+                <ul class="list-disc list-inside text-gray-500 text-base md:text-xl space-y-3 pr-4">
+                    <li>مخالفة تعليمات الغسيل والكي الموضحة على المنتج.</li>
+                    <li>إحداث أي تعديلات (قص أو خياطة) على التصميم الأصلي.</li>
+                    <li>التلف الناتج عن سوء التخزين أو الاستخدام الخاطئ.</li>
                 </ul>
             </div>
 
-            <div class="privacy-card p-8 shadow-md">
-                <h2 class="text-xl font-bold mb-4 border-b pb-2"><i class="fas fa-coins text-red-600 ml-2"></i> 3. سياسة رد الأموال والرسوم</h2>
-                <p class="text-gray-600 text-sm leading-relaxed">تتم معالجة المبالغ المستردة عبر البوابات المالية الرسمية (PayPal / Visa) خلال مدة تتراوح من **5 إلى 10 أيام عمل**. يتم خصم مصاريف الشحن والرسوم الإدارية في حالة الاسترجاع لغير عيب الصناعة.</p>
+            <div class="policy-card p-8 md:p-10 shadow-lg">
+                <h2 class="text-2xl md:text-3xl mb-4"><i class="fas fa-coins text-red-600 ml-3"></i> 3. التحويلات المالية</h2>
+                <p class="text-lg md:text-xl text-gray-600 leading-relaxed">تتم المعالجة عبر **PayPal** أو البطاقات البنكية خلال **5-10 أيام عمل**. تُخصم الرسوم الإدارية في حالات الاسترجاع الاختياري.</p>
             </div>
         </div>
 
         <div id="content-en" class="space-y-8 text-left hidden-lang">
-            <div class="privacy-card p-8 shadow-md">
-                <h2 class="text-xl font-bold mb-4 border-b pb-2 text-red-600"><i class="fas fa-gavel mr-2"></i> 1. Legal Framework & Validity</h2>
-                <p class="text-gray-600 text-sm leading-relaxed mb-3">In compliance with international trade regulations, customers are entitled to a **14-day** return period and a **30-day** exchange period for manufacturing defects from the documented delivery date.</p>
-                <p class="text-gray-600 text-sm italic font-bold">Items must be returned in their original condition, including all original packaging and tags.</p>
+            <div class="policy-card p-8 md:p-10 shadow-lg">
+                <h2 class="text-2xl md:text-3xl text-red-600 mb-4"><i class="fas fa-file-contract mr-3"></i> 1. Timeframes</h2>
+                <p class="text-lg md:text-xl text-gray-600">Returns: 14 days. Exchanges for manufacturing defects: 30 days post-delivery.</p>
             </div>
-
-            <div class="privacy-card p-8 shadow-md">
-                <h2 class="text-xl font-bold mb-4 border-b pb-2 text-red-600"><i class="fas fa-shield-virus mr-2"></i> 2. Misuse & Denial Protocol</h2>
-                <p class="text-gray-600 text-sm leading-relaxed">DeSina reserves the right to deny refund/exchange for items damaged due to **negligence or misuse**. This includes:</p>
-                <ul class="list-disc list-inside text-gray-500 text-[13px] mt-3 space-y-2">
-                    <li>Damage resulting from violation of care and washing instructions.</li>
-                    <li>Tears or punctures caused by external force or sharp objects.</li>
-                    <li>Personal alterations or modifications to the original design.</li>
-                </ul>
-            </div>
-
-            <div class="privacy-card p-8 shadow-md">
-                <h2 class="text-xl font-bold mb-4 border-b pb-2 text-red-600"><i class="fas fa-coins mr-2"></i> 3. Refund Policy & Processing Fees</h2>
-                <p class="text-gray-600 text-sm leading-relaxed">Refunds are processed through official financial gateways (PayPal / Visa) within **5-10 business days**. Administrative and shipping fees are non-refundable unless the return is due to a verifiable manufacturing defect.</p>
+            <div class="policy-card p-8 md:p-10 shadow-lg">
+                <h2 class="text-2xl md:text-3xl text-red-600 mb-4"><i class="fas fa-exclamation-triangle mr-3"></i> 2. Denial Policy</h2>
+                <p class="text-lg md:text-xl text-gray-600">Requests are denied if damage results from improper washing, alterations, or misuse.</p>
             </div>
         </div>
     </section>
 
-    <footer>
-        <div class="footer-line container mx-auto">
-            <span>S.I</span>
-            <span>|</span>
-            <span>DESINA INTERNATIONAL GROUP © 2026</span>
-            <span>|</span>
-            <span>E.N.A</span>
-            <span class="hidden md:inline">|</span>
-            <span class="hidden md:inline text-[9px]">Global Quality Standard Certified</span>
+    <footer class="bg-black text-gray-500 py-6 text-center border-t border-red-600">
+        <div class="footer-line container mx-auto flex justify-center items-center gap-5 text-[12px] font-black">
+            <span>S.I</span> <span>|</span> <span>DESINA INTERNATIONAL GROUP © 2026</span> <span>|</span> <span>E.N.A</span>
         </div>
     </footer>
 
