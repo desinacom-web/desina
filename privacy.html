@@ -1,114 +1,69 @@
 <!DOCTYPE html>
-<html lang="ar" dir="rtl" id="mainHtml">
+<html lang="ar" dir="rtl">
 <head>
+    <script>
+    !function(f,b,e,v,n,t,s)
+    {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+    n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+    if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+    n.queue=[];t=b.createElement(e);t.async=!0;
+    t.src=v;s=b.getElementsByTagName(e)[0];
+    s.parentNode.insertBefore(t,s)}(window, document,'script',
+    'https://connect.facebook.net/en_US/fbevents.js');
+    fbq('init', '790032697153678');
+    fbq('track', 'PageView');
+    </script>
+    <noscript><img height="1" width="1" style="display:none"
+    src="https://www.facebook.com/tr?id=790032697153678&ev=PageView&noscript=1"
+    /></noscript>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Return Policy | DeSina</title>
+    <title>سياسة الخصوصية | DeSina</title>
     <link rel="icon" type="image/jpeg" href="logo.jpg">
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
-        :root { --bg-body: #f9fafb; --bg-card: #ffffff; --text-main: #1f2937; --text-muted: #4b5563; --nav-bg: #ffffff; --border-sep: #e5e7eb; }
+        :root { --bg-body: #f9fafb; --bg-card: #ffffff; --text-main: #111827; --text-muted: #4b5563; --border-color: #ef4444; }
+        
         @media (prefers-color-scheme: dark) {
-            :root { --bg-body: #0a0c10; --bg-card: #111827; --text-main: #f3f4f6; --text-muted: #9ca3af; --nav-bg: #111111; --border-sep: #30363d; }
+            :root { --bg-body: #0a0c10; --bg-card: #111827; --text-main: #f3f4f6; --text-muted: #9ca3af; --border-color: #ef4444; }
         }
-        body { font-family: 'Cairo', sans-serif; background-color: var(--bg-body); color: var(--text-main); scroll-behavior: smooth; transition: 0.4s; }
-        nav { background-color: var(--nav-bg) !important; transition: 0.4s; }
-        .nav-link { color: var(--text-main); font-weight: bold; cursor: pointer; transition: 0.3s; }
-        .nav-link:hover { color: #ef4444; }
-        .active-lang { color: #ef4444; text-decoration: underline; }
-        .privacy-card { background: var(--bg-card); border-radius: 20px; border-inline-start: 5px solid #ef4444; transition: 0.4s; }
-        .hidden-lang { display: none; }
+
+        body { font-family: 'Cairo', sans-serif; background-color: var(--bg-body); color: var(--text-main); transition: 0.4s; }
+        .content-box { background: var(--bg-card); border-radius: 20px; box-shadow: 0 10px 25px rgba(0,0,0,0.1); border-top: 5px solid var(--border-color); transition: background-color 0.4s; }
+        h1, h2, p { font-style: normal !important; }
+        .text-gray-600 { color: var(--text-muted) !important; }
+        .text-gray-900 { color: var(--text-main) !important; }
     </style>
 </head>
-<body>
-    <nav class="shadow-md p-3 sticky top-0 z-50">
-        <div class="container mx-auto flex justify-between items-center px-4">
-            <div class="flex items-center gap-6">
-                <img src="logo.jpg" class="h-10 rounded-lg">
-                <div class="hidden md:flex items-center gap-8 border-inline-start-2 ps-6 border-gray-200">
-                    <span onclick="setLang('ar')" id="nav-ar" class="nav-link active-lang">العربية</span>
-                    <span onclick="setLang('en')" id="nav-en" class="nav-link">English</span>
-                </div>
-            </div>
-            <a href="index.html" id="homeLink" class="bg-gray-900 text-white px-6 py-2 rounded-full font-bold hover:bg-red-600 transition text-sm">العودة للرئيسية</a>
-        </div>
-    </nav>
-
-    <header class="bg-gray-900 py-16 text-center text-white px-4 border-b-4 border-red-600">
-        <div id="header-ar">
-            <h1 class="text-4xl md:text-5xl font-extrabold mb-4">سياسة <span class="text-red-600">الاسترجاع</span></h1>
-            <p class="text-gray-400 font-bold">رضاكم وجودة منتجات DeSina هي غايتنا الأولى.</p>
-        </div>
-        <div id="header-en" class="hidden-lang">
-            <h1 class="text-4xl md:text-5xl font-extrabold mb-4">Return <span class="text-red-600">Policy</span></h1>
-            <p class="text-gray-400">Your satisfaction and product quality are our priorities at DeSina.</p>
-        </div>
-    </header>
-
-    <section class="container mx-auto px-6 py-16 max-w-4xl">
-        <div id="content-ar" class="space-y-8 text-right">
-            <div class="privacy-card p-8 shadow-sm">
-                <h2 class="text-2xl font-bold mb-4"><i class="fas fa-history text-red-600 ml-2"></i> مدة الاسترجاع</h2>
-                <p class="text-gray-600 leading-relaxed">يمكنك استرجاع المنتجات خلال **14 يوماً** من الاستلام، أو **30 يوماً** في حالة وجود عيب مصنعي واضح.</p>
-            </div>
-            <div class="privacy-card p-8 shadow-sm">
-                <h2 class="text-2xl font-bold mb-4"><i class="fas fa-box-open text-red-600 ml-2"></i> حالة المنتج</h2>
-                <p class="text-gray-600 leading-relaxed">يجب أن يكون المنتج بحالته الأصلية، غير مستخدم، وبكافة ملصقاته وعبوته الأصلية دون أي تلف.</p>
-            </div>
-            <div class="privacy-card p-8 shadow-sm">
-                <h2 class="text-2xl font-bold mb-4"><i class="fas fa-wallet text-red-600 ml-2"></i> استرداد الأموال</h2>
-                <p class="text-gray-600 leading-relaxed">يتم رد المبالغ عبر نفس وسيلة الدفع الأصلية (الفيزا أو باي بال) وتستغرق المعالجة من **5-7 أيام عمل**.</p>
-            </div>
+<body class="py-12 px-6">
+    <div class="container mx-auto max-w-4xl">
+        <div class="text-center mb-10">
+            <img src="logo.jpg" class="h-16 mx-auto mb-4 rounded-lg shadow-sm border-2 border-transparent dark:border-gray-800">
+            <h1 class="text-3xl font-bold">سياسة الخصوصية</h1>
+            <p class="text-red-600 font-bold mt-2">شركة DeSina</p>
         </div>
 
-        <div id="content-en" class="space-y-8 text-left hidden-lang">
-            <div class="privacy-card p-8 shadow-sm">
-                <h2 class="text-2xl font-bold mb-4"><i class="fas fa-history text-red-600 mr-2"></i> Return Period</h2>
-                <p class="text-gray-600 leading-relaxed">Returns are accepted within **14 days** of receipt. Manufacturing defects are covered for up to **30 days**.</p>
-            </div>
-            <div class="privacy-card p-8 shadow-sm">
-                <h2 class="text-2xl font-bold mb-4"><i class="fas fa-box-open text-red-600 mr-2"></i> Item Condition</h2>
-                <p class="text-gray-600 leading-relaxed">Items must be in original, unworn condition with all original tags and packaging intact.</p>
-            </div>
-            <div class="privacy-card p-8 shadow-sm">
-                <h2 class="text-2xl font-bold mb-4"><i class="fas fa-wallet text-red-600 mr-2"></i> Refunds</h2>
-                <p class="text-gray-600 leading-relaxed">Refunds are processed to the original payment method and take **5-7 business days** after inspection.</p>
-            </div>
+        <div class="content-box p-8 md:p-12 leading-relaxed text-right">
+            <h2 class="text-xl font-bold mb-4"><i class="fas fa-user-shield ml-2 text-red-600"></i> حماية بياناتك</h2>
+            <p class="mb-8 text-gray-600">نحن في **DeSina** نعتبر خصوصية زوارنا من أهم أولوياتنا. أي معلومات تشاركها معنا عبر وسائل التواصل أو الموقع تُستخدم فقط لتحسين تجربتك وتقديم خدماتنا الصناعية والرقمية بأفضل جودة.</p>
+
+            <h2 class="text-xl font-bold mb-4"><i class="fas fa-lock ml-2 text-red-600"></i> سرية المعلومات</h2>
+            <p class="mb-8 text-gray-600">نلتزم بعدم مشاركة، بيع، أو تسريب أي بيانات خاصة بعملائنا لأي طرف ثالث. معلومات التواصل الخاصة بك تُستخدم فقط للرد على استفساراتك أو إتمام طلباتك.</p>
+
+            <h2 class="text-xl font-bold mb-4"><i class="fas fa-info-circle ml-2 text-red-600"></i> ملفات تعريف الارتباط</h2>
+            <p class="mb-8 text-gray-600">يستخدم موقعنا تقنيات بسيطة لتحسين سرعة التصفح وضمان ظهور المحتوى بشكل صحيح على هاتفك أو جهاز الكمبيوتر الخاص بك.</p>
+
+            <h2 class="text-xl font-bold mb-4"><i class="fas fa-envelope-open-text ml-2 text-red-600"></i> التواصل</h2>
+            <p class="text-gray-600">إذا كان لديك أي سؤال حول هذه السياسة، يمكنك دائماً مراسلتنا عبر الإيميلات الرسمية الموضحة في أسفل الموقع.</p>
         </div>
-    </section>
 
-    <footer class="bg-gray-950 text-white py-12 text-center">
-        <p class="text-gray-500 font-bold uppercase tracking-widest">DeSina Company</p>
-        <p class="text-gray-600 text-sm mt-2">All Rights Reserved © 2026</p>
-    </footer>
-
-    <script>
-        function setLang(lang) {
-            const html = document.getElementById('mainHtml');
-            const arContent = document.getElementById('content-ar');
-            const enContent = document.getElementById('content-en');
-            const arHeader = document.getElementById('header-ar');
-            const enHeader = document.getElementById('header-en');
-            const homeLink = document.getElementById('homeLink');
-            const navAr = document.getElementById('nav-ar');
-            const navEn = document.getElementById('nav-en');
-
-            if (lang === 'en') {
-                html.dir = 'ltr'; html.lang = 'en';
-                arContent.classList.add('hidden-lang'); enContent.classList.remove('hidden-lang');
-                arHeader.classList.add('hidden-lang'); enHeader.classList.remove('hidden-lang');
-                navAr.classList.remove('active-lang'); navEn.classList.add('active-lang');
-                homeLink.innerText = 'Back to Home'; homeLink.href = 'en.html';
-            } else {
-                html.dir = 'rtl'; html.lang = 'ar';
-                enContent.classList.add('hidden-lang'); arContent.classList.remove('hidden-lang');
-                enHeader.classList.add('hidden-lang'); arHeader.classList.remove('hidden-lang');
-                navEn.classList.remove('active-lang'); navAr.classList.add('active-lang');
-                homeLink.innerText = 'العودة للرئيسية'; homeLink.href = 'index.html';
-            }
-        }
-    </script>
+        <div class="text-center mt-10">
+            <a href="index.html" class="bg-gray-900 text-white px-10 py-3 rounded-full font-bold shadow-lg hover:bg-red-600 transition inline-block flex-center gap-2">
+                العودة للصفحة الرئيسية
+            </a>
+        </div>
+    </div>
 </body>
 </html>
