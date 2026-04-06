@@ -1,18 +1,14 @@
 <!DOCTYPE html>
 <html>
-  <head>
+<head>
     <meta charset="utf-8">
     <title>DeSina Redirecting...</title>
     <script type="text/javascript">
-      // كود جيمي العبقري لتحويل الحروف
-      var path = window.location.pathname.toLowerCase();
-      if (path === '/desina' || path === '/desina/') {
-        window.location.href = 'https://desinacom-web.github.io/DeSina/index.html';
-      } else {
-        window.location.href = 'index.html';
-      }
+        // كود جيمي "الطلقة" لتحويل أي حد تاييد للرئيسية
+        window.location.href = "https://desinacom-web.github.io/DeSina/index.html";
     </script>
-  </head>
-  <body>
-  </body>
+</head>
+<body>
+    <p>جارٍ التحويل لصفحة ديسينا الرئيسية...</p>
+</body>
 </html>
