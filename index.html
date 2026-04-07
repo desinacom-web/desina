@@ -36,6 +36,7 @@
         .service-card { transition: 0.3s; border-top: 4px solid #ef4444; background-color: white; }
         .service-card:hover { transform: translateY(-10px); }
 
+        /* كود الدارك مود الأوتوماتيكي */
         @media (prefers-color-scheme: dark) {
             body { background-color: #0a0c10; color: #f3f4f6; }
             nav { background-color: #111111 !important; border-bottom: 1px solid #222; }
@@ -62,7 +63,7 @@
         }
 
         @media (max-width: 768px) {
-            /* الضبطة الدقيقة للهيرو - مراية لشياكة الإنجليزي */
+            /* الضبطة الدقيقة للهيرو - فيسبوك موبايل */
             .hero-section { height: 75vh !important; min-height: 420px !important; padding-top: 20px; }
             .hero-logo { height: 80px !important; margin-bottom: 10px !important; margin-top: -10px !important; }
             .hero-section h1 { font-size: 1.7rem !important; margin-bottom: 8px !important; line-height: 1.2 !important; }
@@ -70,22 +71,22 @@
             
             /* ستايل الزراير الرشيق */
             .hero-section .flex-wrap { gap: 10px !important; justify-content: center !important; }
-            .hero-section a { flex: 0 1 45% !important; padding: 10px 10px !important; font-size: 13px !important; text-align: center; border-radius: 9999px !important; }
+            .hero-section a { flex: 0 1 45% !important; padding: 10px 8px !important; font-size: 13px !important; text-align: center; border-radius: 9999px !important; }
             .hero-section a:last-child { flex: 0 1 60% !important; }
 
-            /* تثبيت المينيو العربي - مسمار في مكانه */
+            /* تثبيت المينيو العربي - مراية بمقاس الإنجليزي */
             #mobile-menu { 
-                display: none; flex-direction: column; width: 35%; position: fixed; top: 64px; left: 0; 
-                height: calc(100vh - 64px); background: rgba(15, 15, 15, 0.98); backdrop-filter: blur(12px);
-                padding: 15px 10px; box-shadow: 5px 5px 15px rgba(0,0,0,0.5); z-index: 9999; 
+                display: none; flex-direction: column; width: 35% !important; position: fixed; top: 64px; left: 0; 
+                height: 55vh !important; background: rgba(15, 15, 15, 0.98); backdrop-filter: blur(12px);
+                padding: 10px 5px; box-shadow: 5px 5px 15px rgba(0,0,0,0.5); z-index: 9999; 
                 border-right: 2px solid #ef4444; border-bottom-right-radius: 20px;
                 overflow-x: hidden !important; overflow-y: auto; touch-action: pan-y;
             }
             #mobile-menu.active { display: flex !important; animation: slideInLeft 0.3s ease-out; }
             .nav-link, .product-link { 
-                padding: 12px 10px; border-bottom: 1px solid rgba(255,255,255,0.05); 
+                padding: 8px 10px !important; border-bottom: 1px solid rgba(255,255,255,0.05); 
                 width: 100% !important; text-align: right !important; 
-                color: white !important; font-size: 15px; white-space: nowrap; display: block;
+                color: white !important; font-size: 13.5px !important; white-space: nowrap; display: block;
             }
             .main-logo { height: 35px !important; margin-left: 8px !important; }
         }
@@ -206,7 +207,7 @@
         function handleMusicToggle() {
             const audio = document.getElementById('bg-audio');
             const icon = document.getElementById('music-icon');
-            if (audio.paused) { audio.play().then(() => { icon.className = 'fas fa-pause'; audio.volume = 0.3; }); }
+            if (audio.paused) { audio.play().then(() => { icon.className = 'fas fa-pause'; audio.volume = 0.3; }).catch(e => console.log(e)); }
             else { audio.pause(); icon.className = 'fas fa-music'; }
         }
     </script>
