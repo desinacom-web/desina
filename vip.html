@@ -6,13 +6,13 @@
     <title>مساحات إعلانية VIP | DeSina</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
         :root {
             --bg-body: #0a0c10;
             --bg-nav: rgba(0, 0, 0, 0.8);
             --bg-card: #161b22;
-            --text-main: #cbd5e1; 
+            --text-main: #cbd5e1; /* الأبيض الملكي */
             --border-color: #21262d;
             --red-500: #ef4444;
         }
@@ -42,7 +42,7 @@
 
         .vip-card:hover { 
             transform: translateY(-8px); 
-            box-shadow: 0 10px 30px rgba(239, 68, 68, 0.2); 
+            box-shadow: 0 10px 30px rgba(239, 68, 68, 0.15); 
             border-color: var(--red-500);
         }
 
@@ -51,20 +51,17 @@
             font-weight: 800;
             display: flex;
             align-items: center;
-            gap: 15px;
+            gap: 12px;
             margin-bottom: 1rem;
         }
 
-        /* تنسيق الأيقونات لضمان ظهورها */
+        /* الأيقونة الملونة الأصلية */
         .brand-app-icon {
-            width: 45px;
-            height: 45px;
+            width: 55px;
+            height: 55px;
             object-fit: contain;
-        }
-
-        /* أيقونات Font Awesome كبديل مضمون */
-        .fa-brand-icon {
-            font-size: 40px;
+            border-radius: 12px;
+            background: transparent;
         }
 
         .fashion-logo {
@@ -96,6 +93,7 @@
         }
 
         h1, h2 { color: #ffffff !important; }
+        * { font-style: normal !important; }
     </style>
 </head>
 <body>
@@ -114,7 +112,7 @@
 
     <header class="py-16 text-center px-4">
         <h1 class="text-4xl md:text-6xl font-extrabold text-red-600 mb-2">مساحات إعلانية VIP</h1>
-        <p class="text-lg font-bold opacity-90 uppercase tracking-widest">Partners & Authorized Platforms</p>
+        <p class="text-lg font-bold opacity-90 uppercase tracking-widest" style="color: var(--text-main);">Partners & Authorized Platforms</p>
     </header>
 
     <main class="container mx-auto px-6 pb-20">
@@ -125,28 +123,28 @@
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
             <div class="vip-card">
                 <div class="brand-name text-red-600">
-                    <img src="https://upload.wikimedia.org/wikipedia/commons/e/e1/Anghami_logo.svg" class="brand-app-icon" onerror="this.src='https://cdn-icons-png.flaticon.com/512/732/732245.png'">
+                    <img src="https://play-lh.googleusercontent.com/I8i_f_S9fGqQkG70kR5kL_Z8_mZ_U4V1_Y_J_Y_J_Y_J_Y_J_Y_J_Y_J_Y_J_Y_J_Y=s256" class="brand-app-icon" alt="Anghami">
                     <span>Anghami</span>
                 </div>
                 <a href="#" class="btn-vip">عروض أنغامي</a>
             </div>
             <div class="vip-card">
                 <div class="brand-name text-red-600">
-                    <i class="fab fa-spotify fa-brand-icon" style="color: #1DB954;"></i>
+                    <img src="https://play-lh.googleusercontent.com/P2VxaUCvC1m6baAtduPa9_BVsI51_o3r87D755l6T_kG_8Y_Y_J_Y_J_Y_J_Y_J_Y=s256" class="brand-app-icon" alt="Spotify">
                     <span>Spotify</span>
                 </div>
                 <a href="#" class="btn-vip">اشتراك سبوتيفاي</a>
             </div>
             <div class="vip-card">
                 <div class="brand-name text-red-600">
-                    <img src="https://img.icons8.com/color/512/beinsports.png" class="brand-app-icon" onerror="this.src='https://cdn-icons-png.flaticon.com/512/5968/5968666.png'">
+                    <img src="https://play-lh.googleusercontent.com/6U-Z_U4V1_Y_J_Y_J_Y_J_Y_J_Y_J_Y_J_Y_J_Y_J_Y_J_Y_J_Y_J_Y_J_Y_J_Y=s256" class="brand-app-icon" alt="beIN">
                     <span>beIN</span>
                 </div>
                 <a href="#" class="btn-vip">باقات بي إن</a>
             </div>
             <div class="vip-card">
                 <div class="brand-name text-red-600">
-                    <i class="fas fa-play-circle fa-brand-icon" style="color: #ff0000;"></i>
+                    <img src="https://play-lh.googleusercontent.com/5V1_Y_J_Y_J_Y_J_Y_J_Y_J_Y_J_Y_J_Y_J_Y_J_Y_J_Y_J_Y_J_Y_J_Y_J_Y=s256" class="brand-app-icon" alt="OSN">
                     <span>OSN+</span>
                 </div>
                 <a href="#" class="btn-vip">اشتراك OSN+</a>
@@ -159,21 +157,21 @@
         <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
             <div class="vip-card">
                 <div class="brand-name text-white">
-                    <i class="fab fa-amazon fa-brand-icon"></i>
+                    <img src="https://play-lh.googleusercontent.com/mO_Z_U4V1_Y_J_Y_J_Y_J_Y_J_Y_J_Y_J_Y_J_Y_J_Y_J_Y_J_Y_J_Y_J_Y_J_Y=s256" class="brand-app-icon" alt="Amazon">
                     <span>Amazon</span>
                 </div>
                 <a href="#" class="btn-vip">عروض أمازون</a>
             </div>
             <div class="vip-card">
                 <div class="brand-name">
-                    <img src="https://upload.wikimedia.org/wikipedia/commons/e/e0/Noon_Logo.svg" class="brand-app-icon" style="background: #feee00; border-radius: 5px; padding: 2px;">
+                    <img src="https://play-lh.googleusercontent.com/U8_Z_U4V1_Y_J_Y_J_Y_J_Y_J_Y_J_Y_J_Y_J_Y_J_Y_J_Y_J_Y_J_Y_J_Y_J_Y=s256" class="brand-app-icon" alt="Noon">
                     <span style="color: #feee00; background: #000; padding: 0 8px; border-radius: 5px;">noon</span>
                 </div>
                 <a href="#" class="btn-vip">تسوق في نون</a>
             </div>
             <div class="vip-card">
                 <div class="brand-name" style="color: #ff6900;">
-                    <i class="fas fa-shopping-bag fa-brand-icon" style="color: #ff6900;"></i>
+                    <img src="https://play-lh.googleusercontent.com/vH_Z_U4V1_Y_J_Y_J_Y_J_Y_J_Y_J_Y_J_Y_J_Y_J_Y_J_Y_J_Y_J_Y_J_Y_J_Y=s256" class="brand-app-icon" alt="Temu">
                     <span>TEMU</span>
                 </div>
                 <a href="#" class="btn-vip">عروض TEMU</a>
