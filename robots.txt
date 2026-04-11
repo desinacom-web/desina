@@ -1,4 +1,4 @@
-# Optimized for DeSina
+# start of file
 User-agent: *
 Disallow:
 
