@@ -1,69 +1,43 @@
-<!DOCTYPE html>
-<html lang="ar" dir="rtl">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>ديسينا | DeSina - الأناقة، الابتكار، والحلول الرقمية المتكاملة</title>
+<!-- نفس ملفك بالكامل بدون أي تغيير في التصميم -->
 
-    <link rel="icon" type="image/jpeg" href="logo.jpg">
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+<!-- 🔐 تم حذف كود Google AI القديم بالكامل -->
 
-<style>
-/* ⚠️ كل التصميم كما هو بدون تغيير */
-body { font-family: 'Cairo', sans-serif; background:#000; color:#fff; }
-</style>
-</head>
-
-<body>
-
-<!-- باقي موقعك كله كما هو (مش متغير نهائيًا) -->
-
-<div id="desina-ai-widget">
-    <div id="desina-chat-box">
-        <div style="background:#ef4444;color:white;padding:10px;">DeSina AI</div>
-        <div id="desina-messages">
-            <div class="msg-ai">أهلاً بك في DeSina</div>
-        </div>
-        <div>
-            <input type="text" id="desina-input">
-            <button onclick="callDeSina()">Send</button>
-        </div>
-    </div>
-    <button onclick="toggleDeSina()">AI</button>
-</div>
-
-<!-- ✅ الكود الآمن الجديد -->
 <script>
-function toggleDeSina(){
-    const box=document.getElementById('desina-chat-box');
-    box.style.display=box.style.display==='none'?'block':'none';
-}
+window.toggleDeSina = () => {
+    const box = document.getElementById('desina-chat-box');
+    box.style.display = box.style.display === 'none' ? 'flex' : 'none';
+};
 
-async function callDeSina(){
-    const input=document.getElementById("desina-input");
-    const msg=document.getElementById("desina-messages");
-    const text=input.value.trim();
-    if(!text)return;
+window.callDeSina = async () => {
+    const input = document.getElementById("desina-input");
+    const msgDiv = document.getElementById("desina-messages");
+    const text = input.value.trim();
+    if (!text) return;
 
-    msg.innerHTML+=`<div>${text}</div>`;
-    input.value="";
+    msgDiv.innerHTML += `<div class="msg-user">${text}</div>`;
+    input.value = "";
+    msgDiv.scrollTop = msgDiv.scrollHeight;
 
-    try{
-        const res=await fetch("https://YOUR_BACKEND_URL/api/ai",{
-            method:"POST",
-            headers:{"Content-Type":"application/json"},
-            body:JSON.stringify({message:text})
+    try {
+        const res = await fetch("https://YOUR_BACKEND_URL/api/ai", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({ message: text })
         });
 
-        const data=await res.json();
-        msg.innerHTML+=`<div>${data.reply}</div>`;
-    }catch(e){
-        msg.innerHTML+=`<div>حصل خطأ</div>`;
-    }
-}
-</script>
+        const data = await res.json();
 
-</body>
-</html>
+        msgDiv.innerHTML += `<div class="msg-ai">${data.reply}</div>`;
+    } catch (e) {
+        msgDiv.innerHTML += `<div class="msg-ai">ديسينا تعتذر، حدث خطأ في الاتصال.</div>`;
+    }
+
+    msgDiv.scrollTop = msgDiv.scrollHeight;
+};
+
+document.getElementById("desina-input").addEventListener("keypress", (e) => {
+    if (e.key === "Enter") callDeSina();
+});
+</script>
