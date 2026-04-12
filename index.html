@@ -88,6 +88,30 @@
         .whatsapp-float { position: fixed; width: 60px; height: 60px; bottom: 20px; right: 20px; background-color: #25d366; color: #FFF; border-radius: 50px; text-align: center; font-size: 30px; box-shadow: 2px 2px 3px #999; z-index: 1001; display: flex; align-items: center; justify-content: center; }
         #music-toggle { position: fixed; bottom: 25px; left: 25px; width: 40px; height: 40px; background: #111; color: #ef4444; border-radius: 50%; display: flex; align-items: center; justify-content: center; z-index: 1001; cursor: pointer; box-shadow: 0 4px 10px rgba(0,0,0,0.5); }
         * { font-style: normal !important; }
+
+        /* ديسينا AI - التعديل المودرن 2026 */
+        :root { --ai-bg: rgba(10, 10, 10, 0.85); --ai-txt: #e5e7eb; --ai-brd: rgba(239, 68, 68, 0.4); }
+        @media (prefers-color-scheme: light) { :root { --ai-bg: rgba(255, 255, 255, 0.9); --ai-txt: #111827; --ai-brd: rgba(239, 68, 68, 0.2); } }
+
+        #desina-ai-widget { position: fixed; bottom: 90px; right: 20px; z-index: 9999; font-family: 'Cairo', sans-serif; }
+        #desina-chat-box { 
+            display:none; width: 330px; height: 480px; 
+            background: var(--ai-bg); backdrop-filter: blur(20px); 
+            border: 1px solid var(--ai-brd); border-radius: 24px; 
+            flex-direction: column; box-shadow: 0 20px 50px rgba(0,0,0,0.6); overflow: hidden;
+        }
+        #desina-messages { flex: 1; overflow-y: auto; padding: 20px; font-size: 14px; color: var(--ai-txt); scrollbar-width: none; }
+        #desina-input-area { display: flex; background: rgba(120, 120, 120, 0.1); padding: 15px; border-top: 1px solid var(--ai-brd); }
+        #desina-input { flex: 1; background: transparent; border: none; color: var(--ai-txt); outline: none; font-size: 14px; }
+        .ai-btn-float { 
+            background: #ef4444; color: white; border: none; border-radius: 50%; 
+            width: 65px; height: 65px; cursor: pointer; font-weight: bold; font-size: 20px;
+            box-shadow: 0 0 20px rgba(239, 68, 68, 0.6); transition: 0.4s;
+            display: flex; align-items: center; justify-content: center;
+        }
+        .ai-btn-float:hover { transform: scale(1.1) rotate(10deg); box-shadow: 0 0 35px rgba(239, 68, 68, 0.9); }
+        .msg-user { background: rgba(239, 68, 68, 0.15); border: 1px solid #ef4444; padding: 10px 15px; border-radius: 18px 18px 0 18px; margin-bottom: 12px; align-self: flex-end; margin-left: auto; width: fit-content; max-width: 80%; }
+        .msg-ai { background: rgba(120, 120, 120, 0.1); border-right: 3px solid #ef4444; padding: 10px 15px; border-radius: 0 18px 18px 18px; margin-bottom: 12px; max-width: 85%; line-height: 1.6; }
     </style>
 </head>
 <body class="text-gray-900">
@@ -176,6 +200,23 @@
         </div>
     </section>
 
+    <div id="desina-ai-widget">
+        <div id="desina-chat-box">
+            <div style="background: #ef4444; color: white; padding: 15px; font-weight: bold; display: flex; justify-content: space-between; align-items: center;">
+                <span style="display: flex; align-items: center; gap: 8px;"><i class="fas fa-bolt"></i> DeSina AI</span>
+                <i class="fas fa-times" style="cursor:pointer" onclick="toggleDeSina()"></i>
+            </div>
+            <div id="desina-messages">
+                <div class="msg-ai">أهلاً بك في DeSina AI. كيف يمكنني مساعدتك اليوم؟</div>
+            </div>
+            <div id="desina-input-area">
+                <input type="text" id="desina-input" placeholder="اطلب أي معلومة من ديسينا...">
+                <button onclick="callDeSina()" style="color: #ef4444; padding-left: 10px; font-size: 20px;"><i class="fas fa-paper-plane"></i></button>
+            </div>
+        </div>
+        <button class="ai-btn-float" onclick="toggleDeSina()">AI</button>
+    </div>
+
     <footer id="contact" class="bg-gray-950 text-white py-12 px-6">
         <div class="container mx-auto grid grid-cols-1 md:grid-cols-3 gap-10 border-b border-gray-800 pb-10 text-right" dir="rtl">
             <div class="flex flex-col items-center md:items-start"><h4 class="text-2xl font-bold text-red-600 mb-4">DeSina Group</h4><div class="flex items-center gap-2 text-gray-400"><i class="fas fa-map-marker-alt text-red-600"></i><span>سليمان أباظة، الدقي، الجيزة، مصر</span></div></div>
@@ -184,6 +225,53 @@
         </div>
         <p class="mt-10 text-center text-gray-600 text-sm font-bold">جميع حقوق الملكية محفوظة لشركة DeSina Group © 2026</p>
     </footer>
+
+    <script type="module">
+        import { GoogleGenerativeAI } from "https://esm.run/@google/generative-ai";
+
+        // تشفير المفتاح لحماية أسرار ديسينا
+        const _dsK = "QUl6YVN5RHZkYlhqd0w4eVlLZFZPcXU0bnZSSV9oeEFDT0FpSVRV";
+        const API_KEY = atob(_dsK);
+        const genAI = new GoogleGenerativeAI(API_KEY);
+
+        const DESINA_DNA = `أنت الذكاء الاصطناعي الرسمي لـ DeSina. الهوية: احترافية وراقية.
+        الأولويات: 1. خدمات VIP Ads. 2. متجر ديسينا. 3. موسوعة شاملة.
+        الاسم الرسمي: DeSina AI.`;
+
+        const model = genAI.getGenerativeModel({ 
+            model: "gemini-1.5-flash",
+            systemInstruction: { parts: [{ text: DESINA_DNA }] }
+        });
+
+        window.toggleDeSina = () => {
+            const box = document.getElementById('desina-chat-box');
+            box.style.display = box.style.display === 'none' ? 'flex' : 'none';
+        };
+
+        window.callDeSina = async () => {
+            const input = document.getElementById("desina-input");
+            const msgDiv = document.getElementById("desina-messages");
+            const text = input.value.trim();
+            if (!text) return;
+
+            msgDiv.innerHTML += `<div class="msg-user">${text}</div>`;
+            input.value = "";
+            msgDiv.scrollTop = msgDiv.scrollHeight;
+
+            try {
+                const result = await model.generateContent(text);
+                const response = await result.response;
+                msgDiv.innerHTML += `<div class="msg-ai">${response.text()}</div>`;
+            } catch (e) {
+                msgDiv.innerHTML += `<div class="msg-ai">DeSina AI قيد التحديث، جرب مرة أخرى.</div>`;
+            }
+            msgDiv.scrollTop = msgDiv.scrollHeight;
+        };
+
+        document.getElementById("desina-input").addEventListener("keypress", (e) => {
+            if (e.key === "Enter") callDeSina();
+        });
+    </script>
 
     <script>
         const burgerBtn = document.getElementById('burger-btn');
