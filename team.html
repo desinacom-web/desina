@@ -18,121 +18,69 @@
     /></noscript>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="فريق العمل | DeSina: فريق عمل ديسينا - تعرف على المبدعين والمتخصصين وراء نجاحاتنا ومشاريعنا المختلفة.">
-    <title>فريق العمل | DeSina</title>
+    <meta name="description" content="فريق عمل ديسينا (DeSina Team): تعرف على الخبراء والمبدعين خلف نجاح براند ديسينا في عالم الأزياء والحلول الرقمية. نخبة من المتخصصين لخدمة أهدافكم.">
+    <meta name="keywords" content="فريق عمل ديسينا، خبراء DeSina، إدارة ديسينا، مصممي ديسينا، فريق التسويق الرقمي، إنتاج الملابس">
+    <title>فريق العمل | DeSina - المبدعون خلف النجاح</title>
+    
     <link rel="icon" type="image/jpeg" href="logo.jpg">
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
-        :root { --bg-main: #f9fafb; --bg-card: #ffffff; --text-main: #111827; --text-muted: #4b5563; --nav-bg: #ffffff; --card-img-bg: #f9f9f9; }
-        
+        :root { --bg-body: #f8f9fa; --bg-card: #ffffff; --text-main: #0d0f12; --text-gray: #4b5563; --border-color: #e5e7eb; }
         @media (prefers-color-scheme: dark) {
-            :root { --bg-main: #0a0c10; --bg-card: #111827; --text-main: #f3f4f6; --text-muted: #9ca3af; --nav-bg: #111111; --card-img-bg: #1f2937; }
+            :root { --bg-body: #0d0f12; --bg-card: #161b22; --text-main: #ffffff; --text-gray: #9ca3af; --border-color: #21262d; }
         }
-
-        body { font-family: 'Cairo', sans-serif; background-color: var(--bg-main); color: var(--text-main); scroll-behavior: smooth; overflow-x: hidden; transition: background-color 0.4s; }
-        .nav-link { color: var(--text-main); font-weight: bold; transition: 0.3s; }
-        .nav-link:hover { color: #ef4444; }
-        .main-logo { height: 40px; border-radius: 8px; }
-        
-        .back-btn {
-            display: flex; align-items: center; gap: 8px; color: #ef4444; 
-            font-weight: bold; transition: 0.3s; border: 1px solid #ef4444;
-            padding: 5px 12px; border-radius: 20px; font-size: 14px;
-        }
-        .back-btn:hover { background: #ef4444; color: white; }
-
-        @media (max-width: 768px) {
-            #mobile-menu { 
-                display: none; flex-direction: column; width: 32%; position: fixed; 
-                top: 64px; left: 0; height: 65vh; background: rgba(45, 45, 48, 0.97); 
-                backdrop-filter: blur(12px); padding: 10px 5px; box-shadow: 5px 5px 15px rgba(0,0,0,0.3); 
-                z-index: 9999; border-right: 2px solid #ef4444; border-bottom-right-radius: 20px; overflow-y: auto;
-            }
-            #mobile-menu.active { display: flex !important; animation: slideInLeft 0.4s ease-out; }
-            .nav-link { padding: 6px 8px; border-bottom: 1px solid rgba(255,255,255,0.05); width: 100%; text-align: right; color: white !important; font-size: 14px; white-space: nowrap; }
-        }
-        @keyframes slideInLeft { from { transform: translateX(-100%); opacity: 0; } to { transform: translateX(0); opacity: 1; } }
-
-        .team-card { transition: 0.3s; overflow: hidden; border-top: 3px solid #ef4444; background: var(--bg-card); border-radius: 15px; }
-        .team-card:hover { transform: translateY(-5px); box-shadow: 0 10px 20px rgba(0,0,0,0.2); }
-        .team-img { width: 100%; height: 150px; object-fit: contain; background: var(--card-img-bg); padding: 20px; transition: background-color 0.4s; }
-        
-        @media (prefers-color-scheme: dark) {
-            .bg-white { background-color: var(--nav-bg) !important; }
-            .bg-gray-50 { background-color: var(--bg-main) !important; }
-            header.bg-gray-900, section.bg-gray-900 { background-color: #000000 !important; }
-        }
+        body { background-color: var(--bg-body); font-family: 'Cairo', sans-serif; color: var(--text-main); transition: 0.4s; }
+        .team-card { background: var(--bg-card); border-radius: 20px; border: 1px solid var(--border-color); border-bottom: 4px solid #ef4444; transition: 0.3s; }
+        .team-card:hover { transform: translateY(-10px); box-shadow: 0 10px 30px rgba(239, 68, 68, 0.1); }
+        .profile-img { width: 120px; height: 120px; border-radius: 50%; object-fit: cover; border: 3px solid #ef4444; padding: 3px; background: var(--bg-card); }
+        * { font-style: normal !important; }
     </style>
 </head>
-<body class="bg-gray-50">
+<body class="py-12 px-6">
 
-    <nav class="bg-white shadow-md p-3 sticky top-0 z-50 transition-colors">
-        <div class="container mx-auto flex justify-between items-center px-4 relative">
-            <div class="flex items-center gap-4">
-                <a href="index.html" class="back-btn">
-                    <i class="fas fa-arrow-right"></i> عودة
-                </a>
-                <a href="index.html"><img src="logo.jpg" class="main-logo"></a>
-                
-                <div id="mobile-menu" class="hidden md:flex items-center gap-8 border-r-0 md:border-r-2 md:pr-6 border-gray-200">
-                    <a href="index.html" class="nav-link menu-item text-red-600">الرئيسية</a>
-                    <a href="catalog.html" class="nav-link menu-item">الكتالوج</a>
-                    <a href="team.html" class="nav-link menu-item font-bold">فريق العمل</a>
-                    <a href="privacy.html" class="nav-link menu-item" style="font-size: 12px;">سياسة الخصوصية</a>
-                    <a href="about.html" class="nav-link menu-item">حول</a>
-                    <a href="index.html#contact" class="nav-link menu-item">اتصل بنا</a>
-                    <a href="en-team.html" class="text-blue-400 font-bold md:hidden menu-item">English</a>
-                </div>
-            </div>
-            <div class="burger-icon md:hidden cursor-pointer" id="burger-btn">
-                <i class="fas fa-bars text-2xl text-gray-700 dark:text-gray-300"></i>
-            </div>
-        </div>
+    <nav class="container mx-auto max-w-5xl flex justify-between items-center mb-16">
+        <a href="index.html" aria-label="العودة للرئيسية">
+            <img src="logo.jpg" class="h-10 rounded-lg shadow-sm" alt="DeSina Logo">
+        </a>
+        <a href="index.html" class="font-bold text-red-600 hover:underline">الرئيسية</a>
     </nav>
 
-    <section class="bg-gray-900 text-white py-12 text-center transition-colors">
-        <div class="container mx-auto px-4">
-            <h1 class="text-3xl md:text-5xl font-extrabold mb-3">فريق <span class="text-red-600">DeSina</span></h1>
-            <p class="text-lg text-gray-400">عقول مبدعة تصنع الفرق</p>
-        </div>
-    </section>
+    <header class="text-center mb-16">
+        <h1 class="text-4xl md:text-6xl font-black mb-4">فريق عمل <span class="text-red-600">DeSina</span></h1>
+        <p class="text-gray-500 font-bold max-w-2xl mx-auto">نخبة من المبدعين والخبراء الذين يعملون بشغف لتحويل رؤية ديسينا إلى واقع ملموس في عالم الأزياء والحلول الرقمية.</p>
+    </header>
 
-    <section class="py-12 px-6">
-        <div class="container mx-auto">
-            <div class="grid grid-cols-2 md:grid-cols-5 gap-6 text-center">
-                
-                <script>
-                    for (let i = 1; i <= 10; i++) {
-                        document.write(`
-                            <div class="team-card shadow-sm">
-                                <img src="logo.jpg" alt="DeSina Team" class="team-img">
-                                <div class="p-4">
-                                    <h3 class="text-lg font-bold mb-1">عضو الفريق ${i}</h3>
-                                    <p class="text-red-600 text-sm font-bold">المسمى الوظيفي</p>
-                                </div>
-                            </div>
-                        `);
-                    }
-                </script>
+    <main class="container mx-auto max-w-6xl">
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <div class="team-card p-8 text-center">
+                <img src="logo.jpg" class="profile-img mx-auto mb-6" alt="عضو فريق ديسينا">
+                <h2 class="text-2xl font-bold mb-2">إدارة الإنتاج</h2>
+                <p class="text-red-600 font-bold mb-4">قطاع الملابس والأزياء</p>
+                <p class="text-gray-500 text-sm leading-relaxed">المسؤولون عن ضمان أعلى معايير الجودة العالمية في كل قطعة ملابس تحمل اسم ديسينا.</p>
+            </div>
 
+            <div class="team-card p-8 text-center">
+                <img src="logo.jpg" class="profile-img mx-auto mb-6" alt="عضو فريق ديسينا">
+                <h2 class="text-2xl font-bold mb-2">الفريق الإبداعي</h2>
+                <p class="text-red-600 font-bold mb-4">التسويق وصناعة المحتوى</p>
+                <p class="text-gray-500 text-sm leading-relaxed">العقول المبتكرة خلف الحملات الإعلانية والهوية البصرية التي تميز براند ديسينا رقمياً.</p>
+            </div>
+
+            <div class="team-card p-8 text-center">
+                <img src="logo.jpg" class="profile-img mx-auto mb-6" alt="عضو فريق ديسينا">
+                <h2 class="text-2xl font-bold mb-2">الدعم الفني</h2>
+                <p class="text-red-600 font-bold mb-4">خدمة الشركاء والعملاء</p>
+                <p class="text-gray-500 text-sm leading-relaxed">فريق مخصص لضمان أفضل تجربة تعامل وبناء جسور ثقة مستدامة مع كافة عملاء ديسينا.</p>
             </div>
         </div>
-    </section>
+    </main>
 
-    <footer class="bg-gray-950 text-white py-8 text-center border-t border-gray-800 transition-colors">
-        <a href="index.html" class="text-red-600 font-bold text-xl block mb-2">DeSina</a>
-        <p class="text-gray-500 text-xs font-bold">جميع حقوق الملكية محفوظة لشركة DeSina © 2026</p>
+    <footer class="mt-24 text-center border-t border-gray-200 dark:border-gray-800 pt-10">
+        <p class="text-gray-500 font-bold uppercase tracking-widest text-xs">DeSina Group Excellence © 2026</p>
+        <p class="text-red-600 font-black mt-2">نحن نكبر بثقتكم</p>
     </footer>
 
-    <script>
-        const burgerBtn = document.getElementById('burger-btn');
-        const mobileMenu = document.getElementById('mobile-menu');
-        const menuItems = document.querySelectorAll('.menu-item');
-        burgerBtn.addEventListener('click', (e) => { e.stopPropagation(); mobileMenu.classList.toggle('active'); });
-        menuItems.forEach(item => { item.addEventListener('click', () => { mobileMenu.classList.remove('active'); }); });
-        document.addEventListener('click', (e) => { if (!mobileMenu.contains(e.target) && !burgerBtn.contains(e.target)) { mobileMenu.classList.remove('active'); } });
-    </script>
 </body>
 </html>
