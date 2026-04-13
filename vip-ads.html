@@ -17,7 +17,7 @@
         nav { background-color: rgba(0, 0, 0, 0.8) !important; backdrop-filter: blur(15px); border-bottom: 1px solid var(--border-color); width: 100%; }
         .nav-container { display: flex; justify-content: space-between; align-items: center; width: 100%; max-width: 1400px; margin: 0 auto; padding: 0 15px; }
         
-        /* التوهج والروح القديمة - الأسود العميق بلمسة أحمر خفيفة */
+        /* الكارت بتنسيقه المستقر */
         .vip-card { 
             background: var(--bg-card); 
             border: 1px solid var(--border-color); 
@@ -32,18 +32,37 @@
             min-height: 280px; 
         }
         
+        /* التعديل المطلوب: الهالة الحمراء الهادية والكلاسيك خلف الكارت */
         .vip-card:hover { 
             transform: translateY(-12px) scale(1.02); 
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.6), 0 0 20px rgba(239, 68, 68, 0.15); 
+            /* هالة حمراء ضبابية واسعة جداً وناعمة (0.12 شفافية للهدوء) */
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.7), 0 0 45px rgba(239, 68, 68, 0.12); 
             border-color: var(--red-desina); 
         }
 
-        .brand-app-icon { width: 60px; height: 60px; object-fit: contain; border-radius: 12px; margin-bottom: 15px; }
+        .brand-app-icon { width: 60px; height: 60px; object-fit: contain; border-radius: 12px; margin-bottom: 15px; transition: 0.3s; }
         .fashion-logo { max-width: 140px; height: 60px; filter: brightness(0) invert(1); transition: 0.3s; }
-        .vip-card:hover .fashion-logo { filter: brightness(1) drop-shadow(0 0 5px var(--red-desina)); }
+        
+        /* توهج اللوجو الداخلي الهادي */
+        .vip-card:hover .fashion-logo, .vip-card:hover .brand-app-icon { 
+            filter: brightness(1) drop-shadow(0 0 8px rgba(239, 68, 68, 0.3)); 
+        }
 
         .section-divider { border-right: 5px solid var(--red-desina); padding-right: 20px; margin: 50px 0 30px; }
-        .btn-vip { border: 1.5px solid var(--red-desina); color: #fff; padding: 12px 20px; border-radius: 12px; width: 100%; text-align: center; font-weight: bold; background: rgba(239, 68, 68, 0.05); transition: 0.3s; cursor: pointer; }
+        
+        /* الزرار - هو الوحيد القابل للضغط لراحة مستخدم الموبايل */
+        .btn-vip { 
+            border: 1.5px solid var(--red-desina); 
+            color: #fff; 
+            padding: 12px 20px; 
+            border-radius: 12px; 
+            width: 100%; 
+            text-align: center; 
+            font-weight: bold; 
+            background: rgba(239, 68, 68, 0.05); 
+            transition: 0.3s; 
+            cursor: pointer; 
+        }
         .btn-vip:hover { background: var(--red-desina); box-shadow: 0 0 20px rgba(239, 68, 68, 0.4); }
 
         .swal2-popup { background: #161b22 !important; color: #fff !important; border-radius: 25px !important; border: 1px solid #21262d !important; }
