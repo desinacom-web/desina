@@ -58,12 +58,11 @@
         }
         .btn-vip:hover { background: var(--red-desina); box-shadow: 0 0 25px rgba(239, 68, 68, 0.5); }
 
-        /* تعديل شكل زرار الرسالة ليكون دائري وأحمر */
         .swal2-popup { background: #161b22 !important; color: #fff !important; border-radius: 25px !important; border: 1px solid #21262d !important; }
         .swal2-title { color: #ef4444 !important; font-weight: 900 !important; }
         .swal2-confirm { 
             background-color: #ef4444 !important; 
-            border-radius: 30px !important; /* لجعله دائري ناعم */
+            border-radius: 30px !important; 
             font-weight: 700 !important; 
             padding: 12px 30px !important;
         }
@@ -86,6 +85,21 @@
         <p class="text-gray-400 text-sm md:text-lg font-bold tracking-[0.3em] uppercase">Elite Branding Partners</p>
     </header>
     <main class="container mx-auto px-6 pb-20">
+        
+        <div class="section-divider"><h2 class="text-2xl md:text-3xl font-black text-white">برامج الذكاء الاصطناعي والميديا</h2></div>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+            <div class="vip-card">
+                <img src="https://img.icons8.com/fluency/512/artificial-intelligence.png" class="brand-app-icon" alt="Wispr Flow">
+                <h3 class="text-xl font-bold mb-4">Wispr Flow</h3>
+                <div class="btn-vip" onclick="window.location.href='رابط_العمولة_بتاعك_هنا'">ابدأ الآن</div>
+            </div>
+            <div class="vip-card">
+                <img src="https://img.icons8.com/color/512/adobe-creative-cloud.png" class="brand-app-icon" alt="Adobe">
+                <h3 class="text-xl font-bold mb-4">Adobe Pro</h3>
+                <div class="btn-vip" onclick="checkAffiliate('Adobe')">عروض أدوبي</div>
+            </div>
+        </div>
+
         <div class="section-divider"><h2 class="text-2xl md:text-3xl font-black text-white">قطاع البث والترفيه الرقمي</h2></div>
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
             <div class="vip-card">
@@ -109,6 +123,26 @@
                 <div class="btn-vip" onclick="checkAffiliate('OSN+')">اشتراك OSN+</div>
             </div>
         </div>
+
+        <div class="section-divider"><h2 class="text-2xl md:text-3xl font-black text-white">التسويق والإلكترونيات</h2></div>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <div class="vip-card">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/a/a9/Amazon_logo.svg" class="fashion-logo" alt="Amazon">
+                <h3 class="text-xl font-bold mb-4">Amazon</h3>
+                <div class="btn-vip" onclick="checkAffiliate('Amazon')">تسوق أمازون</div>
+            </div>
+            <div class="vip-card">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/a/a2/Noon_Logo.svg" class="fashion-logo" alt="Noon">
+                <h3 class="text-xl font-bold mb-4">Noon</h3>
+                <div class="btn-vip" onclick="checkAffiliate('Noon')">عروض نون</div>
+            </div>
+            <div class="vip-card">
+                <img src="https://img.icons8.com/external-tal-revivo-bold-tal-revivo/512/external-temu-online-marketplace-operated-by-the-chinese-e-commerce-company-logo-bold-tal-revivo.png" class="brand-app-icon" alt="Temu" style="filter: brightness(0) invert(1);">
+                <h3 class="text-xl font-bold mb-4">Temu</h3>
+                <div class="btn-vip" onclick="checkAffiliate('Temu')">منتجات تيمو</div>
+            </div>
+        </div>
+
         <div class="section-divider"><h2 class="text-2xl md:text-3xl font-black text-white">قطاع الموضة والأزياء</h2></div>
         <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
             <div class="vip-card">
@@ -131,13 +165,13 @@
             Swal.fire({
                 title: 'تحديث البيانات المباشرة',
                 html: `جاري فحص وتحديث أقوى عروض <b class="text-red-500">${platform}</b> الحصرية لعملاء <span class="text-red-600 font-bold">DeSina VIP</span>... <br><br> <div class="w-full bg-gray-800 rounded-full h-2 overflow-hidden"><div id="progress-bar" class="bg-red-600 h-2 rounded-full" style="width: 0%"></div></div>`,
-                timer: 8000,
+                timer: 3000,
                 showConfirmButton: false,
                 allowOutsideClick: false,
                 didOpen: () => {
                     const b = document.getElementById('progress-bar');
                     timerInterval = setInterval(() => {
-                        const progress = 100 - (Swal.getTimerLeft() / 8000 * 100);
+                        const progress = 100 - (Swal.getTimerLeft() / 3000 * 100);
                         b.style.width = progress + '%';
                     }, 50);
                 },
