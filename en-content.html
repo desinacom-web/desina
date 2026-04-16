@@ -44,16 +44,7 @@
         .premium-player-fixed { width: 100%; height: 160px; border-radius: 15px; background: #111; border: 2px solid #222; }
         * { font-style: normal !important; }
 
-        /* Unified Light Grey Modal - The Light Room Style */
-        #vipMasterModal { background: rgba(255, 255, 255, 0.6); }
-        .vip-card-glow-en {
-            background: #f0f2f5; 
-            border: 3px solid #ef4444;
-            box-shadow: 0 0 50px rgba(239, 68, 68, 0.3);
-            border-radius: 40px;
-        }
-        .vip-card-glow-en h3, .vip-card-glow-en p { color: #1a1a1a !important; }
-
+        /* Arabic Switch Button Style - Slim Professional Version */
         .lang-switch {
             background: linear-gradient(45deg, #ef4444, #000);
             color: white !important;
@@ -78,16 +69,21 @@
             <a href="en.html" class="font-bold flex items-center gap-2 hover:text-red-600 transition text-sm md:text-base text-gray-800 dark:text-gray-200">
                 <i class="fas fa-chevron-left"></i> Home
             </a>
+            
             <div class="flex items-center gap-4">
-                <a href="content.html" class="lang-switch"><i class="fas fa-globe"></i> <span>العربية</span></a>
-                <a href="en.html"><img src="logo.jpg" style="height: 35px; border-radius: 5px;"></a>
+                <a href="content.html" class="lang-switch">
+                    <i class="fas fa-globe"></i> <span>العربية</span>
+                </a>
+                <a href="en.html">
+                    <img src="logo.jpg" style="height: 35px; border-radius: 5px;">
+                </a>
             </div>
         </div>
     </nav>
 
     <header class="py-12 text-center px-4">
         <h1 class="text-4xl md:text-5xl font-black text-red-600 mb-4 tracking-tighter uppercase">Content Production</h1>
-        <p class="text-lg font-bold opacity-80 tracking-tighter uppercase">"Limitless Creativity with DeSina"</p>
+        <p class="text-lg font-bold opacity-80 tracking-tighter">"Limitless Creativity with <span class="tracking-tighter uppercase">DeSina</span>"</p>
     </header>
 
     <main class="container mx-auto px-6 pb-20">
@@ -96,64 +92,82 @@
             <div class="p-8 content-card shadow-2xl flex flex-col items-center text-center">
                 <img src="logo.jpg" class="h-10 mb-6 rounded shadow-md">
                 <h2 class="text-xl font-bold mb-4 uppercase">Facebook Reels</h2>
-                <p class="text-gray-500 mb-6 text-sm font-bold">Follow the latest global trends with lightning speed.</p>
+                <p class="text-gray-500 mb-6 text-sm font-bold">Follow the latest global and exclusive trends from one place with lightning speed.</p>
                 <a href="https://www.facebook.com/watch" target="_blank" onclick="if(window.innerWidth < 768) { this.target='_self'; } startVipTimer();" class="bg-red-600 text-white px-8 py-3 rounded-2xl font-bold hover:bg-black transition-all">Watch on Facebook</a>
             </div>
             <div class="p-8 content-card shadow-2xl flex flex-col items-center text-center">
                 <img src="logo.jpg" class="h-10 mb-6 rounded shadow-md">
                 <h2 class="text-xl font-bold mb-4 uppercase">TikTok Reels</h2>
-                <p class="text-gray-500 mb-6 text-sm font-bold">Follow the latest global trends with lightning speed.</p>
+                <p class="text-gray-500 mb-6 text-sm font-bold">Follow the latest global and exclusive trends from one place with lightning speed.</p>
                 <a href="https://www.tiktok.com/foryou" target="_blank" onclick="startVipTimer()" class="bg-red-600 text-white px-8 py-3 rounded-2xl font-bold hover:bg-black transition-all">Watch on TikTok</a>
             </div>
         </div>
         
-        <h2 class="text-2xl font-black mb-10 text-red-600 border-l-4 border-red-600 pl-4 italic tracking-tight uppercase">DeSina Audio Library</h2>
+        <h2 class="text-2xl font-black mb-10 text-red-600 border-l-4 border-red-600 pl-4 italic tracking-tight"><span class="tracking-tighter">DeSina</span> Audio Library</h2>
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 mb-20">
             <div class="p-8 content-card shadow-2xl flex flex-col items-center">
-                <img src="logo.jpg" class="h-10 mb-6 rounded shadow-md"><h2 class="text-xl font-bold mb-6 italic">Arabic Classical</h2>
+                <img src="logo.jpg" class="h-10 mb-6 rounded shadow-md">
+                <h2 class="text-xl font-bold mb-6 italic">Arabic Classical</h2>
                 <audio controls class="premium-player-fixed"><source src="URL_HERE"></audio>
             </div>
             <div class="p-8 content-card shadow-2xl flex flex-col items-center text-center">
-                <img src="logo.jpg" class="h-10 mb-6 rounded shadow-md"><h2 class="text-xl font-bold mb-6 uppercase italic">Global Hits</h2>
+                <img src="logo.jpg" class="h-10 mb-6 rounded shadow-md">
+                <h2 class="text-xl font-bold mb-6 uppercase italic">Global Hits</h2>
                 <audio controls class="premium-player-fixed"><source src="URL_HERE"></audio>
             </div>
             <div class="p-8 content-card shadow-2xl flex flex-col items-center text-center">
-                <img src="logo.jpg" class="h-10 mb-6 rounded shadow-md"><h2 class="text-xl font-bold mb-6 italic">Folk Rhythms</h2>
+                <img src="logo.jpg" class="h-10 mb-6 rounded shadow-md">
+                <h2 class="text-xl font-bold mb-6 italic">Folk Rhythms</h2>
                 <audio controls class="premium-player-fixed"><source src="URL_HERE"></audio>
             </div>
         </div>
 
-        <h2 class="text-2xl font-black mb-8 text-red-600 border-l-4 border-red-600 pl-4 italic tracking-tight uppercase">Live Streaming</h2>
+        <h2 class="text-2xl font-black mb-8 text-red-600 border-l-4 border-red-600 pl-4 italic tracking-tight">Live Streaming</h2>
         <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 mb-20">
             <div class="p-8 content-card shadow-2xl">
                 <div class="flex items-center gap-4 mb-8"><i class="fas fa-headphones-alt text-4xl text-red-600"></i><div><h2 class="text-2xl font-bold italic uppercase">Audio Engineering</h2><p class="text-gray-500 text-sm italic uppercase tracking-widest">DeSina Audio Lab</p></div></div>
-                <div class="anghami-container"><iframe src="https://widget.anghami.com/playlist/252198952/?theme=fulldark&layout=list&lang=en" scrolling="no" frameborder="0" style="height: 270px !important; width: 100% !important;"></iframe></div>
+                <div class="anghami-container">
+                    <iframe src="https://widget.anghami.com/playlist/252198952/?theme=fulldark&layout=list&lang=en" scrolling="no" frameborder="0" style="height: 270px !important; width: 100% !important;"></iframe>
+                </div>
             </div>
             <div class="p-8 content-card shadow-2xl flex flex-col justify-between">
                 <div class="flex items-center gap-4 mb-8"><i class="fas fa-film text-4xl text-red-600"></i><div><h2 class="text-2xl font-bold italic uppercase">Visual Arts</h2><p class="text-gray-500 text-sm italic uppercase tracking-widest">DeSina Visuals</p></div></div>
-                <div class="anghami-container"><iframe class="w-full h-full" src="https://www.youtube.com/embed/Wh6l79aSbaY?autoplay=1&mute=1&loop=1&playlist=Wh6l79aSbaY&controls=1" frameborder="0" allow="autoplay; encrypted-media; fullscreen" allowfullscreen style="height: 270px !important;"></iframe></div>
+                <div class="anghami-container">
+                    <iframe class="w-full h-full" src="https://www.youtube.com/embed/Wh6l79aSbaY?autoplay=1&mute=1&loop=1&playlist=Wh6l79aSbaY&controls=1" frameborder="0" allow="autoplay; encrypted-media; fullscreen" allowfullscreen style="height: 270px !important;"></iframe>
+                </div>
             </div>
         </div>
 
-        <h2 class="text-2xl font-black mb-10 text-red-600 border-l-4 border-red-600 pl-4 italic tracking-tight uppercase">DeSina Cinema</h2>
+        <h2 class="text-2xl font-black mb-10 text-red-600 border-l-4 border-red-600 pl-4 italic tracking-tight uppercase"><span class="tracking-tighter">DeSina</span> Cinema</h2>
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
             <div class="p-8 content-card shadow-2xl flex flex-col items-center text-center">
-                <img src="logo.jpg" class="h-10 mb-6 rounded shadow-md"><h2 class="text-xl font-bold mb-6 italic">Arabic Cinema</h2><video controls class="premium-player-fixed"><source src="URL_HERE"></video></div>
+                <img src="logo.jpg" class="h-10 mb-6 rounded shadow-md">
+                <h2 class="text-xl font-bold mb-6 italic">Arabic Cinema</h2>
+                <video controls class="premium-player-fixed"><source src="URL_HERE"></video>
+            </div>
             <div class="p-8 content-card shadow-2xl flex flex-col items-center text-center">
-                <img src="logo.jpg" class="h-10 mb-6 rounded shadow-md"><h2 class="text-xl font-bold mb-6 uppercase italic">International</h2><video controls class="premium-player-fixed"><source src="URL_HERE"></video></div>
+                <img src="logo.jpg" class="h-10 mb-6 rounded shadow-md">
+                <h2 class="text-xl font-bold mb-6 uppercase italic">International</h2>
+                <video controls class="premium-player-fixed"><source src="URL_HERE"></video>
+            </div>
             <div class="p-8 content-card shadow-2xl flex flex-col items-center text-center">
-                <img src="logo.jpg" class="h-10 mb-6 rounded shadow-md"><h2 class="text-xl font-bold mb-6 italic">Original Productions</h2><video controls class="premium-player-fixed"><source src="URL_HERE"></video></div>
+                <img src="logo.jpg" class="h-10 mb-6 rounded shadow-md">
+                <h2 class="text-xl font-bold mb-6 italic">Original Productions</h2>
+                <video controls class="premium-player-fixed"><source src="URL_HERE"></video>
+            </div>
         </div>
     </main>
 
-    <div id="vipMasterModal" class="fixed inset-0 z-[100] flex items-center justify-center backdrop-blur-xl opacity-0 pointer-events-none transition-all duration-1000">
-        <div class="vip-card-glow-en p-10 rounded-[40px] max-w-lg text-center mx-4 relative overflow-hidden">
+    <div id="vipMasterModal" class="fixed inset-0 z-[100] flex items-center justify-center bg-black/95 backdrop-blur-xl opacity-0 pointer-events-none transition-all duration-1000">
+        <div class="bg-[#0a0c10] border-2 border-red-600 p-10 rounded-[40px] max-w-lg text-center shadow-[0_0_80px_rgba(239,68,68,0.6)] mx-4 relative overflow-hidden">
             <i class="fas fa-crown text-6xl text-red-600 mb-6 animate-pulse"></i>
-            <h3 class="text-3xl font-black mb-4 italic uppercase tracking-tighter">DeSina VIP</h3>
-            <p class="mb-10 text-lg leading-relaxed italic">The world of <span class="text-red-600 font-bold uppercase">DeSina</span> has a face seen by all, and a soul opened only for the Elite.</p>
+            <h3 class="text-3xl font-black text-white mb-4 italic uppercase tracking-tighter">DeSina VIP</h3>
+            <p class="text-gray-300 mb-10 text-lg leading-relaxed italic">
+                The world of <span class="text-red-600 font-bold tracking-tighter uppercase">DeSina</span> has a face seen by all, and a soul opened only for the Elite. The VIP Library doesn't just offer exclusive content—it grants you access to details crafted specifically for you.
+            </p>
             <div class="flex flex-col gap-4">
-                <a href="en-vip-ads.html" class="bg-red-600 text-white py-5 rounded-2xl font-black text-xl hover:bg-black transition-all duration-500 uppercase shadow-lg">Unlock VIP Secrets</a>
-                <button onclick="closeVipMasterModal()" class="text-gray-400 text-xs font-bold uppercase hover:text-red-600 transition-colors">Continue Regular Session</button>
+                <a href="en-vip-ads.html" class="bg-red-600 text-white py-5 rounded-2xl font-black text-xl hover:bg-white hover:text-red-600 transition-all duration-500 uppercase shadow-lg tracking-widest">Unlock VIP Secrets</a>
+                <button onclick="closeVipMasterModal()" class="text-gray-500 text-xs font-bold uppercase tracking-widest hover:text-red-500 transition-colors">Continue Regular Session</button>
             </div>
         </div>
     </div>
@@ -163,24 +177,37 @@
     </footer>
 
     <script>
-        let trackCounter = 0; let videoTimer = null; let smartReelsTimer = null;
-        const TRACK_LIMIT = 3; 
-        const VIDEO_TIME_LIMIT = 600000; 
-        const REELS_TIME_LIMIT = 600000; 
+        let trackCounter = 0; 
+        let videoTimer = null; 
+        let smartReelsTimer = null;
+        
+        const TRACK_LIMIT = 2; 
+        const VIDEO_TIME_LIMIT = 12 * 60 * 1000; 
+        const REELS_TIME_LIMIT = 900000; // 15 Minutes
 
         function showVipModal() {
             const modal = document.getElementById('vipMasterModal');
-            if (modal) { modal.classList.remove('opacity-0', 'pointer-events-none'); modal.classList.add('opacity-100'); }
+            if (modal) { 
+                modal.classList.remove('opacity-0', 'pointer-events-none'); 
+                modal.classList.add('opacity-100'); 
+            }
         }
+
         function closeVipMasterModal() {
             const modal = document.getElementById('vipMasterModal');
-            modal.classList.add('opacity-0', 'pointer-events-none'); modal.classList.remove('opacity-100');
-            trackCounter = 0; clearTimeout(videoTimer); if(smartReelsTimer) clearTimeout(smartReelsTimer);
+            modal.classList.add('opacity-0', 'pointer-events-none'); 
+            modal.classList.remove('opacity-100');
+            trackCounter = 0; 
+            clearTimeout(videoTimer);
+            if(smartReelsTimer) clearTimeout(smartReelsTimer);
         }
+
         function startVipTimer() {
+            console.log("English Timer Started: 15 Minutes");
             if (smartReelsTimer) clearTimeout(smartReelsTimer);
             smartReelsTimer = setTimeout(showVipModal, REELS_TIME_LIMIT);
         }
+
         document.querySelectorAll('audio, video').forEach(media => {
             if (media.tagName === 'AUDIO') {
                 media.onended = () => { trackCounter++; if (trackCounter >= TRACK_LIMIT) showVipModal(); };
