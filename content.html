@@ -44,7 +44,6 @@
         .premium-player-fixed { width: 100%; height: 160px; border-radius: 15px; background: #111; border: 2px solid #222; }
         * { font-style: normal !important; }
         
-        /* زرار اللغة المطور - مقاس Slim احترافي */
         .lang-switch {
             background: linear-gradient(45deg, #ef4444, #000);
             color: white !important;
@@ -61,17 +60,27 @@
             text-decoration: none !important;
         }
         .lang-switch:hover { transform: scale(1.05); box-shadow: 0 0 10px rgba(239, 68, 68, 0.4); }
+
+        /* تعديلات البوابة لتصبح "فاتحة ومنورة" بالرمادي الفاخر */
+        #vipMasterModal {
+            background: rgba(255, 255, 255, 0.6); /* خلفية بيضاء شفافة للبلور */
+        }
+        .vip-card-glow {
+            background: #f0f2f5; /* رمادي فاتح جداً (جري) */
+            border: 3px solid #ef4444;
+            box-shadow: 0 0 50px rgba(239, 68, 68, 0.3);
+        }
+        .vip-card-glow h3, .vip-card-glow p {
+            color: #1a1a1a !important; /* نصوص داكنة عشان تظهر على الرمادي */
+        }
     </style>
 </head>
 <body>
     <nav class="p-4 sticky top-0 z-50 backdrop-blur-md">
         <div class="container mx-auto flex justify-between items-center px-4">
             <a href="index.html" class="font-bold flex items-center gap-2 hover:text-red-600 transition text-sm md:text-base"><i class="fas fa-chevron-right"></i> الرئيسية</a>
-            
             <div class="flex items-center gap-4">
-                <a href="en-content.html" class="lang-switch">
-                    <i class="fas fa-globe"></i> <span>EN</span>
-                </a>
+                <a href="en-content.html" class="lang-switch"><i class="fas fa-globe"></i> <span>EN</span></a>
                 <a href="index.html"><img src="logo.jpg" style="height: 35px; border-radius: 5px;"></a>
             </div>
         </div>
@@ -99,7 +108,7 @@
             </div>
         </div>
         
-        <h2 class="text-2xl font-bold mb-10 text-red-600 border-r-4 border-red-600 pr-4 italic text-right">مكتبة <span class="tracking-tighter">DeSina</span> الصوتية</h2>
+        <h2 class="text-2xl font-bold mb-10 text-red-600 border-r-4 border-red-600 pr-4 italic text-right">مكتبة DeSina الصوتية</h2>
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 mb-20">
             <div class="p-8 content-card shadow-2xl flex flex-col items-center">
                 <img src="logo.jpg" class="h-10 mb-6 rounded shadow-md">
@@ -122,19 +131,15 @@
         <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 mb-20">
             <div class="p-8 content-card shadow-2xl">
                 <div class="flex items-center gap-4 mb-8"><i class="fas fa-headphones-alt text-4xl text-red-600"></i><div><h2 class="text-2xl font-bold italic">الإنتاج الصوتي</h2><p class="text-gray-500 text-sm italic uppercase">DeSina Audio Lab</p></div></div>
-                <div class="anghami-container">
-                    <iframe src="https://widget.anghami.com/playlist/252198952/?theme=fulldark&layout=list&lang=ar" scrolling="no" frameborder="0" style="height: 270px !important; width: 100% !important;"></iframe>
-                </div>
+                <div class="anghami-container"><iframe src="https://widget.anghami.com/playlist/252198952/?theme=fulldark&layout=list&lang=ar" scrolling="no" frameborder="0" style="height: 270px !important; width: 100% !important;"></iframe></div>
             </div>
             <div class="p-8 content-card shadow-2xl flex flex-col justify-between">
                 <div class="flex items-center gap-4 mb-8"><i class="fas fa-film text-4xl text-red-600"></i><div><h2 class="text-2xl font-bold italic">الإنتاج المرئي</h2><p class="text-gray-500 text-sm italic uppercase">DeSina Visuals</p></div></div>
-                <div class="anghami-container">
-                    <iframe class="w-full h-full" src="https://www.youtube.com/embed/Wh6l79aSbaY?autoplay=1&mute=1&loop=1&playlist=Wh6l79aSbaY&controls=1" frameborder="0" allow="autoplay; encrypted-media; fullscreen" allowfullscreen style="height: 270px !important;"></iframe>
-                </div>
+                <div class="anghami-container"><iframe class="w-full h-full" src="https://www.youtube.com/embed/Wh6l79aSbaY?autoplay=1&mute=1&loop=1&playlist=Wh6l79aSbaY&controls=1" frameborder="0" allow="autoplay; encrypted-media; fullscreen" allowfullscreen style="height: 270px !important;"></iframe></div>
             </div>
         </div>
 
-        <h2 class="text-2xl font-bold mb-10 text-red-600 border-r-4 border-red-600 pr-4 text-right">سينما <span class="tracking-tighter">DeSina</span></h2>
+        <h2 class="text-2xl font-bold mb-10 text-red-600 border-r-4 border-red-600 pr-4 text-right">سينما DeSina</h2>
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
             <div class="p-8 content-card shadow-2xl flex flex-col items-center text-center">
                 <img src="logo.jpg" class="h-10 mb-6 rounded shadow-md">
@@ -154,16 +159,16 @@
         </div>
     </main>
 
-    <div id="vipMasterModal" class="fixed inset-0 z-[100] flex items-center justify-center bg-black/95 backdrop-blur-xl opacity-0 pointer-events-none transition-all duration-1000">
-        <div class="bg-[#0a0c10] border-2 border-red-600 p-10 rounded-[40px] max-w-lg text-center shadow-[0_0_80px_rgba(239,68,68,0.6)] mx-4 relative overflow-hidden">
+    <div id="vipMasterModal" class="fixed inset-0 z-[100] flex items-center justify-center backdrop-blur-xl opacity-0 pointer-events-none transition-all duration-1000">
+        <div class="vip-card-glow p-10 rounded-[40px] max-w-lg text-center mx-4 relative overflow-hidden">
             <i class="fas fa-crown text-6xl text-red-600 mb-6 animate-pulse"></i>
-            <h3 class="text-3xl font-extrabold text-white mb-4 italic uppercase">DeSina VIP</h3>
-            <p class="text-gray-300 mb-10 text-lg leading-relaxed italic">
+            <h3 class="text-3xl font-extrabold mb-4 italic uppercase">DeSina VIP</h3>
+            <p class="mb-10 text-lg leading-relaxed italic">
                 عالم <span class="text-red-600 font-bold uppercase">DeSina</span> له وجه يراه الجميع، ووجه لا يفتحه إلا النخبة. مكتبة الـ VIP لا تمنحك فقط محتوىً حصرياً، بل تمنحك تفاصيل لم تُصنع لغيرك.
             </p>
             <div class="flex flex-col gap-4">
-                <a href="vip-ads.html" class="bg-red-600 text-white py-5 rounded-2xl font-bold text-xl hover:bg-white hover:text-red-600 transition-all duration-500 uppercase shadow-lg">اكتشف أسرار الـ VIP</a>
-                <button onclick="closeVipMasterModal()" class="text-gray-500 text-xs font-bold uppercase hover:text-red-500 transition-colors">الاستمرار في السهرة العادية</button>
+                <a href="vip-ads.html" class="bg-red-600 text-white py-5 rounded-2xl font-bold text-xl hover:bg-black transition-all duration-500 uppercase shadow-lg">اكتشف أسرار الـ VIP</a>
+                <button onclick="closeVipMasterModal()" class="text-gray-400 text-xs font-bold uppercase hover:text-red-600 transition-colors">الاستمرار في السهرة العادية</button>
             </div>
         </div>
     </div>
@@ -177,9 +182,9 @@
         let videoTimer = null; 
         let smartReelsTimer = null;
         
-        const TRACK_LIMIT = 2; 
-        const VIDEO_TIME_LIMIT = 12 * 60 * 1000; 
-        const REELS_TIME_LIMIT = 900000;
+        const TRACK_LIMIT = 3; // تعديل لـ 3 تراكات
+        const VIDEO_TIME_LIMIT = 10 * 60 * 1000; // تعديل لـ 10 دقائق
+        const REELS_TIME_LIMIT = 600000; // السوشيال ميديا 10 دقائق
 
         function showVipModal() {
             const modal = document.getElementById('vipMasterModal');
@@ -195,9 +200,7 @@
             modal.classList.remove('opacity-100');
             trackCounter = 0; 
             clearTimeout(videoTimer);
-            if(smartReelsTimer) {
-                clearTimeout(smartReelsTimer);
-            }
+            if(smartReelsTimer) clearTimeout(smartReelsTimer);
         }
 
         function startVipTimer() {
