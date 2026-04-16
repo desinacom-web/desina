@@ -59,6 +59,28 @@
         #lightbox-img { max-width: 90%; max-height: 80vh; border-radius: 12px; }
         #review-modal .modal-content { background: var(--bg-card); border: 1px solid var(--border-color); }
         #revName, #revMsg { background: var(--bg-body); color: var(--text-main); border-color: var(--border-color); }
+
+        /* زرار اللغة المطور - Slim & Responsive */
+        .lang-switch {
+            background: linear-gradient(45deg, #ef4444, #000);
+            color: white !important;
+            padding: 4px 10px;
+            border-radius: 50px;
+            font-size: 12px;
+            font-weight: 800;
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+            transition: 0.3s;
+            border: 1px solid rgba(255,255,255,0.2);
+            line-height: 1;
+            text-decoration: none !important;
+            white-space: nowrap;
+        }
+        @media (max-width: 640px) {
+            .lang-switch { padding: 3px 8px; font-size: 11px; }
+        }
+        .lang-switch:hover { transform: scale(1.05); box-shadow: 0 0 10px rgba(239, 68, 68, 0.4); }
     </style>
 </head>
 <body>
@@ -72,12 +94,14 @@
         <div class="container mx-auto flex justify-between items-center px-4">
             <div class="flex items-center gap-4">
                 <a href="index.html">
-                    <img src="logo.jpg" style="height: 38px; border-radius: 8px; cursor: pointer;" alt="لوجو ديسينا - الانتقال للرئيسية">
+                    <img src="logo.jpg" style="height: 38px; border-radius: 8px; cursor: pointer;" alt="لوجو ديسينا - الصفحة الرئيسية">
                 </a>
-                <a href="index.html" class="nav-link">الرئيسية</a>
+                <a href="index.html" class="nav-link hidden sm:inline">الرئيسية</a>
             </div>
-            <div class="flex items-center gap-6">
-                <a href="en-store.html" class="nav-link text-blue-600">English</a>
+            <div class="flex items-center gap-4">
+                <a href="en-store.html" class="lang-switch">
+                    <i class="fas fa-globe"></i> <span>EN</span>
+                </a>
                 <div class="text-red-600 text-2xl relative cursor-pointer" onclick="sendOrderToWhatsApp()">
                     <i class="fas fa-shopping-cart"></i>
                     <span id="cart-badge" class="bg-black text-white rounded-full px-2 py-0.5 text-[10px] absolute -top-2 -left-2 hidden">0</span>
@@ -111,6 +135,26 @@
             </div>
         </div>
     </section>
+
+    <footer class="bg-gray-950 text-white py-12 px-6 text-center border-t border-gray-800">
+        <div class="container mx-auto grid grid-cols-1 md:grid-cols-2 gap-10">
+            <div>
+                <h4 class="text-2xl font-bold text-red-600 mb-4">ديسينا | DeSina</h4>
+                <p class="text-gray-400 text-sm">أرقى الأزياء العصرية بتصاميم حصرية وجودة لا تضاهى. شقاؤنا من أجل أناقتك.</p>
+                <div class="mt-6 flex justify-center gap-4">
+                    <a href="https://wa.me/201102919214" class="text-emerald-500 text-2xl"><i class="fab fa-whatsapp"></i></a>
+                    <a href="mailto:info@desina.net" class="text-red-600 text-2xl"><i class="fas fa-envelope"></i></a>
+                </div>
+            </div>
+            <div>
+                <h4 class="text-xl font-bold mb-4 text-white">اتصل بنا</h4>
+                <p class="text-lg mb-1" dir="ltr">+20 1102919214</p>
+                <p class="text-lg" dir="ltr">+20 1102919614</p>
+                <p class="text-red-600 text-xs mt-6 font-bold uppercase tracking-widest">All Rights Reserved | DeSina Group©2026</p>
+            </div>
+        </div>
+    </footer>
+
     <div id="review-modal" style="display:none; position:fixed; inset:0; background:rgba(0,0,0,0.85); z-index:20000; align-items:center; justify-content:center; backdrop-filter:blur(5px);">
         <div class="modal-content" style="width:90%; max-width:400px; padding:30px; border-radius:25px; position:relative;">
             <i class="fas fa-times absolute left-6 top-6 text-gray-400 cursor-pointer text-xl" onclick="toggleReviewModal(false)"></i>
@@ -120,64 +164,15 @@
             <button onclick="submitReview()" class="w-full bg-emerald-500 text-white py-4 rounded-xl font-black">إرسال عبر واتساب</button>
         </div>
     </div>
+
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
     <script>
         const totalModels = 11;
         const grid = document.getElementById('product-grid');
         let currentFilter = 'all', activeIdx = 1;
+        let cart = [];
+
         function displayProducts() {
             grid.innerHTML = "";
             const search = document.getElementById('searchInput').value.toLowerCase();
-            for (let i = 1; i <= totalModels; i++) {
-                const modelName = `موديل COD-${i < 10 ? '0'+i : i}`;
-                const category = (i % 2 === 0) ? 'winter' : 'summer';
-                if ((currentFilter === 'all' || category === currentFilter) && modelName.toLowerCase().includes(search)) {
-                    grid.innerHTML += `
-                        <div class="store-card" id="COD-${i < 10 ? '0'+i : i}">
-                            <div class="product-img-container" onclick="openLightbox(${i})">
-                                <img src="cod${i}.jpeg" class="product-img" loading="lazy" alt="ديسينا ${modelName} - أزياء عصرية">
-                            </div>
-                            <div class="p-4">
-                                <h3 class="text-xs font-bold mb-1 uppercase">${modelName}</h3>
-                                <p class="text-red-600 font-black text-lg mb-3">1000 EGP</p>
-                                <button class="btn-order" onclick="addToCart('${modelName}')">
-                                    اطلب الآن <i class="fas fa-shopping-cart"></i>
-                                </button>
-                            </div>
-                        </div>`;
-                }
-            }
-        }
-        displayProducts();
-        const reviewsWrapper = document.getElementById('reviews-wrapper');
-        const reviewsText = ["خامة ممتازة جداً", "توصيل سريع", "جودة عالية", "أفضل براند", "موديلات تحفة", "مقاسات مظبوطة", "خدمة ممتازة", "تجربة رائعة", "DeSina الأفضل", "شغل احترافي", "بجد شكراً ليكم", "خامات مريحة", "أشيك موديلات", "5 نجوم", "الألوان زي الصورة", "سرعة في الرد", "تعامل راقي", "خامة شتوية روعة", "أحلى خامة صيفي", "دايماً متميزين"];
-        for (let i = 0; i < 20; i++) {
-            reviewsWrapper.innerHTML += `<div class="swiper-slide"><div class="review-card"><div class="star-gold">${'<i class="fas fa-star"></i>'.repeat(5)}</div><p class="font-bold opacity-80 text-sm">"${reviewsText[i % 20]}"</p><h4 class="mt-3 text-red-600 font-black text-xs">عميل ${i+1}</h4></div></div>`;
-        }
-        function setCategory(cat, btn) { currentFilter = cat; document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active')); btn.classList.add('active'); displayProducts(); }
-        function openLightbox(i) { activeIdx = i; document.getElementById('lightbox-img').src = `cod${i}.jpeg`; document.getElementById('lightbox').style.display = 'flex'; document.body.style.overflow='hidden'; }
-        function closeLightbox() { document.getElementById('lightbox').style.display = 'none'; document.body.style.overflow='auto'; }
-        function changeImg(s) { activeIdx += s; if(activeIdx > totalModels) activeIdx=1; if(activeIdx < 1) activeIdx=totalModels; document.getElementById('lightbox-img').src = `cod${activeIdx}.jpeg`; }
-        function toggleReviewModal(show) { document.getElementById('review-modal').style.display = show ? 'flex' : 'none'; }
-        function submitReview() { const n = document.getElementById('revName').value, m = document.getElementById('revMsg').value; window.open(`https://wa.me/201102919214?text=${encodeURIComponent("الاسم: "+n+"\nالتقييم: "+m)}`, '_blank'); toggleReviewModal(false); }
-        let cart = [];
-        function addToCart(n) { 
-            cart.push(n); 
-            const b = document.getElementById('cart-badge'); 
-            b.innerText = cart.length; 
-            b.style.display = 'block';
-            fbq('track', 'AddToCart', { content_name: n });
-        }
-        function sendOrderToWhatsApp() {
-            if (cart.length === 0) return alert("السلة فارغة");
-            const orderNumber = "DS-" + Math.floor(1000 + Math.random() * 9000);
-            let orderDetails = "🚀 طلب جديد من DeSina\nرقم الطلب: " + orderNumber + "\n--------------------------\n";
-            cart.forEach((item, index) => { orderDetails += `${index + 1}- ${item}\n`; });
-            orderDetails += "--------------------------\nبرجاء تأكيد الطلب ومتابعة الحالة.";
-            fbq('track', 'Purchase', { value: cart.length * 1000, currency: 'EGP', contents: cart.map(item => ({ name: item, quantity: 1 })), content_type: 'product' });
-            window.open(`https://wa.me/201102919214?text=${encodeURIComponent(orderDetails)}`, '_blank');
-        }
-        new Swiper(".mySwiper", { loop: true, autoplay: { delay: 3000 }, pagination: { el: ".swiper-pagination", clickable: true }, breakpoints: { 768: { slidesPerView: 2 }, 1024: { slidesPerView: 3 } } });
-    </script>
-</body>
-</html>
+            for (let i =
