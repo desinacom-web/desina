@@ -28,6 +28,7 @@
     <link rel="icon" type="image/jpeg" href="logo.jpg">
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
         :root { --bg-main: #f9fafb; --bg-card: #ffffff; --text-main: #1f2937; --nav-bg: #ffffff; --btn-text: #374151; }
         @media (prefers-color-scheme: dark) {
@@ -46,6 +47,24 @@
             .bg-white { background-color: var(--bg-card) !important; }
         }
         * { font-style: normal !important; }
+
+        /* Balanced Language Switcher - Slim Version */
+        .lang-switch {
+            background: linear-gradient(45deg, #ef4444, #000);
+            color: white !important;
+            padding: 4px 12px;
+            border-radius: 50px;
+            font-size: 13px;
+            font-weight: 800;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            transition: 0.3s;
+            border: 1px solid rgba(255,255,255,0.2);
+            line-height: 1;
+            text-decoration: none !important;
+        }
+        .lang-switch:hover { transform: scale(1.05); box-shadow: 0 0 10px rgba(239, 68, 68, 0.4); }
     </style>
 </head>
 <body>
@@ -57,9 +76,12 @@
                 </a>
                 <span class="text-xl font-bold">DeSina</span>
             </div>
-            <div class="flex gap-6 items-center">
-                <a href="en.html" class="font-bold hover:text-red-600">Home</a>
-                <a href="catalog.html" class="text-red-600 font-bold border-l pl-4 border-gray-200" aria-label="Switch to Arabic">عربي</a>
+            <div class="flex gap-4 items-center">
+                <a href="en.html" class="font-bold hover:text-red-600 hidden sm:inline">Home</a>
+                
+                <a href="catalog.html" class="lang-switch">
+                    <i class="fas fa-globe"></i> <span>العربية</span>
+                </a>
             </div>
         </div>
     </nav>
