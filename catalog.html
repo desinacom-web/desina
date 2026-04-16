@@ -28,6 +28,7 @@
     <link rel="icon" type="image/jpeg" href="logo.jpg">
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
         :root { --bg-main: #f9fafb; --bg-card: #ffffff; --text-main: #1f2937; --nav-bg: #ffffff; --btn-text: #374151; }
         @media (prefers-color-scheme: dark) {
@@ -46,6 +47,24 @@
             .bg-white { background-color: var(--bg-card) !important; }
         }
         * { font-style: normal !important; }
+
+        /* زرار اللغة المطور - مقاس Slim احترافي */
+        .lang-switch {
+            background: linear-gradient(45deg, #ef4444, #000);
+            color: white !important;
+            padding: 4px 12px;
+            border-radius: 50px;
+            font-size: 13px;
+            font-weight: 800;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            transition: 0.3s;
+            border: 1px solid rgba(255,255,255,0.2);
+            line-height: 1;
+            text-decoration: none !important;
+        }
+        .lang-switch:hover { transform: scale(1.05); box-shadow: 0 0 10px rgba(239, 68, 68, 0.4); }
     </style>
 </head>
 <body>
@@ -57,11 +76,13 @@
                 </a>
                 <span class="text-xl font-bold">DeSina</span>
             </div>
-          <div class="flex items-center gap-1 mr-16">
-    <a href="index.html" class="font-bold hover:text-red-600 text-[14px]">الرئيسية</a>
-    <span class="border-l border-gray-300 h-4 mx-1"></span>
-    <a href="en-catalog.html" class="text-red-600 font-bold text-[14px]">English</a>
-</div>
+            <div class="flex items-center gap-4">
+                <a href="index.html" class="font-bold hover:text-red-600 hidden sm:inline text-sm">الرئيسية</a>
+                
+                <a href="en-catalog.html" class="lang-switch">
+                    <i class="fas fa-globe"></i> <span>EN</span>
+                </a>
+            </div>
         </div>
     </nav>
     <header class="bg-gray-900 py-16 text-center text-white px-4">
