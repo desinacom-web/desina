@@ -1,8 +1,8 @@
 @font-face {
-  font-family: 'Cairo';
-  src: url('../webfonts/Cairo-Regular.woff2') format('woff2');
-  font-weight: normal;
-  font-style: normal;
+font-family: 'Cairo';
+src: url('../webfonts/Cairo-Regular.woff2') format('woff2');
+font-weight: normal;
+font-style: normal;
 }
 @tailwind base;
 @tailwind components;
