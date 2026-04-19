@@ -6,5 +6,7 @@ module.exports = {
       fontFamily: {
         'cairo': ['Cairo', 'sans-serif'],
       },
-    plugins: [],
+    },
+  },
+  plugins: [],
 }
