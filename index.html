@@ -212,18 +212,13 @@
     </footer>
     <script>
   window.addEventListener('DOMContentLoaded', () => {
-    const btn = document.getElementById('burger-btn');
+    const burgerBtn = document.getElementById('burger-btn');
     const menu = document.getElementById('mobile-menu');
 
-    if (btn && menu) {
-      // دي الحركة اللي إنت بتحبها: تدوس يفتح أو يقفل
-      btn.onclick = () => menu.classList.toggle('hidden');
-
-      // ودي الحركة اللي بتخلي المنيو تختفي لما تدوس في أي حتة "بره"
-      document.addEventListener('click', (e) => {
-        if (!btn.contains(e.target) && !menu.contains(e.target)) {
-          menu.classList.add('hidden');
-        }
+    if (burgerBtn && menu) {
+      burgerBtn.addEventListener('click', () => {
+        // ده الكود الأصلي بتاعك بالظبط "toggle"
+        menu.classList.toggle('hidden');
       });
     }
   });
