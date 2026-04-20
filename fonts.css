@@ -57,11 +57,11 @@ body {
     font-family: 'Cairo', sans-serif !important;
 }
 
-.fab {
-    font-family: 'Font Awesome 5 Brands' !important;
-}
-
 .fas, .fa {
     font-family: 'Font Awesome 5 Free' !important;
     font-weight: 900 !important;
+}
+
+.fab {
+    font-family: 'Font Awesome 5 Brands' !important;
 }
