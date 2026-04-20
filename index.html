@@ -211,24 +211,35 @@
         <p class="mt-10 text-center text-red-600 text-sm font-bold">جميع حقوق الملكية محفوظة DeSina Group © 2026</p>
     </footer>
     <script>
-  window.addEventListener('DOMContentLoaded', () => {
-    const burgerBtn = document.getElementById('burger-btn');
-    const menu = document.getElementById('mobile-menu');
+    window.addEventListener('DOMContentLoaded', () => {
+        const burgerBtn = document.getElementById('burger-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
 
-    if (burgerBtn && menu) {
-      burgerBtn.addEventListener('click', () => {
-        // ده الكود الأصلي بتاعك بالظبط "toggle"
-        menu.classList.toggle('hidden');
-      });
+        if (burgerBtn && mobileMenu) {
+            burgerBtn.addEventListener('click', (e) => { 
+                e.stopPropagation(); 
+                mobileMenu.classList.toggle('active'); 
+            });
+            document.addEventListener('click', (e) => { 
+                if (!mobileMenu.contains(e.target) && !burgerBtn.contains(e.target)) 
+                    mobileMenu.classList.remove('active'); 
+            });
+        }
+    });
+
+    function handleMusicToggle() { 
+        const audio = document.getElementById('bg-audio'); 
+        const icon = document.getElementById('music-icon'); 
+        if (audio.paused) { 
+            audio.play().then(() => { 
+                icon.className = 'fas fa-pause'; 
+                audio.volume = 0.3; 
+            }).catch(e => console.log(e)); 
+        } else { 
+            audio.pause(); 
+            icon.className = 'fas fa-music'; 
+        } 
     }
-  });
-
-  function handleMusicToggle() {
-    const audio = document.getElementById('bg-audio');
-    const icon = document.getElementById('music-icon');
-    if (audio.paused) { audio.play(); icon.classList.replace('fa-volume-mute', 'fa-volume-up'); }
-    else { audio.pause(); icon.classList.replace('fa-volume-up', 'fa-volume-mute'); }
-  }
 </script>
 </body>
 </html>
