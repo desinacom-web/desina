@@ -488,10 +488,10 @@ ${expression ? 'Expression: "' + expression + '"\n\n' : ""}`, el);
     const safeAsyncFunction = () => {
       try {
         let func2 = new AsyncFunction(
-          [&quot;__self&quot;, &quot;scope&quot;],
+         ["__self", "scope"],
           `with (scope) { __self.result = ${rightSideSafeExpression} }; __self.finished = true; return __self.result;`
         );
-        Object.defineProperty(func2, &quot;name&quot;, {
+        Object.defineProperty(func2, "name", {
           value: `[Alpine] ${expression}`
         });
         return func2;
@@ -506,42 +506,42 @@ ${expression ? 'Expression: "' + expression + '"\n\n' : ""}`, el);
   }
   function generateEvaluatorFromString(dataStack, expression, el) {
     let func = generateFunctionFromString(expression, el);
-    return (receiver = () =< {
-    }, { scope: scope2 = {}, params = [] } = {}) =< {
+    return (receiver = () => {
+    }, { scope: scope2 = {}, params = [] } = {}) => {
       func.result = void 0;
       func.finished = false;
       let completeScope = mergeProxies([scope2, ...dataStack]);
-      if (typeof func === &quot;function&quot;) {
-        let promise = func(func, completeScope).catch((error2) =< handleError(error2, el, expression));
+      if (typeof func === "function") {
+        let promise = func(func, completeScope).catch((error2) => handleError(error2, el, expression));
         if (func.finished) {
           runIfTypeOfFunction(receiver, func.result, completeScope, params, el);
           func.result = void 0;
         } else {
-          promise.then((result) =< {
+          promise.then((result) => {
             runIfTypeOfFunction(receiver, result, completeScope, params, el);
-          }).catch((error2) =< handleError(error2, el, expression)).finally(() =< func.result = void 0);
+          }).catch((error2) => handleError(error2, el, expression)).finally(() => func.result = void 0);
         }
       }
     };
   }
   function runIfTypeOfFunction(receiver, value, scope2, params, el) {
-    if (shouldAutoEvaluateFunctions && typeof value === &quot;function&quot;) {
+    if (shouldAutoEvaluateFunctions && typeof value === "function") {
       let result = value.apply(scope2, params);
       if (result instanceof Promise) {
-        result.then((i) =< runIfTypeOfFunction(receiver, i, scope2, params)).catch((error2) =< handleError(error2, el, value));
+        result.then((i) => runIfTypeOfFunction(receiver, i, scope2, params)).catch((error2) => handleError(error2, el, value));
       } else {
         receiver(result);
       }
-    } else if (typeof value === &quot;object&quot; && value instanceof Promise) {
-      value.then((i) =< receiver(i));
+    } else if (typeof value === "object" && value instanceof Promise) {
+      value.then((i) => receiver(i));
     } else {
       receiver(value);
     }
   }
 
   // packages/alpinejs/src/directives.js
-  var prefixAsString = &quot;x-&quot;;
-  function prefix(subject = &quot;&quot;) {
+  var prefixAsString = "x-";
+  function prefix(subject = "") {
     return prefixAsString + subject;
   }
   function setPrefix(newPrefix) {
@@ -557,7 +557,7 @@ ${expression ? 'Expression: "' + expression + '"\n\n' : ""}`, el);
           return;
         }
         const pos = directiveOrder.indexOf(directive2);
-        directiveOrder.splice(pos <= 0 ? pos : directiveOrder.indexOf(&quot;DEFAULT&quot;), 0, name);
+        directiveOrder.splice(pos <= 0 ? pos : directiveOrder.indexOf("DEFAULT"), 0, name); 
       }
     };
   }
