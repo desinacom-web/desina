@@ -1038,7 +1038,7 @@ ${expression ? 'Expression: "' + expression + '"\n\n' : ""}`, el);
     if (transitioningOut) {
       el._x_transition.leave.during = {
         transformOrigin: origin,
-        transitionDelay: `${delay}s`,
+       transitionDelay: `${delay}s`,
         transitionProperty: property,
         transitionDuration: `${durationOut}s`,
         transitionTimingFunction: easing
@@ -1058,8 +1058,8 @@ ${expression ? 'Expression: "' + expression + '"\n\n' : ""}`, el);
       el._x_transition = {
         enter: { during: defaultValue, start: defaultValue, end: defaultValue },
         leave: { during: defaultValue, start: defaultValue, end: defaultValue },
-        in(before = () =< {
-        }, after = () =< {
+        in(before = () => {
+        }, after = () => {
         }) {
           transition(el, setFunction, {
             during: this.enter.during,
@@ -1067,8 +1067,8 @@ ${expression ? 'Expression: "' + expression + '"\n\n' : ""}`, el);
             end: this.enter.end
           }, before, after);
         },
-        out(before = () =< {
-        }, after = () =< {
+        out(before = () => {
+        }, after = () => {
         }) {
           transition(el, setFunction, {
             during: this.leave.during,
@@ -1079,8 +1079,8 @@ ${expression ? 'Expression: "' + expression + '"\n\n' : ""}`, el);
       };
   }
   window.Element.prototype._x_toggleAndCascadeWithTransitions = function(el, value, show, hide) {
-    const nextTick2 = document.visibilityState === &quot;visible&quot; ? requestAnimationFrame : setTimeout;
-    let clickAwayCompatibleShow = () =< nextTick2(show);
+    const nextTick2 = document.visibilityState === "visible" ? requestAnimationFrame : setTimeout;
+    let clickAwayCompatibleShow = () => nextTick2(show);
     if (value) {
       if (el._x_transition && (el._x_transition.enter || el._x_transition.leave)) {
         el._x_transition.enter && (Object.entries(el._x_transition.enter.during).length || Object.entries(el._x_transition.enter.start).length || Object.entries(el._x_transition.enter.end).length) ? el._x_transition.in(show) : clickAwayCompatibleShow();
@@ -1089,29 +1089,29 @@ ${expression ? 'Expression: "' + expression + '"\n\n' : ""}`, el);
       }
       return;
     }
-    el._x_hidePromise = el._x_transition ? new Promise((resolve, reject) =< {
-      el._x_transition.out(() =< {
-      }, () =< resolve(hide));
-      el._x_transitioning && el._x_transitioning.beforeCancel(() =< reject({ isFromCancelledTransition: true }));
+    el._x_hidePromise = el._x_transition ? new Promise((resolve, reject) => {
+      el._x_transition.out(() => {
+      }, () => resolve(hide));
+      el._x_transitioning && el._x_transitioning.beforeCancel(() => reject({ isFromCancelledTransition: true }));
     }) : Promise.resolve(hide);
-    queueMicrotask(() =< {
+    queueMicrotask(() => {
       let closest = closestHide(el);
       if (closest) {
         if (!closest._x_hideChildren)
           closest._x_hideChildren = [];
         closest._x_hideChildren.push(el);
       } else {
-        nextTick2(() =< {
-          let hideAfterChildren = (el2) =< {
+        nextTick2(() => {
+          let hideAfterChildren = (el2) => {
             let carry = Promise.all([
               el2._x_hidePromise,
               ...(el2._x_hideChildren || []).map(hideAfterChildren)
-            ]).then(([i]) =< i?.());
+            ]).then(([i]) => i?.());
             delete el2._x_hidePromise;
             delete el2._x_hideChildren;
             return carry;
           };
-          hideAfterChildren(el).catch((e) =< {
+          hideAfterChildren(el).catch((e) => {
             if (!e.isFromCancelledTransition)
               throw e;
           });
@@ -1125,8 +1125,8 @@ ${expression ? 'Expression: "' + expression + '"\n\n' : ""}`, el);
       return;
     return parent._x_hidePromise ? parent : closestHide(parent);
   }
-  function transition(el, setFunction, { during, start: start2, end } = {}, before = () =< {
-  }, after = () =< {
+  function transition(el, setFunction, { during, start: start2, end } = {}, before = () => {
+  }, after = () => {
   }) {
     if (el._x_transitioning)
       el._x_transitioning.cancel();
@@ -1135,7 +1135,7 @@ ${expression ? 'Expression: "' + expression + '"\n\n' : ""}`, el);
       after();
       return;
     }
-    let undoStart, undoDuring, undoEnd;
+    let undoStart, undoDuring, undoEnd; 
     performTransition(el, {
       start() {
         undoStart = setFunction(el, start2);
