@@ -821,16 +821,16 @@ ${expression ? 'Expression: "' + expression + '"\n\n' : ""}`, el);
   }
   function warnAboutMissingPlugins() {
     let pluginDirectives = [
-      [&quot;ui&quot;, &quot;dialog&quot;, [&quot;[x-dialog], [x-popover]&quot;]],
-      [&quot;anchor&quot;, &quot;anchor&quot;, [&quot;[x-anchor]&quot;]],
-      [&quot;sort&quot;, &quot;sort&quot;, [&quot;[x-sort]&quot;]]
+      ["ui", "dialog", ["[x-dialog], [x-popover]"]],
+      ["anchor", "anchor", ["[x-anchor]"]],
+      ["sort", "sort", ["[x-sort]"]]
     ];
-    pluginDirectives.forEach(([plugin2, directive2, selectors]) =< {
+    pluginDirectives.forEach(([plugin2, directive2, selectors]) => {
       if (directiveExists(directive2))
         return;
-      selectors.some((selector) =< {
+      selectors.some((selector) => {
         if (document.querySelector(selector)) {
-          warn(`found &quot;${selector}&quot;, but missing ${plugin2} plugin`);
+          warn(`found "${selector}", but missing ${plugin2} plugin`);
           return true;
         }
       });
@@ -840,15 +840,15 @@ ${expression ? 'Expression: "' + expression + '"\n\n' : ""}`, el);
   // packages/alpinejs/src/nextTick.js
   var tickStack = [];
   var isHolding = false;
-  function nextTick(callback = () =< {
+  function nextTick(callback = () => {
   }) {
-    queueMicrotask(() =< {
-      isHolding || setTimeout(() =< {
+    queueMicrotask(() => {
+      isHolding || setTimeout(() => {
         releaseNextTicks();
       });
     });
-    return new Promise((res) =< {
-      tickStack.push(() =< {
+    return new Promise((res) => {
+      tickStack.push(() => {
         callback();
         res();
       });
@@ -866,78 +866,78 @@ ${expression ? 'Expression: "' + expression + '"\n\n' : ""}`, el);
   // packages/alpinejs/src/utils/classes.js
   function setClasses(el, value) {
     if (Array.isArray(value)) {
-      return setClassesFromString(el, value.join(&quot; &quot;));
-    } else if (typeof value === &quot;object&quot; && value !== null) {
+      return setClassesFromString(el, value.join(" "));
+    } else if (typeof value === "object" && value !== null) {
       return setClassesFromObject(el, value);
-    } else if (typeof value === &quot;function&quot;) {
+    } else if (typeof value === "function") {
       return setClasses(el, value());
     }
     return setClassesFromString(el, value);
   }
   function setClassesFromString(el, classString) {
-    let split = (classString2) =< classString2.split(&quot; &quot;).filter(Boolean);
-    let missingClasses = (classString2) =< classString2.split(&quot; &quot;).filter((i) =< !el.classList.contains(i)).filter(Boolean);
-    let addClassesAndReturnUndo = (classes) =< {
+    let split = (classString2) => classString2.split(" ").filter(Boolean);
+    let missingClasses = (classString2) => classString2.split(" ").filter((i) => !el.classList.contains(i)).filter(Boolean);
+    let addClassesAndReturnUndo = (classes) => {
       el.classList.add(...classes);
-      return () =< {
+      return () => {
         el.classList.remove(...classes);
       };
     };
-    classString = classString === true ? classString = &quot;&quot; : classString || &quot;&quot;;
+    classString = classString === true ? classString = "" : classString || "";
     return addClassesAndReturnUndo(missingClasses(classString));
   }
   function setClassesFromObject(el, classObject) {
-    let split = (classString) =< classString.split(&quot; &quot;).filter(Boolean);
-    let forAdd = Object.entries(classObject).flatMap(([classString, bool]) =< bool ? split(classString) : false).filter(Boolean);
-    let forRemove = Object.entries(classObject).flatMap(([classString, bool]) =< !bool ? split(classString) : false).filter(Boolean);
+    let split = (classString) => classString.split(" ").filter(Boolean);
+    let forAdd = Object.entries(classObject).flatMap(([classString, bool]) => bool ? split(classString) : false).filter(Boolean);
+    let forRemove = Object.entries(classObject).flatMap(([classString, bool]) => !bool ? split(classString) : false).filter(Boolean);
     let added = [];
     let removed = [];
-    forRemove.forEach((i) =< {
+    forRemove.forEach((i) => {
       if (el.classList.contains(i)) {
         el.classList.remove(i);
         removed.push(i);
       }
     });
-    forAdd.forEach((i) =< {
+    forAdd.forEach((i) => {
       if (!el.classList.contains(i)) {
         el.classList.add(i);
         added.push(i);
       }
     });
-    return () =< {
-      removed.forEach((i) =< el.classList.add(i));
-      added.forEach((i) =< el.classList.remove(i));
+    return () => {
+      removed.forEach((i) => el.classList.add(i));
+      added.forEach((i) => el.classList.remove(i));
     };
   }
 
   // packages/alpinejs/src/utils/styles.js
   function setStyles(el, value) {
-    if (typeof value === &quot;object&quot; && value !== null) {
+    if (typeof value === "object" && value !== null) {
       return setStylesFromObject(el, value);
     }
     return setStylesFromString(el, value);
   }
   function setStylesFromObject(el, value) {
     let previousStyles = {};
-    Object.entries(value).forEach(([key, value2]) =< {
+    Object.entries(value).forEach(([key, value2]) => {
       previousStyles[key] = el.style[key];
-      if (!key.startsWith(&quot;--&quot;)) {
+      if (!key.startsWith("--")) {
         key = kebabCase(key);
       }
       el.style.setProperty(key, value2);
     });
-    setTimeout(() =< {
+    setTimeout(() => {
       if (el.style.length === 0) {
-        el.removeAttribute(&quot;style&quot;);
+        el.removeAttribute("style");
       }
     });
-    return () =< {
+    return () => {
       setStyles(el, previousStyles);
     };
   }
   function setStylesFromString(el, value) {
-    let cache = el.getAttribute(&quot;style&quot;, value);
-    el.setAttribute(&quot;style&quot;, value);
+    let cache = el.getAttribute("style", value);
+    el.setAttribute("style", value);
     return () =< {
       el.setAttribute(&quot;style&quot;, cache || &quot;&quot;);
     };
