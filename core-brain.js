@@ -348,26 +348,25 @@ function elementBoundEffect(el) {
         } else {
           if (isObject2(value) && value !== obj && !(value instanceof Element)) {
             recurse(value, path);
-          }
-        }
+       }
       });
     };
     return recurse(data2);
   }
-  function interceptor(callback, mutateObj = () =< {
+  function interceptor(callback, mutateObj = () => {
   }) {
     let obj = {
       initialValue: void 0,
       _x_interceptor: true,
       initialize(data2, path, key) {
-        return callback(this.initialValue, () =< get(data2, path), (value) =< set(data2, path, value), path, key);
+        return callback(this.initialValue, () => get(data2, path), (value) => set(data2, path, value), path, key);
       }
     };
     mutateObj(obj);
-    return (initialValue) =< {
-      if (typeof initialValue === &quot;object&quot; && initialValue !== null && initialValue._x_interceptor) {
+    return (initialValue) => {
+      if (typeof initialValue === "object" && initialValue !== null && initialValue._x_interceptor) {
         let initialize = obj.initialize.bind(obj);
-        obj.initialize = (data2, path, key) =< {
+        obj.initialize = (data2, path, key) => {
           let innerValue = initialValue.initialize(data2, path, key);
           obj.initialValue = innerValue;
           return initialize(data2, path, key);
@@ -379,11 +378,11 @@ function elementBoundEffect(el) {
     };
   }
   function get(obj, path) {
-    return path.split(&quot;.&quot;).reduce((carry, segment) =< carry[segment], obj);
+    return path.split(".").reduce((carry, segment) => carry[segment], obj);
   }
   function set(obj, path, value) {
-    if (typeof path === &quot;string&quot;)
-      path = path.split(&quot;.&quot;);
+    if (typeof path === "string")
+      path = path.split(".");
     if (path.length === 1)
       obj[path[0]] = value;
     else if (path.length === 0)
@@ -405,7 +404,7 @@ function elementBoundEffect(el) {
   }
   function injectMagics(obj, el) {
     let memoizedUtilities = getUtilities(el);
-    Object.entries(magics).forEach(([name, callback]) =< {
+    Object.entries(magics).forEach(([name, callback]) => {
       Object.defineProperty(obj, `$${name}`, {
         get() {
           return callback(el, memoizedUtilities);
@@ -417,7 +416,7 @@ function elementBoundEffect(el) {
   }
   function getUtilities(el) {
     let [utilities, cleanup2] = getElementBoundUtilities(el);
-    let utils = { interceptor, ...utilities };
+    let utils = { interceptor, ...utilities };   
     onElRemoved(el, cleanup2);
     return utils;
   }
