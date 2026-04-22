@@ -1146,6 +1146,12 @@
     });
   }
 
+  // packages/alpinejs/src/magics.js
+  var magics = {};
+  function magic(name, callback) {
+    magics[name] = callback;
+  }
+
   // Final Export and Close
   var alpine_default = {
     start,
