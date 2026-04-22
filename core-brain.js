@@ -262,10 +262,6 @@
     addedAttributes = null;
     removedAttributes = null;
   }
-    let func = safeAsyncFunction();
-    evaluatorMemo[expression] = func;
-    return func;
-  }
   function generateEvaluatorFromString(dataStack, expression, el) {
     let func = generateFunctionFromString(expression, el);
     return (receiver = () => {
