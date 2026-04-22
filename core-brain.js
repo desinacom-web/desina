@@ -1575,7 +1575,7 @@ ${expression ? 'Expression: "' + expression + '"\n\n' : ""}`, el);
     return () => {
     };
   }
-  function injectBindingProviders(obj) {
+ function injectBindingProviders(obj) {
     Object.entries(binds).forEach(([name, callback]) => {
       Object.defineProperty(obj, name, {
         get() {
@@ -1589,4 +1589,4 @@ ${expression ? 'Expression: "' + expression + '"\n\n' : ""}`, el);
 
   // Final start call
   start();
-}();
+})(); 
