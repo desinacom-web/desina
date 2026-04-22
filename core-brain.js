@@ -718,12 +718,12 @@ ${expression ? 'Expression: "' + expression + '"\n\n' : ""}`, el);
 
   // packages/alpinejs/src/utils/walk.js
   function walk(el, callback) {
-    if (typeof ShadowRoot === &quot;function&quot; && el instanceof ShadowRoot) {
-      Array.from(el.children).forEach((el2) =< walk(el2, callback));
+    if (typeof ShadowRoot === "function" && el instanceof ShadowRoot) {
+      Array.from(el.children).forEach((el2) => walk(el2, callback));
       return;
     }
     let skip = false;
-    callback(el, () =< skip = true);
+    callback(el, () => skip = true);
     if (skip)
       return;
     let node = el.firstElementChild;
@@ -742,34 +742,34 @@ ${expression ? 'Expression: "' + expression + '"\n\n' : ""}`, el);
   var started = false;
   function start() {
     if (started)
-      warn(&quot;Alpine has already been initialized on this page. Calling Alpine.start() more than once can cause problems.&quot;);
+      warn("Alpine has already been initialized on this page. Calling Alpine.start() more than once can cause problems.");
     started = true;
     if (!document.body)
-      warn(&quot;Unable to initialize. Trying to load Alpine before `<body<` is available. Did you forget to add `defer` in Alpine&apos;s `<script<` tag?&quot;);
-    dispatch(document, &quot;alpine:init&quot;);
-    dispatch(document, &quot;alpine:initializing&quot;);
+      warn("Unable to initialize. Trying to load Alpine before <body> is available. Did you forget to add `defer` in Alpine's <script> tag?");
+    dispatch(document, "alpine:init");
+    dispatch(document, "alpine:initializing");
     startObservingMutations();
-    onElAdded((el) =< initTree(el, walk));
-    onElRemoved((el) =< destroyTree(el));
-    onAttributesAdded((el, attrs) =< {
-      directives(el, attrs).forEach((handle) =< handle());
+    onElAdded((el) => initTree(el, walk));
+    onElRemoved((el) => destroyTree(el));
+    onAttributesAdded((el, attrs) => {
+      directives(el, attrs).forEach((handle) => handle());
     });
-    let outNestedComponents = (el) =< !closestRoot(el.parentElement, true);
-    Array.from(document.querySelectorAll(allSelectors().join(&quot;,&quot;))).filter(outNestedComponents).forEach((el) =< {
+    let outNestedComponents = (el) => !closestRoot(el.parentElement, true);
+    Array.from(document.querySelectorAll(allSelectors().join(","))).filter(outNestedComponents).forEach((el) => {
       initTree(el);
     });
-    dispatch(document, &quot;alpine:initialized&quot;);
-    setTimeout(() =< {
+    dispatch(document, "alpine:initialized");
+    setTimeout(() => {
       warnAboutMissingPlugins();
     });
   }
   var rootSelectorCallbacks = [];
   var initSelectorCallbacks = [];
   function rootSelectors() {
-    return rootSelectorCallbacks.map((fn) =< fn());
+    return rootSelectorCallbacks.map((fn) => fn());
   }
   function allSelectors() {
-    return rootSelectorCallbacks.concat(initSelectorCallbacks).map((fn) =< fn());
+    return rootSelectorCallbacks.concat(initSelectorCallbacks).map((fn) => fn());
   }
   function addRootSelector(selectorCallback) {
     rootSelectorCallbacks.push(selectorCallback);
@@ -778,9 +778,9 @@ ${expression ? 'Expression: "' + expression + '"\n\n' : ""}`, el);
     initSelectorCallbacks.push(selectorCallback);
   }
   function closestRoot(el, includeInitSelectors = false) {
-    return findClosest(el, (element) =< {
+    return findClosest(el, (element) => {
       const selectors = includeInitSelectors ? allSelectors() : rootSelectors();
-      if (selectors.some((selector) =< element.matches(selector)))
+      if (selectors.some((selector) => element.matches(selector)))
         return true;
     });
   }
@@ -796,25 +796,25 @@ ${expression ? 'Expression: "' + expression + '"\n\n' : ""}`, el);
     return findClosest(el.parentElement, callback);
   }
   function isRoot(el) {
-    return rootSelectors().some((selector) =< el.matches(selector));
+    return rootSelectors().some((selector) => el.matches(selector));
   }
   var initInterceptors2 = [];
   function interceptInit(callback) {
     initInterceptors2.push(callback);
   }
-  function initTree(el, walker = walk, intercept = () =< {
+  function initTree(el, walker = walk, intercept = () => {
   }) {
-    deferHandlingDirectives(() =< {
-      walker(el, (el2, skip) =< {
+    deferHandlingDirectives(() => {
+      walker(el, (el2, skip) => {
         intercept(el2, skip);
-        initInterceptors2.forEach((i) =< i(el2, skip));
-        directives(el2, el2.attributes).forEach((handle) =< handle());
+        initInterceptors2.forEach((i) => i(el2, skip));
+        directives(el2, el2.attributes).forEach((handle) => handle());
         el2._x_ignore && skip();
       });
     });
   }
   function destroyTree(root, walker = walk) {
-    walker(root, (el) =< {
+    walker(root, (el) => {
       cleanupElement(el);
       cleanupAttributes(el);
     });
