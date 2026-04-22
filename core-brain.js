@@ -262,8 +262,7 @@
     addedAttributes = null;
     removedAttributes = null;
   }
-    };
-  }
+
   function runIfTypeOfFunction(receiver, value, scope2, params, el) {
     if (shouldAutoEvaluateFunctions && typeof value === "function") {
       let result = value.apply(scope2, params);
