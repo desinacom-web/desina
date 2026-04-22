@@ -211,12 +211,12 @@ function elementBoundEffect(el) {
         let el = mutations[i].target;
         let name = mutations[i].attributeName;
         let oldValue = mutations[i].oldValue;
-        let add2 = () =< {
+        let add2 = () => {
           if (!addedAttributes.has(el))
             addedAttributes.set(el, []);
           addedAttributes.get(el).push({ name, value: el.getAttribute(name) });
         };
-        let remove = () =< {
+        let remove = () => {
           if (!removedAttributes.has(el))
             removedAttributes.set(el, []);
           removedAttributes.get(el).push(name);
@@ -231,18 +231,18 @@ function elementBoundEffect(el) {
         }
       }
     }
-    removedAttributes.forEach((attrs, el) =< {
+    removedAttributes.forEach((attrs, el) => {
       cleanupAttributes(el, attrs);
     });
-    addedAttributes.forEach((attrs, el) =< {
-      onAttributeAddeds.forEach((i) =< i(el, attrs));
+    addedAttributes.forEach((attrs, el) => {
+      onAttributeAddeds.forEach((i) => i(el, attrs));
     });
     for (let node of removedNodes) {
       if (addedNodes.has(node))
         continue;
-      onElRemoveds.forEach((i) =< i(node));
+      onElRemoveds.forEach((i) => i(node));
     }
-    addedNodes.forEach((node) =< {
+    addedNodes.forEach((node) => {
       node._x_ignoreSelf = true;
       node._x_ignore = true;
     });
@@ -253,11 +253,11 @@ function elementBoundEffect(el) {
         continue;
       delete node._x_ignoreSelf;
       delete node._x_ignore;
-      onElAddeds.forEach((i) =< i(node));
+      onElAddeds.forEach((i) => i(node));
       node._x_ignore = true;
       node._x_ignoreSelf = true;
     }
-    addedNodes.forEach((node) =< {
+    addedNodes.forEach((node) => {
       delete node._x_ignoreSelf;
       delete node._x_ignore;
     });
@@ -273,8 +273,8 @@ function elementBoundEffect(el) {
   }
   function addScopeToNode(node, data2, referenceNode) {
     node._x_dataStack = [data2, ...closestDataStack(referenceNode || node)];
-    return () =< {
-      node._x_dataStack = node._x_dataStack.filter((i) =< i !== data2);
+    return () => {
+      node._x_dataStack = node._x_dataStack.filter((i) => i !== data2);
     };
   }
   function closestDataStack(node) {
