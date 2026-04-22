@@ -513,9 +513,12 @@
       directives(el, attrs).forEach((handle) => handle());
     });
     let outNestedComponents = (el) => !closestRoot(el.parentElement, true);
-    Array.from(document.querySelectorAll(allSelectors().join(","))).filter(outNestedComponents).forEach((el) => {
-      initTree(el);
-    });
+    let selectors = allSelectors().join(",");
+    if (selectors.length > 0) {
+      Array.from(document.querySelectorAll(selectors)).filter(outNestedComponents).forEach((el) => {
+        initTree(el);
+      });
+    }
     dispatch(document, "alpine:initialized");
     setTimeout(() => {
       warnAboutMissingPlugins();
