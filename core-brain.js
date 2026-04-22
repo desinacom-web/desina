@@ -1351,7 +1351,7 @@ ${expression ? 'Expression: "' + expression + '"\n\n' : ""}`, el);
     } else {
       if (el.value === value)
         return;
-      el.value = value === void 0 ? &quot;&quot; : value;
+      el.value = value === void 0 ? "" : value;
     }
   }
   function bindClasses(el, value) {
@@ -1388,62 +1388,62 @@ ${expression ? 'Expression: "' + expression + '"\n\n' : ""}`, el);
     }
   }
   function updateSelect(el, value) {
-    const arrayWrappedValue = [].concat(value).map((value2) =< {
-      return value2 + &quot;&quot;;
+    const arrayWrappedValue = [].concat(value).map((value2) => {
+      return value2 + "";
     });
-    Array.from(el.options).forEach((option) =< {
+    Array.from(el.options).forEach((option) => {
       option.selected = arrayWrappedValue.includes(option.value);
     });
   }
   function camelCase(subject) {
-    return subject.toLowerCase().replace(/-(\w)/g, (match, char) =< char.toUpperCase());
+    return subject.toLowerCase().replace(/-(\w)/g, (match, char) => char.toUpperCase());
   }
   function checkedAttrLooseCompare(valueA, valueB) {
     return valueA == valueB;
   }
   function safeParseBoolean(rawValue) {
-    if ([1, &quot;1&quot;, &quot;true&quot;, &quot;on&quot;, &quot;yes&quot;, true].includes(rawValue)) {
+    if ([1, "1", "true", "on", "yes", true].includes(rawValue)) {
       return true;
     }
-    if ([0, &quot;0&quot;, &quot;false&quot;, &quot;off&quot;, &quot;no&quot;, false].includes(rawValue)) {
+    if ([0, "0", "false", "off", "no", false].includes(rawValue)) {
       return false;
     }
     return rawValue ? Boolean(rawValue) : null;
   }
   var booleanAttributes = /* @__PURE__ */ new Set([
-    &quot;allowfullscreen&quot;,
-    &quot;async&quot;,
-    &quot;autofocus&quot;,
-    &quot;autoplay&quot;,
-    &quot;checked&quot;,
-    &quot;controls&quot;,
-    &quot;default&quot;,
-    &quot;defer&quot;,
-    &quot;disabled&quot;,
-    &quot;formnovalidate&quot;,
-    &quot;inert&quot;,
-    &quot;ismap&quot;,
-    &quot;itemscope&quot;,
-    &quot;loop&quot;,
-    &quot;multiple&quot;,
-    &quot;muted&quot;,
-    &quot;nomodule&quot;,
-    &quot;novalidate&quot;,
-    &quot;open&quot;,
-    &quot;playsinline&quot;,
-    &quot;readonly&quot;,
-    &quot;required&quot;,
-    &quot;reversed&quot;,
-    &quot;selected&quot;,
-    &quot;shadowrootclonable&quot;,
-    &quot;shadowrootdelegatesfocus&quot;,
-    &quot;shadowrootserializable&quot;
+    "allowfullscreen",
+    "async",
+    "autofocus",
+    "autoplay",
+    "checked",
+    "controls",
+    "default",
+    "defer",
+    "disabled",
+    "formnovalidate",
+    "inert",
+    "ismap",
+    "itemscope",
+    "loop",
+    "multiple",
+    "muted",
+    "nomodule",
+    "novalidate",
+    "open",
+    "playsinline",
+    "readonly",
+    "required",
+    "reversed",
+    "selected",
+    "shadowrootclonable",
+    "shadowrootdelegatesfocus",
+    "shadowrootserializable"
   ]);
   function isBooleanAttr(attrName) {
     return booleanAttributes.has(attrName);
   }
   function attributeShouldntBePreservedIfFalsy(name) {
-    return ![&quot;aria-pressed&quot;, &quot;aria-checked&quot;, &quot;aria-expanded&quot;, &quot;aria-selected&quot;].includes(name);
+    return !["aria-pressed", "aria-checked", "aria-expanded", "aria-selected"].includes(name);
   }
   function getBinding(el, name, fallback) {
     if (el._x_bindings && el._x_bindings[name] !== void 0)
