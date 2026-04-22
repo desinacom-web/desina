@@ -72,12 +72,12 @@ function elementBoundEffect(el) {
       let effectReference = effect(callback);
       if (!el._x_effects) {
         el._x_effects = /* @__PURE__ */ new Set();
-        el._x_runEffects = () =< {
-          el._x_effects.forEach((i) =< i());
+        el._x_runEffects = () => {
+          el._x_effects.forEach((i) => i());
         };
       }
       el._x_effects.add(effectReference);
-      cleanup2 = () =< {
+      cleanup2 = () => {
         if (effectReference === void 0)
           return;
         el._x_effects.delete(effectReference);
@@ -85,18 +85,18 @@ function elementBoundEffect(el) {
       };
       return effectReference;
     };
-    return [wrappedEffect, () =< {
+    return [wrappedEffect, () => {
       cleanup2();
     }];
   }
   function watch(getter, callback) {
     let firstTime = true;
     let oldValue;
-    let effectReference = effect(() =< {
+    let effectReference = effect(() => {
       let value = getter();
       JSON.stringify(value);
       if (!firstTime) {
-        queueMicrotask(() =< {
+        queueMicrotask(() => {
           callback(value, oldValue);
           oldValue = value;
         });
@@ -105,7 +105,7 @@ function elementBoundEffect(el) {
       }
       firstTime = false;
     });
-    return () =< release(effectReference);
+    return () => release(effectReference);
   }
 
   // packages/alpinejs/src/mutation.js
@@ -116,7 +116,7 @@ function elementBoundEffect(el) {
     onElAddeds.push(callback);
   }
   function onElRemoved(el, callback) {
-    if (typeof callback === &quot;function&quot;) {
+    if (typeof callback === "function") {
       if (!el._x_cleanups)
         el._x_cleanups = [];
       el._x_cleanups.push(callback);
