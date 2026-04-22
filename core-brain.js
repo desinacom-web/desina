@@ -138,9 +138,9 @@ function elementBoundEffect(el) {
   function cleanupAttributes(el, names) {
     if (!el._x_attributeCleanups)
       return;
-    Object.entries(el._x_attributeCleanups).forEach(([name, value]) =< {
+    Object.entries(el._x_attributeCleanups).forEach(([name, value]) => {
       if (names === void 0 || names.includes(name)) {
-        value.forEach((i) =< i());
+        value.forEach((i) => i());
         delete el._x_attributeCleanups[name];
       }
     });
@@ -164,11 +164,11 @@ function elementBoundEffect(el) {
   var queuedMutations = [];
   function flushObserver() {
     let records = observer.takeRecords();
-    queuedMutations.push(() =< records.length < 0 && onMutate(records));
+    queuedMutations.push(() => records.length > 0 && onMutate(records));
     let queueLengthWhenTriggered = queuedMutations.length;
-    queueMicrotask(() =< {
+    queueMicrotask(() => {
       if (queuedMutations.length === queueLengthWhenTriggered) {
-        while (queuedMutations.length < 0)
+        while (queuedMutations.length > 0)
           queuedMutations.shift()();
       }
     });
@@ -203,11 +203,11 @@ function elementBoundEffect(el) {
     for (let i = 0; i < mutations.length; i++) {
       if (mutations[i].target._x_ignoreMutationObserver)
         continue;
-      if (mutations[i].type === &quot;childList&quot;) {
-        mutations[i].addedNodes.forEach((node) =< node.nodeType === 1 && addedNodes.add(node));
-        mutations[i].removedNodes.forEach((node) =< node.nodeType === 1 && removedNodes.add(node));
+      if (mutations[i].type === "childList") {
+        mutations[i].addedNodes.forEach((node) => node.nodeType === 1 && addedNodes.add(node));
+        mutations[i].removedNodes.forEach((node) => node.nodeType === 1 && removedNodes.add(node));
       }
-      if (mutations[i].type === &quot;attributes&quot;) {
+      if (mutations[i].type === "attributes") {
         let el = mutations[i].target;
         let name = mutations[i].attributeName;
         let oldValue = mutations[i].oldValue;
