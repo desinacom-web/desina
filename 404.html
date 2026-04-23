@@ -41,21 +41,38 @@
         (function() {
             var currentPath = window.location.pathname;
             var fileName = currentPath.split('/').pop();
+            
+            // قاموس ديسينا المفلتر بناءً على ملفات الخزنة الفعلية
             var pagesMap = {
-                "index.html": "index.html",
-                "store.html": "Store.html",
-                "services.html": "Services.html",
-                "content-creation.html": "Content-Creation.html",
-                "furniture.html": "Furniture.html",
-                "clothing.html": "Clothing.html",
-                "accessories.html": "Accessories.html",
-                "about.html": "About.html",
-                "contact.html": "Contact.html",
-                "vip.html": "vip-ads.html",
-                "en-vip.html": "en-vip-ads.html"
+                "index.html": "en.html",            // الرئيسية الإنجليزية
+                "store.html": "en-store.html",      // المتجر
+                "about.html": "en-about.html",      // عن ديسينا
+                "catalog.html": "en-catalog.html",  // الكتالوج
+                "content.html": "en-content.html",  // المحتوى
+                "account.html": "en-account.html",  // الحساب
+                "team.html": "en-team.html",        // الفريق
+                "vip.html": "en-vip-ads.html",      // الإعلانات المميزة
+                "vip-ads.html": "en-vip-ads.html",
+                "en-vip.html": "en-vip-ads.html",
+                "privacy.html": "policy.html",      // الملف الذكي للخصوصية
+                "privacy-policy.html": "policy.html",
+                "about-us.html": "en-about.html"
             };
 
             var correctFileName = pagesMap[fileName.toLowerCase()];
+            
             if (correctFileName && fileName !== correctFileName) {
                 var newPath = window.location.href.replace(fileName, correctFileName);
-                window.location.
+                window.location.replace(newPath);
+            }
+        })();
+    </script>
+
+    <div class="text-center">
+        <h1 class="text-9xl font-bold glitch">404</h1>
+        <p class="text-2xl mt-4">عذراً، ديسينا لا تجد هذا الملف في خزنتها!</p>
+        <a href="en.html" class="mt-6 inline-block px-8 py-3 bg-gradient-red rounded-full text-lg font-bold">العودة للرئيسية</a>
+    </div>
+
+</body>
+</html>
