@@ -19,6 +19,6 @@ User-agent: MJ12bot
 Disallow: /
 
 # Direct Path to the Brain (The Smart Sitemap)
-Sitemap: https://desinacom-web.github.io/desina/sitemap.xml
+Sitemap: https://desina-hq.github.io/sitemap.xml
 
 # End of Secure Instruction
