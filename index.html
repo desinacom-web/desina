@@ -9,8 +9,8 @@
     <link rel="stylesheet" href="fonts.css">
     <link rel="stylesheet" href="css/output.css">
     <link rel="stylesheet" href="icons/all.min.css">
-    <script src="core-brain.js" defer></script>
-    <script src="icon-config.js" defer></script>
+    <script type="module" src="/core-brain.js"></script>
+    <script type="module" src="/icon-config.js"></script>
     <meta name="facebook-domain-verification" content="ebv7bj0c5m0f3bx00vgmhlfrdqmfup" />
     <meta name="google-site-verification" content="UHVgMaty8ud_vjNEalFdwd8dhL33fWsZmnj2776JtCw" />
     <meta name="description" content="ديسينا (DeSina): وجهتكم الرائدة في تصنيع الملابس، تصميم الأزياء، والحلول الرقمية المتكاملة. نقدم خدمات إنتاج صناعي، صناعة محتوى، وإدارة حملات إعلانية احترافية.">
@@ -216,8 +216,10 @@
         document.addEventListener('click', (e) => { if (!mobileMenu.contains(e.target) && !burgerBtn.contains(e.target)) mobileMenu.classList.remove('active'); });
         function handleMusicToggle() { const audio = document.getElementById('bg-audio'); const icon = document.getElementById('music-icon'); if (audio.paused) { audio.play().then(() => { icon.className = 'fas fa-pause'; audio.volume = 0.3; }).catch(e => console.log(e)); } else { audio.pause(); icon.className = 'fas fa-music'; } }
     </script>
-    <noscript><img height="1" width="1" style="display:none"
-    src="https://www.facebook.com/tr?id=790032697153678&ev=PageView&noscript=1"
-    /></noscript>
+
+    <noscript>
+        <img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=790032697153678&ev=PageView&noscript=1"/>
+    </noscript>
+
 </body>
 </html>
