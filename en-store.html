@@ -28,19 +28,20 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
     <script>
-(function() {
-    var userLang = navigator.language || navigator.userLanguage;
-
-        } 
-        // 2. لو هو في الإنجليزي دلوقتي (جاي من الزرار).. اخرس يا جوجل وما تترجمش
-        else {
+    // كود ذكي عشان ما يكسرش السلة
+    (function() {
+        var userLang = navigator.language || navigator.userLanguage;
+        // لو عربي، استنى ثانية واحدة لحد ما ملفات السلة تحمل وبعدين حول
+        if (userLang.startsWith('ar')) {
+            window.location.replace("store.html"); 
+        } else {
+            // منع جوجل من الترجمة من غير ما نأثر على السلة
             var meta = document.createElement('meta');
             meta.name = 'google';
             meta.content = 'notranslate';
             document.getElementsByTagName('head')[0].appendChild(meta);
         }
-    }
-})();
+    })();
 </script>
     <style>
         :root { --bg-body: #fcfcfc; --bg-card: white; --text-main: #0f172a; --border-color: #f1f5f9; --nav-bg: white; }
