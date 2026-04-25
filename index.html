@@ -12,22 +12,12 @@
     <script src="core-brain.js" defer></script>
     <script src="icon-config.js" defer></script>
     <script>
-  /* DeSina Global Redirect System 
-     بيدخّل العرب على النسخة العربي، وباقي العالم بيفضل على الإنجليزي 
-  */
-  (function() {
-    // 1. تحديد لغة جهاز المستخدم
-    var userLang = (navigator.language || navigator.userLanguage).toLowerCase();
-
-    // 2. فحص هل المستخدم "عربي" وهل دي أول مرة يدخل (عشان ميحصلش تضارب)
+(function() {
+    var userLang = navigator.language || navigator.userLanguage;
     if (userLang.startsWith('ar')) {
-      // 3. التأكد إن الزائر مش جاي من رابط داخلي (عشان لو حب يرجع للإنجليزي بمزاجه ميتمنعش)
-      if (document.referrer.indexOf(window.location.host) === -1) {
-        window.location.href = "https://desina-hq.github.io/index.html";
-      }
+        location.replace("https://desina-hq.github.io/ar.html");
     }
-    // ملاحظة: لو الزائر صيني أو هندي، الكود مش هيعمل حاجة وهيسيبه يستمتع بالنسخة الإنجليزية
-  })();
+})();
 </script>
     <meta name="facebook-domain-verification" content="ebv7bj0c5m0f3bx00vgmhlfrdqmfup" />
     <meta name="google-site-verification" content="googlee93d837465e7dc9b" />
