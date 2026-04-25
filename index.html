@@ -14,12 +14,12 @@
     <script>
 (function() {
     var userLang = navigator.language || navigator.userLanguage;
-    var comingFromAr = document.referrer.includes('ar.html');
+    var comingFromAr = document.referrer.includes('index-ar.html');
 
     if (userLang.startsWith('ar')) {
         // 1. لو داخل جديد.. شحطه على العربي
         if (!comingFromAr) {
-            location.href = "https://desina-hq.github.io/ar.html";
+            location.href = "https://desina-hq.github.io/index-ar.html";
         } 
         // 2. لو هو في الإنجليزي دلوقتي (جاي من الزرار).. اخرس يا جوجل وما تترجمش
         else {
@@ -165,7 +165,7 @@
 
             <div class="flex items-center gap-4">
                 <div class="hidden md:block border-r-2 pr-4 border-gray-200">
-                    <a href="indexar.html" class="lang-btn-slim">AR</a>
+                    <a href="index-ar.html" class="lang-btn-slim">AR</a>
                 </div>
                 <a href="en-store.html" class="md:hidden cart-icon" aria-label="Shopping Cart"><i class="fas fa-shopping-cart"></i></a>
                 <div class="burger-icon md:hidden cursor-pointer" id="burger-btn" aria-label="Open Menu"><i class="fas fa-bars text-2xl text-gray-700"></i></div>
