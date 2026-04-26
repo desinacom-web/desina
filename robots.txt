@@ -2,11 +2,11 @@
 # Optimized for Googlebot and Global Indexing 2026
 
 User-agent: *
-disAllow: /
+Allow: /
 
 # Specifically inviting Google-Intelligence to explore all 19 pages
 User-agent: Googlebot
-disAllow: /
+Allow: /
 
 # Banning generic low-quality crawlers to keep your ZBook server performance high
 User-agent: AhrefsBot
