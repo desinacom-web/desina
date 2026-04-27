@@ -15,6 +15,6 @@ User-agent: MJ12bot
 Disallow: /
 
 # Direct Path to the Global Sitemap
-Sitemap: https://desina.vercel.app/sitemap.xml
+Sitemap: https://desina-hq.github.io/sitemap.xml
 
 # End of Secure Instruction
