@@ -24,10 +24,12 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
 })(window,document,'script','dataLayer','GTM-5N9GRVQJ');</script>
     <link rel="manifest" href="/manifest.json">
+<link rel="manifest" href="/manifest.json?v=2">
 <script>
   if ('serviceWorker' in navigator) {
     window.addEventListener('load', () => {
-      navigator.serviceWorker.register('/sw.js');
+      // زودنا v=2 عشان نجبر جوجل يحمل الملف الجديد
+      navigator.serviceWorker.register('/sw.js?v=10');
     });
   }
 </script>
