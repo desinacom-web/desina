@@ -2,7 +2,7 @@ self.addEventListener('install', (e) => {
   e.waitUntil(
     caches.open('desina-store').then((cache) => cache.addAll([
       '/',
-      '/index-ar.html',
+      '/index.html',
       '/logo-512.png'
     ])),
   );
