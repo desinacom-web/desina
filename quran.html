@@ -202,6 +202,7 @@
         surahSelect.onchange = function() {
             if(this.value) {
                 audioPlayer.src = this.value;
+                audioPlayer.load(); // تفعيل قوة التحميل والبفر (Buffer)
                 audioPlayer.play();
                 updateMediaSession();
             }
@@ -240,7 +241,6 @@
                     artwork: [{ src: 'logo.webp', sizes: '512x512', type: 'image/webp' }]
                 });
 
-                // تفعيل أزرار التحكم الخارجية (الموبايل واللاب توب)
                 navigator.mediaSession.setActionHandler('nexttrack', () => {
                     document.getElementById('nextBtn').click();
                 });
@@ -257,4 +257,4 @@
         }
     </script>
 </body>
-</html> 
+</html>
