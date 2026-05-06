@@ -24,15 +24,6 @@
     <meta name="dub-domain-verification" content="1fc338f3-8e61-47b2-920c-f2f6d4089414">
     <script src="core-brain.js" defer></script>
     <script src="icon-config.js" defer></script>
-
-    <script>
-  if ('serviceWorker' in navigator) {
-    window.addEventListener('load', () => {
-      // زودنا v=2 عشان نجبر جوجل يحمل الملف الجديد
-      navigator.serviceWorker.register('/sw.js?v=10');
-    });
-  }
-</script>
     
     <meta name="dub-domain-verification" content="1fc338f3-8e61-47b2-920c-f2f6d4089414">
     <link rel="alternate" hreflang="ar" href="https://desina-hq.github.io/index.html">
@@ -236,8 +227,10 @@
       gtag('js', new Date());
       gtag('config', 'G-791017L19B');
     </script>
- <link rel="manifest" href="/manifest.json?v=2">
-<script>
+ 
+    <link rel="manifest" href="/manifest.json?v=2">
+
+    <script>
   if ('serviceWorker' in navigator) {
     window.addEventListener('load', () => {
       // زودنا v=2 عشان نجبر جوجل يحمل الملف الجديد
