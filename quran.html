@@ -180,10 +180,10 @@
         }
 
         window.addEventListener('DOMContentLoaded', () => {
-            if (document.referrer.includes('index.html')) {
-                setLanguage('en');
-            } else {
+            if (document.referrer.includes('ar')) {
                 setLanguage('ar');
+            } else {
+                setLanguage('en');
             }
         });
 
